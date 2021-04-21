@@ -81,6 +81,8 @@
     }
   },
   "lint-staged": {
-    "*.{js,json,md,ts,scss,ts,html}": ["npm run format --uncommitted"]
+    "*.{js,json,md,ts,scss,ts,html}": [
+      "npm run format --uncommitted"
+    ]
   }
 }
