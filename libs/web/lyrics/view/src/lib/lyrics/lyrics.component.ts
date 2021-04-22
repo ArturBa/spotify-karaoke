@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { MiniLyricsService } from '@artur-ba/web/lyrics/mini-lyrics/service';
 import { PlayerStore } from '@artur-ba/shared/service';
+import { Lyrics, LyricsParser } from '@artur-ba/web/lyrics/model';
 
 @Component({
   selector: 'artur-ba-lyrics',
@@ -11,11 +12,10 @@ import { PlayerStore } from '@artur-ba/shared/service';
   styleUrls: ['./lyrics.component.scss'],
 })
 export class LyricsComponent implements OnInit {
-  lyrics: string;
+  lyrics: Lyrics;
   author: string;
   title: string;
   progress: Observable<number>;
-  track: Spotify.Track;
 
   constructor(
     protected lyricsAPI: MiniLyricsService,
@@ -24,7 +24,6 @@ export class LyricsComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.playerState.currentTrack$.subscribe(async (track) => {
-      this.track = track;
       this.handleSongUpdate(track);
     });
     this.playerState.progress$.subscribe((pos) => {
@@ -39,6 +38,8 @@ export class LyricsComponent implements OnInit {
   }
 
   protected async updateLyrics(): Promise<void> {
-    this.lyrics = await this.lyricsAPI.getLyrics(this.title, this.author);
+    this.lyrics = LyricsParser.lrcParser(
+      await this.lyricsAPI.getLyrics(this.title, this.author)
+    );
   }
 }

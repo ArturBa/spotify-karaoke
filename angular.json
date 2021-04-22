@@ -246,6 +246,31 @@
           }
         }
       }
+    },
+    "web-lyrics-model": {
+      "projectType": "library",
+      "root": "libs/web/lyrics/model",
+      "sourceRoot": "libs/web/lyrics/model/src",
+      "prefix": "artur-ba",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/web/lyrics/model/src/**/*.ts",
+              "libs/web/lyrics/model/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/lyrics/model"],
+          "options": {
+            "jestConfig": "libs/web/lyrics/model/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }

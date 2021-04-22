@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 
 import { AuthStore, PlayerService } from '@artur-ba/shared/service';
-// import { PlayerService } from '@artur-ba/shared/service';
 
 @Component({
   selector: 'artur-ba-root',

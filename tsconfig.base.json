@@ -22,7 +22,8 @@
       ],
       "@artur-ba/web/lyrics/mini-lyrics/interface": [
         "libs/web/lyrics/mini-lyrics/interface/src/index.ts"
-      ]
+      ],
+      "@artur-ba/web/lyrics/model": ["libs/web/lyrics/model/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
