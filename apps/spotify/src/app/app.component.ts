@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { AuthStore, PlayerService } from '@artur-ba/shared/service';
 
@@ -7,7 +7,7 @@ import { AuthStore, PlayerService } from '@artur-ba/shared/service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   constructor(
     protected authStore: AuthStore,
     protected playerService: PlayerService
