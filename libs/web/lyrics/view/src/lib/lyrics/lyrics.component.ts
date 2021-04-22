@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { MiniLyricsService } from '@artur-ba/web/lyrics/mini-lyrics/service';
-import { PlayerState } from '@artur-ba/shared/service';
+import { PlayerStore } from '@artur-ba/shared/service';
 
 @Component({
   selector: 'artur-ba-lyrics',
@@ -19,7 +19,7 @@ export class LyricsComponent implements OnInit {
 
   constructor(
     protected lyricsAPI: MiniLyricsService,
-    protected playerState: PlayerState
+    protected playerState: PlayerStore
   ) {}
 
   async ngOnInit(): Promise<void> {

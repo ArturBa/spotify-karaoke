@@ -1,17 +1,31 @@
 /// <reference types="spotify-web-playback-sdk" />
 import { Injectable } from '@angular/core';
-import { PlayerState } from './player.state';
+import { tap } from 'rxjs/operators';
+import { AuthStore } from './auth.store';
+import { PlayerStore } from './player.store';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PlayerService {
-  constructor(protected playerState: PlayerState) {}
+  constructor(
+    protected playerState: PlayerStore,
+    protected authStore: AuthStore
+  ) {}
 
-  async init(token): Promise<void> {
+  init(): void {
+    this.authStore.token$
+      .pipe(
+        tap((token) => {
+          this.initSpotify(token);
+        })
+      )
+      .subscribe();
+  }
+  protected async initSpotify(token): Promise<void> {
     const { Player } = await this.waitForSpotifyWebPlaybackSDKToLoad();
     const player = new Player({
-      name: 'Spotify with Lyrics',
+      name: 'Spotify Karaoke',
       getOAuthToken: (cb) => {
         cb(token);
       },

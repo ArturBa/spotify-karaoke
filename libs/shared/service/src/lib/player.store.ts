@@ -14,7 +14,7 @@ export interface PlayerState {
 @Injectable({
   providedIn: 'root',
 })
-export class PlayerState extends StateInterface<PlayerState> {
+export class PlayerStore extends StateInterface<PlayerState> {
   readonly playback$ = this.state$?.pipe(
     filter((d) => !!d.playbackState),
     map((d) => d.playbackState)
