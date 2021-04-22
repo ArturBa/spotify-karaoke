@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { MiniLyricsResponse } from '@artur-ba/web/lyrics/mini-lyrics/interface';
 
@@ -7,7 +7,9 @@ import { MiniLyricsResponse } from '@artur-ba/web/lyrics/mini-lyrics/interface';
   providedIn: 'root',
 })
 export class MiniLyricsService {
-  readonly url = 'minilyrics-proxy';
+  readonly miniLyricsProxy = 'minilyrics-proxy';
+  readonly miniLyrics = 'minilyrics';
+  readonly miniLyricsHostRegex = /^http:\/\/search.crintsoft.com/;
 
   constructor(protected httpClient: HttpClient) {}
 
@@ -28,7 +30,7 @@ export class MiniLyricsService {
       },
     });
     return this.httpClient
-      .get<MiniLyricsResponse>(this.url, { params })
+      .get<MiniLyricsResponse>(this.miniLyricsProxy, { params })
       .toPromise();
   }
 
@@ -42,8 +44,6 @@ export class MiniLyricsService {
   }
 
   protected setProxyAddressToMiniLyrics(server_url: string): string {
-    const hostRegex = /^http:\/\/search.crintsoft.com/;
-
-    return server_url.replace(hostRegex, '/minilyrics');
+    return server_url.replace(this.miniLyricsHostRegex, this.miniLyrics);
   }
 }

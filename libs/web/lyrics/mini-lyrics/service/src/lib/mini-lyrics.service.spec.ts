@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { MiniLyricsService } from './mini-lyrics.service';
 
-describe('MiniLyricsService', () => {
+xdescribe('MiniLyricsService', () => {
   let service: MiniLyricsService;
 
   beforeEach(() => {
