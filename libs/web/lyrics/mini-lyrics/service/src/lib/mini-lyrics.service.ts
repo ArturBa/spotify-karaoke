@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
-import { MinilyricsResponse } from '@artur-ba/web/lyrics/mini-lyrics/interface';
+import { MiniLyricsResponse } from '@artur-ba/web/lyrics/mini-lyrics/interface';
 
 @Injectable({
   providedIn: 'root',
@@ -13,28 +11,39 @@ export class MiniLyricsService {
 
   constructor(protected httpClient: HttpClient) {}
 
-  getLyrics0(title: string, artist: string): Observable<Observable<string>> {
-    return this.getLyricsBase(title, artist).pipe(
-      map((res: MinilyricsResponse) => {
-        return this.httpClient.get('minilyrics/l/ll/f/fn_owuwaz.lrc', {
-          responseType: 'text',
-        });
+  async getLyrics(title: string, artist: string): Promise<string> {
+    const miniLyricsResponse = await this.getLyricsBase(title, artist);
+    return this.httpClient
+      .get(this.getMiniLyricsAddress(miniLyricsResponse), {
+        responseType: 'text',
       })
-    );
-  }
-  getLyrics(minilyricsResponse: MinilyricsResponse): Observable<any> {
-    return this.httpClient.get('minilyrics/l/ll/f/fn_owuwaz.lrc', {
-      responseType: 'text',
-    });
+      .toPromise();
   }
 
-  getLyricsBase(title: string, artist: string): Observable<MinilyricsResponse> {
+  getLyricsBase(title: string, artist: string): Promise<MiniLyricsResponse> {
     const params = new HttpParams({
       fromObject: {
         title,
         artist,
       },
     });
-    return this.httpClient.get<MinilyricsResponse>(this.url, { params });
+    return this.httpClient
+      .get<MiniLyricsResponse>(this.url, { params })
+      .toPromise();
+  }
+
+  protected getMiniLyricsAddress(
+    miniLyricsResponse: MiniLyricsResponse
+  ): string {
+    return (
+      this.setProxyAddressToMiniLyrics(miniLyricsResponse.server_url) +
+      miniLyricsResponse.children[0].link
+    );
+  }
+
+  protected setProxyAddressToMiniLyrics(server_url: string): string {
+    const hostRegex = /^http:\/\/search.crintsoft.com/;
+
+    return server_url.replace(hostRegex, '/minilyrics');
   }
 }

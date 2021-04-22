@@ -1,4 +1,4 @@
-export interface MinilyricsResponse {
+export interface MiniLyricsResponse {
   _type: 'return';
   orgcmd: string;
   result: 'OK' | 'NOT_FOUND';
