@@ -25,7 +25,7 @@ export class PlayerStore extends StateInterface<PlayerState> {
     map((p) => p.track_window.current_track)
   ) as Observable<Spotify.Track>;
 
-  progress$ = this.playback$.pipe(
+  readonly progress$ = this.playback$.pipe(
     debounceTime(20),
     map(({ paused, position }) => {
       if (paused) {

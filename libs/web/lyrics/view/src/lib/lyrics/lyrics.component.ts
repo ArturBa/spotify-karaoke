@@ -4,7 +4,8 @@ import { Observable } from 'rxjs';
 
 import { MiniLyricsService } from '@artur-ba/web/lyrics/mini-lyrics/service';
 import { PlayerStore } from '@artur-ba/shared/service';
-import { Lyrics, LyricsParser } from '@artur-ba/web/lyrics/model';
+import { Lyrics, LyricsParser, LyricsScript } from '@artur-ba/web/lyrics/model';
+import { CursorError } from '@angular/compiler/src/ml_parser/lexer';
 
 @Component({
   selector: 'artur-ba-lyrics',

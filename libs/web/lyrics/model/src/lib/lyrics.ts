@@ -22,6 +22,7 @@ export class LyricsParser {
   static readonly EOL = '\r\n';
 
   static readonly timeStart = /\[(\d*\:\d*\.?\d*)\]/; // i.g [00:10.55]
+  static readonly timeStartValue = /\[(\d*\:\d*\.?\d*)\](.*)/; // i.g [00:10.55]
   static readonly scriptText = /(.*)/; // Havana ooh na-na (ayy)
   static readonly scriptTextValue = /.*\](.*)/; // Havana ooh na-na (ayy)
   static readonly startAndText = new RegExp(
@@ -34,7 +35,7 @@ export class LyricsParser {
     let lines = data.split(LyricsParser.EOL);
 
     const infos = [];
-    const scripts: LyricsScript[] = [];
+    let scripts: LyricsScript[] = [];
     const result = {} as LCR;
 
     for (let i = 0; LyricsParser.startAndText.test(lines[i]) === false; i++) {
@@ -50,33 +51,17 @@ export class LyricsParser {
     lines.splice(0, infos.length); // remove all info lines
     lines = lines.filter((line) => LyricsParser.startAndText.test(line));
 
-    // for (let i = 0, l = lines.length; i < l; i++) {
-    //   const matches = startAndText.exec(lines[i]);
-    //   const timeEndMatches = timeEnd.exec(lines[i + 1]);
-    //   if (matches && timeEndMatches) {
-    //     const [, start, text] = matches;
-    //     const [, end] = timeEndMatches;
-    //     scripts.push({
-    //       start: this.convertTime(start),
-    //       text,
-    //       end: this.convertTime(end),
-    //     } as LyricsScript);
-    //   }
-    // }
     lines.forEach((line) => {
       const text = this.getTextFromLine(line);
-      // console.log(text);
-      // this.getTimeFromLine(line);
-      // const matches = startAndText.exec(line)
-      // if (matches) {
-      //   const [, start, text] = matches;
-      //   scripts.push({
-      //     start: this.convertTime(start),
-      //     text
-      //   })
-      // }
+      this.getTimeFromLine(line).forEach((startTime) => {
+        scripts.push({
+          start: startTime,
+          text,
+        });
+      });
     });
-    console.dir(scripts);
+
+    scripts = scripts.sort((a, b) => a.start - b.start);
 
     return {
       album: result.al || '',
@@ -89,13 +74,17 @@ export class LyricsParser {
 
   protected static getTimeFromLine(line: string): number[] {
     const times: number[] = [];
-    // [, time, l] = LyricsParser.timeStart.exec(line);
-
+    let time: string;
+    do {
+      [, time, line] = LyricsParser.timeStartValue.exec(line);
+      times.push(this.convertTime(time));
+    } while (LyricsParser.timeStart.test(line));
     return times;
   }
 
   protected static getTextFromLine(line: string): string {
-    return LyricsParser.scriptTextValue.exec(line)[1];
+    const text = LyricsParser.scriptTextValue.exec(line)[1];
+    return text === '' ? '---' : text;
   }
 
   /**
