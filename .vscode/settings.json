@@ -1,3 +1,4 @@
 {
-  "cSpell.words": ["Spotify"]
+  "conventionalCommits.scopes": ["lyrics", "spotify"],
+  "cSpell.words": ["spotify"]
 }

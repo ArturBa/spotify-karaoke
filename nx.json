@@ -14,6 +14,9 @@
   "projects": {
     "spotify": { "tags": [] },
     "spotify-e2e": { "tags": [], "implicitDependencies": ["spotify"] },
-    "shared-service": { "tags": ["type:service"] }
+    "shared-service": { "tags": ["type:service"] },
+    "web-lyrics-view": { "tags": ["type:view"] },
+    "web-lyrics-mini-lyrics-service": { "tags": ["type:service"] },
+    "web-lyrics-mini-lyrics-interface": { "tags": ["type:interface"] }
   }
 }
