@@ -12,7 +12,9 @@ export class AppComponent {
 
   constructor(playerService: PlayerService) {
     const token =
-      'BQCvfmJ6qNf7-ju3aLBnBsbFaiBS9UkcLIilsaDafRbhOjcv8psNQUVd3FCUJw-e1D53azg4rGtzbFGNN1bHAasBzvr_odd4eypzV6MpgE5tvE9QgMzh3vSpfw9KwjHcVI-RCEcaoXnjXQv51II3pJ58BrJvrV1ys_Ym5nzcrCqtZHXD75oiLX8';
-    playerService.init(token);
+      'BQCkK6a8Z-QPtCh5P_HqOh5RUVttzghB6P0Zg_DysQU0ZC2Rz1rc08ncJl2cSSG-ufJfseROr0LNZnp25b22nFMTjH03b0G8vMWVEO6wBv65M2yRLNXlAOPzht5fap6Hu1x1MFQtpAoqN47IgG3H0guJUxmzoKiTx6a9mqNP4qeuCEoVq62PLq4';
+    playerService.init(token).catch((e) => {
+      console.log(e);
+    });
   }
 }

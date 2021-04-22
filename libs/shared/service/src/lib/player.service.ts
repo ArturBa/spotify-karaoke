@@ -1,11 +1,12 @@
 /// <reference types="spotify-web-playback-sdk" />
 import { Injectable } from '@angular/core';
+import { PlayerState } from './player.state';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PlayerService {
-  constructor() {}
+  constructor(protected playerState: PlayerState) {}
 
   async init(token): Promise<void> {
     const { Player } = await this.waitForSpotifyWebPlaybackSDKToLoad();
@@ -17,35 +18,40 @@ export class PlayerService {
     });
 
     player.addListener('initialization_error', ({ message }) => {
-      console.error(message);
+      return Promise.reject(new Error(message));
     });
     player.addListener('authentication_error', ({ message }) => {
-      console.error(message);
+      return Promise.reject(new Error(message));
     });
     player.addListener('account_error', ({ message }) => {
-      console.error(message);
+      return Promise.reject(new Error(message));
     });
     player.addListener('playback_error', ({ message }) => {
-      console.error(message);
+      return Promise.reject(new Error(message));
     });
 
     // Playback status updates
-    player.addListener('player_state_changed', (state) => {
-      console.log(state);
-    });
+    player.addListener(
+      'player_state_changed',
+      (state: Spotify.PlaybackState) => {
+        this.playerState.setState({ playbackState: state });
+      }
+    );
 
     // Ready
     player.addListener('ready', ({ device_id }) => {
-      console.log('Ready with Device ID', device_id);
+      this.playerState.setState({ deviceId: device_id });
     });
 
-    // Not Ready
     player.addListener('not_ready', ({ device_id }) => {
-      console.log('Device ID has gone offline', device_id);
+      return Promise.reject(
+        new Error(`Device ID: ${device_id} has gone offline`)
+      );
     });
 
     // Connect to the player!
     player.connect();
+    this.playerState.setState({ player });
   }
 
   protected waitForSpotifyWebPlaybackSDKToLoad(): Promise<typeof Spotify> {
