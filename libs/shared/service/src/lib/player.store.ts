@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { BehaviorSubject, combineLatest, Observable, of, timer } from 'rxjs';
-import { debounceTime, filter, map, switchMap } from 'rxjs/operators';
+import { Observable, of, timer } from 'rxjs';
+import { debounceTime, filter, map } from 'rxjs/operators';
 
 import { StateInterface } from './state-interface';
 

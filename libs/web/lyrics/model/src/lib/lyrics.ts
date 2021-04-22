@@ -9,7 +9,6 @@ export interface Lyrics {
 export interface LyricsScript {
   text: string;
   start: number;
-  end: number;
 }
 
 interface LCR {
@@ -22,23 +21,23 @@ interface LCR {
 export class LyricsParser {
   static readonly EOL = '\r\n';
 
-  static lrcParser(data): Lyrics {
-    if (typeof data !== 'string') {
-      throw new TypeError('expect first argument to be a string');
-    }
+  static readonly timeStart = /\[(\d*\:\d*\.?\d*)\]/; // i.g [00:10.55]
+  static readonly scriptText = /(.*)/; // Havana ooh na-na (ayy)
+  static readonly scriptTextValue = /.*\](.*)/; // Havana ooh na-na (ayy)
+  static readonly startAndText = new RegExp(
+    LyricsParser.timeStart.source + LyricsParser.scriptText.source
+  );
+
+  static lrcParser(data: string): Lyrics {
     // split a long stirng into lines by system's end-of-line marker line \r\n on Windows
     // or \n on POSIX
-    let lines = data.split(this.EOL);
-    const timeStart = /\[(\d*\:\d*\.?\d*)\]/; // i.g [00:10.55]
-    const scriptText = /(.+)/; // Havana ooh na-na (ayy)
-    const timeEnd = timeStart;
-    const startAndText = new RegExp(timeStart.source + scriptText.source);
+    let lines = data.split(LyricsParser.EOL);
 
     const infos = [];
     const scripts: LyricsScript[] = [];
     const result = {} as LCR;
 
-    for (let i = 0; startAndText.test(lines[i]) === false; i++) {
+    for (let i = 0; LyricsParser.startAndText.test(lines[i]) === false; i++) {
       infos.push(lines[i]);
     }
 
@@ -49,22 +48,35 @@ export class LyricsParser {
     }, result);
 
     lines.splice(0, infos.length); // remove all info lines
-    const qualified = new RegExp(startAndText.source + '|' + timeEnd.source);
-    lines = lines.filter((line) => qualified.test(line));
+    lines = lines.filter((line) => LyricsParser.startAndText.test(line));
 
-    for (let i = 0, l = lines.length; i < l; i++) {
-      const matches = startAndText.exec(lines[i]);
-      const timeEndMatches = timeEnd.exec(lines[i + 1]);
-      if (matches && timeEndMatches) {
-        const [, start, text] = matches;
-        const [, end] = timeEndMatches;
-        scripts.push({
-          start: this.convertTime(start),
-          text,
-          end: this.convertTime(end),
-        } as LyricsScript);
-      }
-    }
+    // for (let i = 0, l = lines.length; i < l; i++) {
+    //   const matches = startAndText.exec(lines[i]);
+    //   const timeEndMatches = timeEnd.exec(lines[i + 1]);
+    //   if (matches && timeEndMatches) {
+    //     const [, start, text] = matches;
+    //     const [, end] = timeEndMatches;
+    //     scripts.push({
+    //       start: this.convertTime(start),
+    //       text,
+    //       end: this.convertTime(end),
+    //     } as LyricsScript);
+    //   }
+    // }
+    lines.forEach((line) => {
+      const text = this.getTextFromLine(line);
+      // console.log(text);
+      // this.getTimeFromLine(line);
+      // const matches = startAndText.exec(line)
+      // if (matches) {
+      //   const [, start, text] = matches;
+      //   scripts.push({
+      //     start: this.convertTime(start),
+      //     text
+      //   })
+      // }
+    });
+    console.dir(scripts);
 
     return {
       album: result.al || '',
@@ -73,6 +85,17 @@ export class LyricsParser {
       script: scripts,
       offset: result.offset || 0,
     };
+  }
+
+  protected static getTimeFromLine(line: string): number[] {
+    const times: number[] = [];
+    // [, time, l] = LyricsParser.timeStart.exec(line);
+
+    return times;
+  }
+
+  protected static getTextFromLine(line: string): string {
+    return LyricsParser.scriptTextValue.exec(line)[1];
   }
 
   /**
