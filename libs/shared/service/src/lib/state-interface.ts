@@ -9,8 +9,8 @@ export class StateInterface<T> {
 
   setState(t: Object): void {
     this.state$.next({
-      ...t,
       ...this.state$.value,
+      ...t,
     });
     console.dir(this.state$.value);
   }

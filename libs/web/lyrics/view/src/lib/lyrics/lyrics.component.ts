@@ -17,6 +17,10 @@ export class LyricsComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    this.lyrics = await this.lyricsAPI.getLyrics('hound dog', 'elvis presley');
+    this.playerState.currentTrack$.subscribe(async (track: Spotify.Track) => {
+      const author = track.artists[0].name;
+      const title = track.name;
+      this.lyrics = await this.lyricsAPI.getLyrics(title, author);
+    });
   }
 }

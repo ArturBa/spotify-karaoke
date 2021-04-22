@@ -20,5 +20,8 @@ export class PlayerState extends StateInterface<PlayerState> {
     map((d) => d.playbackState)
   ) as Observable<Spotify.PlaybackState>;
 
-  // readonly album$ =
+  readonly currentTrack$ = this.playback$.pipe(
+    filter((p) => !!p),
+    map((p) => p.track_window.current_track)
+  ) as Observable<Spotify.Track>;
 }
