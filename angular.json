@@ -145,6 +145,31 @@
           }
         }
       }
+    },
+    "shared-service": {
+      "projectType": "library",
+      "root": "libs/shared/service",
+      "sourceRoot": "libs/shared/service/src",
+      "prefix": "artur-ba",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/service/src/**/*.ts",
+              "libs/shared/service/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/service"],
+          "options": {
+            "jestConfig": "libs/shared/service/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }
