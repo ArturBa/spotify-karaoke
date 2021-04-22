@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { filter, map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable, of, timer } from 'rxjs';
+import { debounceTime, filter, map, switchMap } from 'rxjs/operators';
 
 import { StateInterface } from './state-interface';
 
@@ -24,4 +24,18 @@ export class PlayerState extends StateInterface<PlayerState> {
     filter((p) => !!p),
     map((p) => p.track_window.current_track)
   ) as Observable<Spotify.Track>;
+
+  progress$ = this.playback$.pipe(
+    debounceTime(20),
+    map(({ paused, position }) => {
+      if (paused) {
+        return of(position);
+      }
+      const progressTimer$ = timer(0, 1000);
+      return progressTimer$.pipe(
+        map((x) => x * 1000),
+        map((x) => x + position)
+      );
+    })
+  );
 }

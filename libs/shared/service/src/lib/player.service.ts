@@ -34,7 +34,6 @@ export class PlayerService {
     player.addListener(
       'player_state_changed',
       (state: Spotify.PlaybackState) => {
-        console.log(state);
         this.playerState.setState({ playbackState: state });
       }
     );

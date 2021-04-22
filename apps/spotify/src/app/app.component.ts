@@ -8,11 +8,9 @@ import { PlayerService } from '@artur-ba/shared/service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'spotify';
-
-  constructor(playerService: PlayerService) {
+  constructor(protected playerService: PlayerService) {
     const token =
-      'BQDqqSSOJuK7PhE0g8CLuksT1TcWfSK-gSezTjIAoGxa4iH9ybLiwZmz-ZgeAA3qGlj1zU4G1Md7ZFE3C_PiJrPmug2e_i80PbegjQF4X34QlFtelcaL02WtMaar9NhYspiBSiZzcKLTtFP__8TPjLfgwuLlI640ugOPfuPKB9Wgbd6fWIIq5L8';
+      'BQB9jOBX9UAaBA3JCsclJd0CJEnqhrp_SRZ3kkh6u4I0GZMOPRFIP7UJK-31_qudDQFpiVpGfuNxhFuOdg3Nunk5DaRacAm0hhMZY6-v8bbqxJBuYN0plzjUoXH9za1VaijABUATDSkzSmEy-BU5pK4vGQ3YTNVlzvgGiVo5DQwasIJed6Xw4ps';
     playerService.init(token).catch((e) => {
       console.log(e);
     });

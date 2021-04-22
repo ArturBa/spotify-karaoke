@@ -12,6 +12,5 @@ export class StateInterface<T> {
       ...this.state$.value,
       ...t,
     });
-    console.dir(this.state$.value);
   }
 }
