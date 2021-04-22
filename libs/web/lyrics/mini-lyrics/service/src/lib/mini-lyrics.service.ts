@@ -1,24 +1,40 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+import { MinilyricsResponse } from '@artur-ba/web/lyrics/mini-lyrics/interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MiniLyricsService {
-  readonly headers = new HttpHeaders({
-    'User-Agent': 'MiniLyrics',
-  });
-
-  readonly url = 'http://search.crintsoft.com/searchlyrics.htm';
+  readonly url = 'minilyrics-proxy';
 
   constructor(protected httpClient: HttpClient) {}
 
-  getLyrics(title: string, artist: string): Observable<any> {
-    const query =
-      `<?xml version='1.0' encoding='utf-8' ?>` +
-      `<searchV1 filetype="lyrics" ClientCharEncoding="utf-8" ` +
-      ` artist="${artist || ''}" title="${title || ''}" client="MiniLyrics" />`;
-    return this.httpClient.post(this.url, query, { headers: this.headers });
+  getLyrics0(title: string, artist: string): Observable<Observable<string>> {
+    return this.getLyricsBase(title, artist).pipe(
+      map((res: MinilyricsResponse) => {
+        return this.httpClient.get('minilyrics/l/ll/f/fn_owuwaz.lrc', {
+          responseType: 'text',
+        });
+      })
+    );
+  }
+  getLyrics(minilyricsResponse: MinilyricsResponse): Observable<any> {
+    return this.httpClient.get('minilyrics/l/ll/f/fn_owuwaz.lrc', {
+      responseType: 'text',
+    });
+  }
+
+  getLyricsBase(title: string, artist: string): Observable<MinilyricsResponse> {
+    const params = new HttpParams({
+      fromObject: {
+        title,
+        artist,
+      },
+    });
+    return this.httpClient.get<MinilyricsResponse>(this.url, { params });
   }
 }

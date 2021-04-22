@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { MinilyricsResponse } from '@artur-ba/web/lyrics/mini-lyrics/interface';
 
 import { MiniLyricsService } from 'libs/web/lyrics/mini-lyrics/service/src/lib/mini-lyrics.service';
 // import { MiniLyricsService } from '@artur-ba/web/lyrics/mini-lyrics/service/src/lib/mini-lyrics.service';
@@ -12,6 +13,8 @@ export class LyricsComponent implements OnInit {
   constructor(protected lyricsAPI: MiniLyricsService) {}
 
   ngOnInit(): void {
-    this.lyricsAPI.getLyrics('hound dog', 'elvis presley').subscribe(() => {});
+    this.lyricsAPI.getLyrics0('hound dog', 'elvis presley').subscribe((res) => {
+      res.subscribe((r) => console.log(r));
+    });
   }
 }
