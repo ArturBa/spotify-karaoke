@@ -34,7 +34,11 @@ export class PlayerSettingsComponent {
     return this.volume === 0;
   }
 
-  setVolume(volume: number): void {
+  protected setVolume(volume: number): void {
     this.playerControlService.setVolume(volume);
+  }
+
+  mute(): void {
+    this.setVolume(0);
   }
 }

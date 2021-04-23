@@ -21,9 +21,14 @@ export class PlayerStore extends StateInterface<PlayerState> {
     map((d) => d.playbackState)
   ) as Observable<Spotify.PlaybackState>;
 
-  readonly currentTrack$ = this.playback$.pipe(
+  readonly trackWindow$ = this.playback$.pipe(
     filter((p) => !!p),
-    map((p) => p.track_window.current_track)
+    map((p) => p.track_window)
+  ) as Observable<Spotify.PlaybackTrackWindow>;
+
+  readonly currentTrack$ = this.trackWindow$.pipe(
+    filter((p) => !!p),
+    map((p) => p.current_track)
   ) as Observable<Spotify.Track>;
 
   readonly paused$ = this.playback$.pipe(

@@ -1,0 +1,9 @@
+<div *ngFor="let track of trackWindow?.previous_tracks">
+  {{ track.name }}
+  {{ track.album.name }}
+</div>
+
+<div *ngFor="let track of trackWindow?.next_tracks">
+  {{ track.name }}
+  {{ track.album.name }}
+</div>
