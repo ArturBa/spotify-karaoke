@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { AuthStore } from './auth.store';
+import { PlayerControlService } from './player-control.service';
 import { PlayerStore } from './player.store';
 
 @Injectable({
@@ -10,7 +11,8 @@ import { PlayerStore } from './player.store';
 export class PlayerService {
   constructor(
     protected playerState: PlayerStore,
-    protected authStore: AuthStore
+    protected authStore: AuthStore,
+    protected playerControl: PlayerControlService
   ) {}
 
   init(): void {
@@ -55,6 +57,7 @@ export class PlayerService {
     // Ready
     player.addListener('ready', ({ device_id }) => {
       this.playerState.setState({ deviceId: device_id });
+      this.playerControl.transferUserPlayback(device_id, false).subscribe();
     });
 
     player.addListener('not_ready', ({ device_id }) => {
@@ -64,7 +67,7 @@ export class PlayerService {
     });
 
     // Connect to the player!
-    player.connect();
+    await player.connect();
     this.playerState.setState({ player });
   }
 

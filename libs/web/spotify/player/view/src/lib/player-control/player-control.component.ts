@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { PlayerControlService, PlayerStore } from '@artur-ba/shared/service';
 import { Observable } from 'rxjs';
