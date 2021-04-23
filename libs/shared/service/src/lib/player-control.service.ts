@@ -39,25 +39,18 @@ export class PlayerControlService {
   }
 
   play(): void {
-    const request = {} as SpotifyPlayRequestApi;
-    this.playerStore.currentTrack$.pipe(
-      map((t) => t.uri),
-      tap((uri) => {
-        this.httpClient.put(`${this.baseURL}/play`, { context_uri: uri });
-      })
-    );
-    this.player$?.togglePlay();
+    this.httpClient.put(`${this.playerURL}/play`, {}).subscribe();
   }
 
   pause(): void {
-    this.player$?.pause();
+    this.httpClient.put(`${this.playerURL}/pause`, {}).subscribe();
   }
 
   nextTrack(): void {
-    this.player$?.nextTrack();
+    this.httpClient.put(`${this.playerURL}/next`, {}).subscribe();
   }
 
   prevTrack(): void {
-    this.player$?.previousTrack();
+    this.httpClient.put(`${this.playerURL}/previous`, {}).subscribe();
   }
 }
