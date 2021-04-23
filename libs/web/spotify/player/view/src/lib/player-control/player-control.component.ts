@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { PlayerStore } from '@artur-ba/shared/service';
+import { PlayerControlService, PlayerStore } from '@artur-ba/shared/service';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -11,8 +11,12 @@ import { Observable } from 'rxjs';
 export class PlayerControlComponent {
   progress$: Observable<number>;
   max: number;
+  paused: boolean;
 
-  constructor(protected playerStore: PlayerStore) {
+  constructor(
+    protected playerStore: PlayerStore,
+    protected playerControlService: PlayerControlService
+  ) {
     this.playerStore.progress$.subscribe((progress) => {
       this.progress$ = progress;
     });
@@ -20,5 +24,25 @@ export class PlayerControlComponent {
     this.playerStore.playback$.subscribe((playback) => {
       this.max = playback.duration;
     });
+
+    this.playerStore.paused$.subscribe((paused) => {
+      this.paused = paused;
+    });
+  }
+
+  play(): void {
+    this.playerControlService.play();
+  }
+
+  pause(): void {
+    this.playerControlService.pause();
+  }
+
+  nextTrack(): void {
+    this.playerControlService.nextTrack();
+  }
+
+  prevTrack(): void {
+    this.playerControlService.nextTrack();
   }
 }

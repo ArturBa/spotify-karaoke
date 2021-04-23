@@ -22,7 +22,6 @@
     "web-spotify-player-view": { "tags": ["tags:view"] },
     "web-spotify-homepage-view": { "tags": ["tags:view"] },
     "web-spotify-sidebar-view": { "tags": ["tags:view"] },
-    "web-spotify-dashboard-view": { "tags": ["tags:view"] },
-    "shared-pipes": { "tags": [] }
+    "web-spotify-dashboard-view": { "tags": ["tags:view"] }
   }
 }

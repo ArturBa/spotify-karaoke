@@ -375,31 +375,6 @@
           }
         }
       }
-    },
-    "shared-pipes": {
-      "projectType": "library",
-      "root": "libs/shared/pipes",
-      "sourceRoot": "libs/shared/pipes/src",
-      "prefix": "artur-ba",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/shared/pipes/src/**/*.ts",
-              "libs/shared/pipes/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/shared/pipes"],
-          "options": {
-            "jestConfig": "libs/shared/pipes/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
     }
   }
 }
