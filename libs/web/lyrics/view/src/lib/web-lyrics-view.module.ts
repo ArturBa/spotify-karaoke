@@ -8,12 +8,12 @@ import { LyricsComponent } from './lyrics/lyrics.component';
 import { LyricsTextComponent } from './lyrics-text/lyrics-text.component';
 import { RouterModule } from '@angular/router';
 
-const ROUTES = [{ path: '*', component: LyricsComponent }];
+const ROUTES = [{ path: '', component: LyricsComponent }];
 @NgModule({
   imports: [
     CommonModule,
     WebLyricsMiniLyricsServiceModule,
-    RouterModule.forRoot(ROUTES),
+    RouterModule.forChild(ROUTES),
   ],
   declarations: [LyricsComponent, LyricsTextComponent],
   exports: [],
