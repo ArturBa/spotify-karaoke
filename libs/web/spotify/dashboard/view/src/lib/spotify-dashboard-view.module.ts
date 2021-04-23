@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import {
-  WebLyricsViewModule,
   LyricsComponent,
+  WebLyricsViewModule,
 } from '@artur-ba/web/lyrics/view';
 
 import { DashboardComponent } from './dashboard/dashboard.component';

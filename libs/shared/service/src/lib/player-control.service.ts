@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
+import { Observable } from 'rxjs';
 
 import { PlayerStore } from './player.store';
-import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
 
 export interface SpotifyPlayRequestApi {
   context_uri?: string;
