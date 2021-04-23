@@ -7,4 +7,4 @@ import { PlayerComponent } from './player/player.component';
   declarations: [PlayerComponent],
   exports: [PlayerComponent],
 })
-export class SpotifyPlayerViewModule {}
+export class WebSpotifyPlayerViewModule {}

@@ -7,4 +7,4 @@ import { SidebarComponent } from './sidebar/sidebar.component';
   declarations: [SidebarComponent],
   exports: [SidebarComponent],
 })
-export class SpotifySidebarViewModule {}
+export class WebSpotifySidebarViewModule {}
