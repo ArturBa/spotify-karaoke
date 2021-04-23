@@ -39,7 +39,7 @@
       "prefix": "artur-ba",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
             "outputPath": "dist/apps/spotify",
             "index": "apps/spotify/src/index.html",
@@ -55,7 +55,10 @@
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "apps/spotify/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "customWebpackConfig": {
+              "path": "webpack.config.js"
+            }
           },
           "configurations": {
             "production": {
