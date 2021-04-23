@@ -1,0 +1,8 @@
+<h1>Lyrics</h1>
+<h2>{{ author }}:{{ title }}</h2>
+
+<artur-ba-lyrics-text
+  *ngIf="this.lyrics"
+  [currentTime]="progress$ | async"
+  [lyrics]="lyrics"
+></artur-ba-lyrics-text>
