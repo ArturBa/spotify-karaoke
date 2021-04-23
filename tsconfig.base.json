@@ -37,7 +37,12 @@
         "libs/web/spotify/dashboard/view/src/index.ts"
       ],
       "@artur-ba/shared/pipes": ["libs/shared/pipes/src/index.ts"],
-      "@artur-ba/shared/interceptors": ["libs/shared/interceptors/src/index.ts"]
+      "@artur-ba/shared/interceptors": [
+        "libs/shared/interceptors/src/index.ts"
+      ],
+      "@artur-ba/web/spotify/shared/view": [
+        "libs/web/spotify/shared/view/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -12,5 +12,6 @@ module.exports = {
     '<rootDir>/libs/spotify/dashboard/view',
     '<rootDir>/libs/shared/pipes',
     '<rootDir>/libs/shared/interceptors',
+    '<rootDir>/libs/web/spotify/shared/view',
   ],
 };
