@@ -47,10 +47,10 @@ export class PlayerControlService {
   }
 
   nextTrack(): void {
-    this.httpClient.put(`${this.playerURL}/next`, {}).subscribe();
+    this.httpClient.post(`${this.playerURL}/next`, {}).subscribe();
   }
 
   prevTrack(): void {
-    this.httpClient.put(`${this.playerURL}/previous`, {}).subscribe();
+    this.httpClient.post(`${this.playerURL}/previous`, {}).subscribe();
   }
 }

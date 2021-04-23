@@ -44,6 +44,6 @@ export class PlayerControlComponent {
   }
 
   prevTrack(): void {
-    this.playerControlService.nextTrack();
+    this.playerControlService.prevTrack();
   }
 }
