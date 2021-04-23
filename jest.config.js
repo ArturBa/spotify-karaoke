@@ -10,5 +10,6 @@ module.exports = {
     '<rootDir>/libs/spotify/homepage/view',
     '<rootDir>/libs/spotify/sidebar/view',
     '<rootDir>/libs/spotify/dashboard/view',
+    '<rootDir>/libs/shared/pipes',
   ],
 };

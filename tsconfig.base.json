@@ -35,7 +35,8 @@
       ],
       "@artur-ba/web/spotify/dashboard/view": [
         "libs/web/spotify/dashboard/view/src/index.ts"
-      ]
+      ],
+      "@artur-ba/shared/pipes": ["libs/shared/pipes/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
