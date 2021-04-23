@@ -1,9 +1,6 @@
-<div *ngFor="let track of trackWindow?.previous_tracks">
-  {{ track.name }}
-  {{ track.album.name }}
-</div>
-
-<div *ngFor="let track of trackWindow?.next_tracks">
-  {{ track.name }}
-  {{ track.album.name }}
-</div>
+<h1>Current queue</h1>
+<artur-ba-song-list
+  [songs]="songs"
+  [currentSongURI]="trackWindow?.current_track.uri"
+>
+</artur-ba-song-list>

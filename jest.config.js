@@ -13,5 +13,7 @@ module.exports = {
     '<rootDir>/libs/shared/pipes',
     '<rootDir>/libs/shared/interceptors',
     '<rootDir>/libs/web/spotify/shared/view',
+    '<rootDir>/libs/web/spotify/shared/helper',
+    '<rootDir>/libs/web/spotify/shared/pipe',
   ],
 };

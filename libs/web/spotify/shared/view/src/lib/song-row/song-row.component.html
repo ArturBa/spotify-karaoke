@@ -1,1 +1,4 @@
-<p>song-row works!</p>
+<img [src]="trackHelper.getImage64Url(track)" />
+{{ track?.album.name }}
+{{ trackHelper.getArtists(track) }}
+{{ trackHelper.time(1239) }}

@@ -8,4 +8,5 @@ import { Component, Input } from '@angular/core';
 })
 export class SongListComponent {
   @Input() songs: Spotify.Track[];
+  @Input() currentSongURI: string;
 }

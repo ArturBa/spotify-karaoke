@@ -24,6 +24,8 @@
     "web-spotify-sidebar-view": { "tags": ["tags:view"] },
     "web-spotify-dashboard-view": { "tags": ["tags:view"] },
     "shared-interceptors": { "tags": [] },
-    "web-spotify-shared-view": { "tags": [] }
+    "web-spotify-shared-view": { "tags": [] },
+    "web-spotify-shared-helper": { "tags": [] },
+    "web-spotify-shared-pipe": { "tags": [] }
   }
 }

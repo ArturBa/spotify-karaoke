@@ -425,6 +425,56 @@
           }
         }
       }
+    },
+    "web-spotify-shared-helper": {
+      "projectType": "library",
+      "root": "libs/web/spotify/shared/helper",
+      "sourceRoot": "libs/web/spotify/shared/helper/src",
+      "prefix": "artur-ba",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/web/spotify/shared/helper/src/**/*.ts",
+              "libs/web/spotify/shared/helper/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/spotify/shared/helper"],
+          "options": {
+            "jestConfig": "libs/web/spotify/shared/helper/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "web-spotify-shared-pipe": {
+      "projectType": "library",
+      "root": "libs/web/spotify/shared/pipe",
+      "sourceRoot": "libs/web/spotify/shared/pipe/src",
+      "prefix": "artur-ba",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/web/spotify/shared/pipe/src/**/*.ts",
+              "libs/web/spotify/shared/pipe/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/spotify/shared/pipe"],
+          "options": {
+            "jestConfig": "libs/web/spotify/shared/pipe/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }

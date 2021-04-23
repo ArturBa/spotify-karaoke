@@ -42,6 +42,12 @@
       ],
       "@artur-ba/web/spotify/shared/view": [
         "libs/web/spotify/shared/view/src/index.ts"
+      ],
+      "@artur-ba/web/spotify/shared/helper": [
+        "libs/web/spotify/shared/helper/src/index.ts"
+      ],
+      "@artur-ba/web/spotify/shared/pipe": [
+        "libs/web/spotify/shared/pipe/src/index.ts"
       ]
     }
   },
