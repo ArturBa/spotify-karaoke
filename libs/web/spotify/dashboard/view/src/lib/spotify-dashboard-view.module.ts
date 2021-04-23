@@ -18,7 +18,7 @@ const ROUTES = [
   },
 ];
 @NgModule({
-  imports: [CommonModule, RouterModule.forRoot(ROUTES), WebLyricsViewModule],
+  imports: [CommonModule, RouterModule.forChild(ROUTES), WebLyricsViewModule],
   declarations: [DashboardComponent, QueueComponent],
   exports: [DashboardComponent],
 })
