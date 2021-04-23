@@ -1,7 +1,7 @@
 :host {
   & > * {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
+    margin-left: var(--small-margin);
+    margin-right: var(--small-margin);
   }
   flex: 1 1 0%;
   display: flex;

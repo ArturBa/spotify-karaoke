@@ -8,7 +8,7 @@ import { LyricsComponent } from './lyrics/lyrics.component';
 import { LyricsTextComponent } from './lyrics-text/lyrics-text.component';
 import { RouterModule } from '@angular/router';
 
-const ROUTES = [{ path: '', component: LyricsComponent }];
+const ROUTES = [{ path: 'lyrics', component: LyricsComponent }];
 @NgModule({
   imports: [
     CommonModule,
