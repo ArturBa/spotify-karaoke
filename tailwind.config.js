@@ -1,11 +1,6 @@
 module.exports = {
   prefix: '',
-  purge: [
-    './apps/**/*.html',
-    './apps/**/*.ts',
-    './libs/**/*.html',
-    './libs/**/*.ts',
-  ],
+  purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
