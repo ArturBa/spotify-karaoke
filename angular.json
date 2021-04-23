@@ -272,6 +272,106 @@
           }
         }
       }
+    },
+    "spotify-player-view": {
+      "projectType": "library",
+      "root": "libs/spotify/player/view",
+      "sourceRoot": "libs/spotify/player/view/src",
+      "prefix": "artur-ba",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/spotify/player/view/src/**/*.ts",
+              "libs/spotify/player/view/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/spotify/player/view"],
+          "options": {
+            "jestConfig": "libs/spotify/player/view/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "spotify-homepage-view": {
+      "projectType": "library",
+      "root": "libs/spotify/homepage/view",
+      "sourceRoot": "libs/spotify/homepage/view/src",
+      "prefix": "artur-ba",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/spotify/homepage/view/src/**/*.ts",
+              "libs/spotify/homepage/view/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/spotify/homepage/view"],
+          "options": {
+            "jestConfig": "libs/spotify/homepage/view/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "spotify-sidebar-view": {
+      "projectType": "library",
+      "root": "libs/spotify/sidebar/view",
+      "sourceRoot": "libs/spotify/sidebar/view/src",
+      "prefix": "artur-ba",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/spotify/sidebar/view/src/**/*.ts",
+              "libs/spotify/sidebar/view/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/spotify/sidebar/view"],
+          "options": {
+            "jestConfig": "libs/spotify/sidebar/view/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "spotify-dashboard-view": {
+      "projectType": "library",
+      "root": "libs/spotify/dashboard/view",
+      "sourceRoot": "libs/spotify/dashboard/view/src",
+      "prefix": "artur-ba",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/spotify/dashboard/view/src/**/*.ts",
+              "libs/spotify/dashboard/view/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/spotify/dashboard/view"],
+          "options": {
+            "jestConfig": "libs/spotify/dashboard/view/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }

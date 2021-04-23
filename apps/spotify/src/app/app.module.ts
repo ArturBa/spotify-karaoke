@@ -3,16 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 
-import { WebLyricsViewModule } from '@artur-ba/web/lyrics/view';
-import { SharedServiceModule } from '@artur-ba/shared/service';
+import { SpotifyHomepageViewModule } from '@artur-ba/spotify/homepage/view';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    WebLyricsViewModule,
-    SharedServiceModule,
+    SpotifyHomepageViewModule,
     RouterModule.forRoot([{ path: '', component: AppComponent }]),
   ],
   providers: [],

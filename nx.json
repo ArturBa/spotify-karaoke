@@ -18,6 +18,10 @@
     "web-lyrics-view": { "tags": ["type:view"] },
     "web-lyrics-mini-lyrics-service": { "tags": ["type:service"] },
     "web-lyrics-mini-lyrics-interface": { "tags": ["type:interface"] },
-    "web-lyrics-model": { "tags": [] }
+    "web-lyrics-model": { "tags": [] },
+    "spotify-player-view": { "tags": [] },
+    "spotify-homepage-view": { "tags": [] },
+    "spotify-sidebar-view": { "tags": [] },
+    "spotify-dashboard-view": { "tags": [] }
   }
 }
