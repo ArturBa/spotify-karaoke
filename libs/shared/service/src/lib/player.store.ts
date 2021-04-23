@@ -37,7 +37,7 @@ export class PlayerStore extends StateInterface<PlayerState> {
   ) as Observable<boolean>;
 
   readonly volume$ = this.state$.pipe(
-    filter((p) => !!p.volume),
+    filter((p) => p.volume !== undefined),
     map((p) => p.volume)
   ) as Observable<number>;
 
