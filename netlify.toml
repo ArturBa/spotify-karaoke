@@ -6,6 +6,6 @@
 
 [[redirects]]
   from = "/minilyrics/*"
-  to = "http://search.crintsoft.com"
+  to = "http://search.crintsoft.com/:splat"
   status = 200
   force = true
