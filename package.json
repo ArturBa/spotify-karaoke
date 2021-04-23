@@ -1,6 +1,6 @@
 {
   "name": "artur-ba",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "scripts": {
     "ng": "nx",
@@ -46,6 +46,7 @@
     "zone.js": "^0.10.2"
   },
   "devDependencies": {
+    "@angular-builders/custom-webpack": "^11.1.1",
     "@angular-devkit/build-angular": "~0.1102.0",
     "@angular-eslint/eslint-plugin": "~2.0.2",
     "@angular-eslint/eslint-plugin-template": "~2.0.2",
@@ -78,6 +79,9 @@
     "jest-preset-angular": "8.3.2",
     "lint-staged": "^10.5.4",
     "postcss": "^8.2.12",
+    "postcss-import": "^14.0.1",
+    "postcss-loader": "^5.2.0",
+    "postcss-scss": "^3.0.5",
     "prettier": "2.2.1",
     "tailwindcss": "^2.1.1",
     "ts-jest": "26.4.0",

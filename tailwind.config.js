@@ -1,8 +1,10 @@
 module.exports = {
+  prefix: '',
   purge: [
-    {
-      content: ['./apps/**/*.{html,ts}', './libs/**/*.{html,ts}'],
-    },
+    './apps/**/*.html',
+    './apps/**/*.ts',
+    './libs/**/*.html',
+    './libs/**/*.ts',
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
