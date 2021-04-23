@@ -1,4 +1,7 @@
 :host {
   overflow-y: scroll;
-  @apply h-full flex-1 bg-yellow-500 p-10;
+  height: 100%;
+  flex: 1 1 0%;
+  background-color: yellow;
+  padding: 2.5rem;
 }
