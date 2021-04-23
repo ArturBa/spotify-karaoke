@@ -18,9 +18,19 @@ export class PlayerSongComponent {
   }
 
   get image64Url(): string {
-    const img = this.track.album.images.filter((image) => image.height == 64);
-    if (img[0]) {
+    const img = this.track?.album.images.filter((image) => image.height == 64);
+    if (img && img[0]) {
       return img[0].url;
     }
+    return 'assets/favphoto.png';
+  }
+
+  get artists(): string {
+    let artists = '';
+    this.track?.artists.forEach((art) => {
+      artists += art.name + ' ';
+    });
+
+    return artists;
   }
 }

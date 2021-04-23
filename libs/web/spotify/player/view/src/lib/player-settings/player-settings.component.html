@@ -1,6 +1,13 @@
-<mat-icon> segment </mat-icon>
+<mat-icon> queue_music </mat-icon>
 <mat-icon> speaker_group </mat-icon>
-<mat-icon> volume_up </mat-icon>
-<mat-icon> volume_down </mat-icon>
-<mat-icon> volume_off </mat-icon>
-<mat-slider> </mat-slider>
+<mat-icon *ngIf="isLoud()"> volume_up </mat-icon>
+<mat-icon *ngIf="!isLoud()"> volume_down </mat-icon>
+<mat-icon *ngIf="isMute()"> volume_off </mat-icon>
+<mat-slider
+  [value]="volume * 100"
+  min="0"
+  max="100"
+  tickInterval="1"
+  (valueChange)="handleVolumeChange($event)"
+>
+</mat-slider>

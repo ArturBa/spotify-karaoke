@@ -9,6 +9,7 @@ export interface PlayerState {
   player: Spotify.SpotifyPlayer;
   deviceId: string;
   playbackState: Spotify.PlaybackState;
+  volume: number;
 }
 
 @Injectable({
@@ -29,6 +30,11 @@ export class PlayerStore extends StateInterface<PlayerState> {
     filter((p) => !!p),
     map((p) => p.paused)
   ) as Observable<boolean>;
+
+  readonly volume$ = this.state$.pipe(
+    filter((p) => !!p.volume),
+    map((p) => p.volume)
+  ) as Observable<number>;
 
   readonly progress$ = this.playback$.pipe(
     debounceTime(20),
