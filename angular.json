@@ -39,7 +39,7 @@
       "prefix": "artur-ba",
       "architect": {
         "build": {
-          "builder": "@angular-builders/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/apps/spotify",
             "index": "apps/spotify/src/index.html",
