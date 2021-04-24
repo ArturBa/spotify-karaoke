@@ -31,6 +31,10 @@ export class UserSettingsService extends StateInterface<UserSettings> {
     map((p) => p.dark_mode)
   ) as Observable<boolean>;
 
+  readonly cookiesAccepted$ = this.state$.pipe(
+    map((p) => p.cookies_allowed !== undefined)
+  ) as Observable<boolean>;
+
   allowCookies(): void {
     this.cookieService.set(this.cookies_allowed_str, 'true');
     this.setState({
@@ -42,6 +46,6 @@ export class UserSettingsService extends StateInterface<UserSettings> {
     this.setState({
       dark_mode: isOn,
     });
-    this.cookieService.set(this.cookies_allowed_str, `${isOn}`);
+    this.cookieService.set(this.dark_mode_str, `${isOn}`);
   }
 }
