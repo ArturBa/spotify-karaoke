@@ -5,17 +5,26 @@ import { BehaviorSubject, Observable, VirtualTimeScheduler } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { StateInterface } from './state-interface';
 
+import { ObjectHelper } from '@artur-ba/shared/helper';
+
 export class UserSettings {
-  cookies_allowed = false;
-  dark_mode = false;
+  cookies_allowed = 'false';
+  dark_mode = 'false';
 }
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserSettingsService extends StateInterface<UserSettings> {
-  protected readonly cookies_allowed_str = 'cookies_allowed';
-  protected readonly dark_mode_str = 'dark_mode';
+  protected readonly cookies_allowed_str = ObjectHelper.propName(
+    new UserSettings(),
+    new UserSettings().cookies_allowed
+  );
+  protected readonly dark_mode_str = ObjectHelper.propName(
+    new UserSettings(),
+    new UserSettings().dark_mode
+  );
+  protected readonly true_str = 'true';
 
   constructor(protected cookieService: CookieService) {
     super();
@@ -28,24 +37,25 @@ export class UserSettingsService extends StateInterface<UserSettings> {
 
   readonly darkModeOn$ = this.state$.pipe(
     filter((p) => p.dark_mode !== undefined),
-    map((p) => p.dark_mode)
+    map((p) => p.dark_mode === this.true_str)
   ) as Observable<boolean>;
 
   readonly cookiesAccepted$ = this.state$.pipe(
-    map((p) => p.cookies_allowed !== undefined)
+    map((p) => p.cookies_allowed === this.true_str)
   ) as Observable<boolean>;
 
   allowCookies(): void {
-    this.cookieService.set(this.cookies_allowed_str, 'true');
+    this.cookieService.set(this.cookies_allowed_str, this.true_str);
     this.setState({
-      cookies_allowed: true,
+      cookies_allowed: this.true_str,
     });
   }
 
   darkMode(isOn: boolean): void {
+    const isOnStr = `${isOn}`;
     this.setState({
-      dark_mode: isOn,
+      dark_mode: isOnStr,
     });
-    this.cookieService.set(this.dark_mode_str, `${isOn}`);
+    this.cookieService.set(this.dark_mode_str, isOnStr);
   }
 }

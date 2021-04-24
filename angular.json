@@ -55,6 +55,9 @@
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "apps/spotify/src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["apps/spotify/src/styles"]
+            },
             "scripts": []
           },
           "configurations": {
@@ -471,6 +474,81 @@
           "outputs": ["coverage/libs/web/spotify/shared/pipe"],
           "options": {
             "jestConfig": "libs/web/spotify/shared/pipe/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-view": {
+      "projectType": "library",
+      "root": "libs/shared/view",
+      "sourceRoot": "libs/shared/view/src",
+      "prefix": "artur-ba",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/view/src/**/*.ts",
+              "libs/shared/view/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/view"],
+          "options": {
+            "jestConfig": "libs/shared/view/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "helper": {
+      "projectType": "library",
+      "root": "libs/helper",
+      "sourceRoot": "libs/helper/src",
+      "prefix": "artur-ba",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/helper/src/**/*.ts",
+              "libs/helper/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/helper"],
+          "options": {
+            "jestConfig": "libs/helper/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-helper": {
+      "projectType": "library",
+      "root": "libs/shared/helper",
+      "sourceRoot": "libs/shared/helper/src",
+      "prefix": "artur-ba",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/helper/src/**/*.ts",
+              "libs/shared/helper/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/helper"],
+          "options": {
+            "jestConfig": "libs/shared/helper/jest.config.js",
             "passWithNoTests": true
           }
         }

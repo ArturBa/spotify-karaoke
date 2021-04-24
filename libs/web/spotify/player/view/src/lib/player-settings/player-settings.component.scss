@@ -1,12 +1,15 @@
+@import 'variables';
+@import 'mixins';
+
 :host {
   & > * {
-    margin-left: var(--small-margin);
-    margin-right: var(--small-margin);
+    margin: auto $margin-xs;
   }
-  flex: 1 1 0%;
   display: flex;
+
+  @include flex-1;
   flex-direction: row;
   align-items: center;
   justify-content: end;
-  margin-right: 2rem;
+  margin-right: $margin-m;
 }

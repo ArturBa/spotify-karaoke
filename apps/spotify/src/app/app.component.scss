@@ -1,15 +1,1 @@
 @import '../styles/variables';
-
-.cookie-banner {
-  position: absolute;
-  bottom: 120px;
-  right: 40px;
-  width: 300px;
-  background-color: $accent;
-  padding: 3rem;
-  & a {
-    display: block;
-    font-weight: bold;
-    cursor: pointer;
-  }
-}

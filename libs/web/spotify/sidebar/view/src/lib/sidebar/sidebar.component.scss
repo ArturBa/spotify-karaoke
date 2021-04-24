@@ -1,6 +1,8 @@
+@import 'variables';
+
 :host {
   width: 300px;
-  padding: 2.75rem 1.6rem;
+  padding: $padding-m;
 }
 
 img {

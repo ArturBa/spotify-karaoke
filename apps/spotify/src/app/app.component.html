@@ -2,9 +2,7 @@
   <router-outlet></router-outlet>
 </artur-ba-homepage>
 
-<div class="cookie-banner" *ngIf="!cookiesAccepted">
-  <span>
-    We use Cookies!
-    <a role="button" (click)="cookiesAccept()">Sure!</a>
-  </span>
-</div>
+<artur-ba-cookie-banner
+  *ngIf="!cookiesAccepted"
+  (cookieAccept)="cookiesAccept()"
+></artur-ba-cookie-banner>

@@ -23,9 +23,11 @@
     "web-spotify-homepage-view": { "tags": ["tags:view"] },
     "web-spotify-sidebar-view": { "tags": ["tags:view"] },
     "web-spotify-dashboard-view": { "tags": ["tags:view"] },
-    "shared-interceptors": { "tags": [] },
-    "web-spotify-shared-view": { "tags": [] },
-    "web-spotify-shared-helper": { "tags": [] },
-    "web-spotify-shared-pipe": { "tags": [] }
+    "shared-interceptors": { "tags": ["tags:interceptor"] },
+    "web-spotify-shared-view": { "tags": ["tags:view"] },
+    "web-spotify-shared-helper": { "tags": ["tags:helper"] },
+    "web-spotify-shared-pipe": { "tags": ["tags:pipe"] },
+    "shared-view": { "tags": ["tags:view"] },
+    "shared-helper": { "tags": ["tags:helper"] }
   }
 }

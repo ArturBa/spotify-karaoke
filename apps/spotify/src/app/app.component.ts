@@ -19,7 +19,7 @@ import { UserSettingsService } from '@artur-ba/shared/service';
 export class AppComponent implements OnInit, OnDestroy {
   @HostBinding('class') className = '';
 
-  protected subscriptions: Subscription[] = [];
+  protected readonly subscriptions: Subscription[] = [];
   protected readonly darkClassName = 'darkMode';
 
   cookiesAccepted = true;

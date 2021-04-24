@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { CookieService } from 'ngx-cookie-service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { SpotifyTokenInterceptor } from '@artur-ba/shared/interceptors';
 import { WebSpotifyHomepageViewModule } from '@artur-ba/web/spotify/homepage/view';
+import { SharedViewModule } from '@artur-ba/shared/view';
 
 import { AppComponent } from './app.component';
 import {
@@ -32,6 +32,7 @@ const ROUTES: Routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(ROUTES),
     WebSpotifyHomepageViewModule,
+    SharedViewModule,
   ],
   providers: [
     {
@@ -39,8 +40,8 @@ const ROUTES: Routes = [
       useClass: SpotifyTokenInterceptor,
       multi: true,
     },
-    CookieService,
   ],
   bootstrap: [AppComponent],
+  exports: [],
 })
 export class AppModule {}
