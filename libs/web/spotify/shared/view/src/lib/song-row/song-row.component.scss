@@ -5,16 +5,30 @@
   display: flex;
   flex-direction: row;
   width: 100%;
+  padding: $padding-xs $padding-s;
+
+  & > * {
+    align-items: center;
+    display: flex;
+  }
+  &:hover {
+    background-color: aqua;
+  }
 }
 
 img {
-  width: $image64;
+  @include square_img(40px);
 }
 
 .song {
   flex: 2;
-  display: flex;
-  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: $margin-s;
+  strong {
+    font-size: large;
+  }
 }
 
 .album {

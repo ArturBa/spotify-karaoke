@@ -18,5 +18,5 @@
   width: 100%;
   @include flex-1;
   background-color: $primary;
-  padding: $padding-m;
+  padding: $padding-m $padding-s;
 }

@@ -5,3 +5,8 @@
 @mixin flex-1 {
   flex: 1 1 0%;
 }
+
+@mixin square_img($size) {
+  width: $size;
+  height: $size;
+}

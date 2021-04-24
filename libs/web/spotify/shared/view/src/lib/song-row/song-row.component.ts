@@ -10,4 +10,8 @@ export class SongRowComponent {
   @Input() track: Spotify.Track;
 
   readonly trackHelper = TrackHelper;
+
+  handleClick(artist): void {
+    console.dir(artist);
+  }
 }
