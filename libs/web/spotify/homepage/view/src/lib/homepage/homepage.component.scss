@@ -14,7 +14,7 @@ div {
     overflow-y: scroll;
     height: 100%;
     @include flex-1;
-    background-color: var(--primary);
+    background-color: var(--background);
     padding: $padding-m;
   }
 }

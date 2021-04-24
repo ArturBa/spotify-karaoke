@@ -6,18 +6,32 @@ $padding-xs: 0.5rem;
 $padding-s: 1.25rem;
 $padding-m: 2rem;
 
-$primary: #e8cd7b;
-$accent: #fce883;
-$background: green;
+$primary: #e7c96f;
+$primary-dark: #deb73f;
+$primary-light: #ead185;
+
+$accent: #1b2e55;
+$accent-dark: #14223e;
+$accent-light: #223b6d;
+
+$background: #f0f0f0;
+$background-dark: #e2e2e4;
+
+$background-black: #171717;
+$background-black-dark: #121212;
+
+$text-primary: #2f4858;
 
 :root {
   --primary: #{$primary};
   --accent: #{$accent};
   --background: #{$background};
+  --text: #{$text-primary};
 }
 
 .darkMode {
-  --primary: #000;
-  --accent: #7a7a7a;
-  --background: purple;
+  --primary: #{$primary-dark};
+  --accent: #{$accent};
+  --background: #{$background};
+  --text: #{$text-primary};
 }
