@@ -26,6 +26,11 @@
 </div>
 <div class="progress-bar">
   {{ (progress$ | async) / 1000 | trackTime }}
-  <mat-slider [value]="progress$ | async" [max]="max"> </mat-slider>
+  <mat-slider
+    [value]="progress$ | async"
+    [max]="max"
+    (valueChange)="handleSeek($event)"
+  >
+  </mat-slider>
   {{ max / 1000 | trackTime }}
 </div>

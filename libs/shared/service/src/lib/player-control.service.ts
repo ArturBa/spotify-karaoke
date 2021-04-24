@@ -64,4 +64,15 @@ export class PlayerControlService {
       })
       .subscribe();
   }
+
+  seek(new_position: number) {
+    new_position = Math.floor(new_position);
+    this.httpClient
+      .put(`${this.playerURL}/seek`, null, {
+        params: {
+          position_ms: `${new_position}`,
+        },
+      })
+      .subscribe();
+  }
 }
