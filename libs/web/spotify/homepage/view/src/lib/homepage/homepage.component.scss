@@ -6,15 +6,17 @@
   flex-direction: column;
   height: 100vh;
 }
-div {
+.not-player {
   display: flex;
-  @include flex-1;
   min-height: 0;
-  div {
-    overflow-y: scroll;
-    height: 100%;
-    @include flex-1;
-    background-color: $primary;
-    padding: $padding-m;
-  }
+  @include flex-1;
+}
+
+.dashboard {
+  overflow-y: scroll;
+  height: 100%;
+  width: 100%;
+  @include flex-1;
+  background-color: $primary;
+  padding: $padding-m;
 }

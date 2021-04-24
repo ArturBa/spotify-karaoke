@@ -1,4 +1,11 @@
 <img [src]="trackHelper.getImage64Url(track)" />
-{{ track?.album.name }}
-{{ trackHelper.getArtists(track) }}
-{{ trackHelper.time(1239) }}
+<div class="song">
+  {{ track.name }}
+  {{ trackHelper.getArtists(track) }}
+</div>
+<div class="album">
+  {{ track?.album.name }}
+</div>
+<div class="time">
+  {{ trackHelper.time(1239) }}
+</div>
