@@ -1,10 +1,4 @@
-import {
-  Component,
-  HostBinding,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
 
 import { Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';

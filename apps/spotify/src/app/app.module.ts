@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 
+import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RouterModule, Routes } from '@angular/router';
 
+import {
+  DashboardComponent,
+  QueueComponent,
+} from '@artur-ba/web/spotify/dashboard/view';
+import { SharedViewModule } from '@artur-ba/shared/view';
 import { SpotifyTokenInterceptor } from '@artur-ba/shared/interceptors';
 import { WebSpotifyHomepageViewModule } from '@artur-ba/web/spotify/homepage/view';
-import { SharedViewModule } from '@artur-ba/shared/view';
 
 import { AppComponent } from './app.component';
-import {
-  QueueComponent,
-  DashboardComponent,
-} from '@artur-ba/web/spotify/dashboard/view';
 
 const ROUTES: Routes = [
   {

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
+import { filter, map } from 'rxjs/operators';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
 
 import { StateInterface } from './state-interface';
 export class UserSettings {

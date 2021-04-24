@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
+
 import { CommonModule } from '@angular/common';
+
 import { TrackTime } from './millisecond.pipe';
 
 @NgModule({

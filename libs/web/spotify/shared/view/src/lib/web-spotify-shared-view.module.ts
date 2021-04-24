@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
+
 import { CommonModule } from '@angular/common';
-import { SongRowComponent } from './song-row/song-row.component';
+
 import { SongListComponent } from './song-list/song-list.component';
+import { SongRowComponent } from './song-row/song-row.component';
 
 @NgModule({
   imports: [CommonModule],
