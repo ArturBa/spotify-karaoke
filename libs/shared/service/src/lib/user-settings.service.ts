@@ -58,10 +58,11 @@ export class UserSettingsService extends StateInterface<UserSettings> {
   }
 
   getReturnPath(): string {
-    const path = this.cookieService.check(this.return_path)
-      ? this.cookieService.get(this.return_path)
-      : '';
-    this.cookieService.delete(this.return_path);
+    let path = '';
+    if (this.cookieService.check(this.return_path)) {
+      path = this.cookieService.get(this.return_path);
+      this.cookieService.delete(this.return_path);
+    }
     return path;
   }
 }

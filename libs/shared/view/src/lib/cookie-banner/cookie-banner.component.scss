@@ -13,7 +13,7 @@
   flex-direction: column;
 
   padding: $padding-s $padding-m;
-  background-color: $background;
+  background-color: var(--background);
 
   @include rounded;
 }
