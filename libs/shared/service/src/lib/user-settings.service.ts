@@ -8,14 +8,16 @@ import { StateInterface } from './state-interface';
 export class UserSettings {
   cookies_allowed = 'false';
   dark_mode = 'false';
+  return_path?: string;
 }
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserSettingsService extends StateInterface<UserSettings> {
-  protected readonly cookies_allowed_str = 'cookies_allowed';
-  protected readonly dark_mode_str = 'dark_mode';
+  protected readonly cookies_allowed = 'cookies_allowed';
+  protected readonly dark_mode = 'dark_mode';
+  protected readonly return_path = 'dark_mode';
   protected readonly true_str = 'true';
 
   constructor(protected cookieService: CookieService) {
@@ -37,7 +39,7 @@ export class UserSettingsService extends StateInterface<UserSettings> {
   ) as Observable<boolean>;
 
   allowCookies(): void {
-    this.cookieService.set(this.cookies_allowed_str, this.true_str);
+    this.cookieService.set(this.cookies_allowed, this.true_str);
     this.setState({
       cookies_allowed: this.true_str,
     });
@@ -48,6 +50,18 @@ export class UserSettingsService extends StateInterface<UserSettings> {
     this.setState({
       dark_mode: isOnStr,
     });
-    this.cookieService.set(this.dark_mode_str, isOnStr);
+    this.cookieService.set(this.dark_mode, isOnStr);
+  }
+
+  saveReturnPath(path: string): void {
+    this.cookieService.set(this.return_path, path);
+  }
+
+  getReturnPath(): string {
+    const path = this.cookieService.check(this.return_path)
+      ? this.cookieService.get(this.return_path)
+      : '';
+    this.cookieService.delete(this.return_path);
+    return path;
   }
 }
