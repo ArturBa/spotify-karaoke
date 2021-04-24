@@ -6,14 +6,13 @@ import { WebLyricsMiniLyricsServiceModule } from '@artur-ba/web/lyrics/mini-lyri
 
 import { LyricsComponent } from './lyrics/lyrics.component';
 import { LyricsTextComponent } from './lyrics-text/lyrics-text.component';
-import { RouterModule } from '@angular/router';
+import { WebLyricsViewRoutingModule } from './web-lyrics-view-routing.module';
 
-const ROUTES = [{ path: 'lyrics', component: LyricsComponent }];
 @NgModule({
   imports: [
     CommonModule,
     WebLyricsMiniLyricsServiceModule,
-    RouterModule.forChild(ROUTES),
+    WebLyricsViewRoutingModule,
   ],
   declarations: [LyricsComponent, LyricsTextComponent],
   exports: [],
