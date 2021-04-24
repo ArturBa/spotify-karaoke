@@ -9,7 +9,11 @@ export class TrackHelper {
     if (hour) {
       ret_str += `${hour}:`;
     }
-    return ret_str + `${minutes}:${second}`;
+    ret_str += `${minutes}:`;
+    if (second < 10) {
+      ret_str += '0';
+    }
+    return ret_str + `${second}`;
   }
 
   static getImage64Url(track: Spotify.Track): string {

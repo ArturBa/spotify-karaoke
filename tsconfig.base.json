@@ -49,8 +49,7 @@
       "@artur-ba/web/spotify/shared/pipe": [
         "libs/web/spotify/shared/pipe/src/index.ts"
       ],
-      "@artur-ba/shared/view": ["libs/shared/view/src/index.ts"],
-      "@artur-ba/shared/helper": ["libs/shared/helper/src/index.ts"]
+      "@artur-ba/shared/view": ["libs/shared/view/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

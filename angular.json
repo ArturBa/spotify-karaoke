@@ -503,31 +503,6 @@
           }
         }
       }
-    },
-    "shared-helper": {
-      "projectType": "library",
-      "root": "libs/shared/helper",
-      "sourceRoot": "libs/shared/helper/src",
-      "prefix": "artur-ba",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/shared/helper/src/**/*.ts",
-              "libs/shared/helper/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/shared/helper"],
-          "options": {
-            "jestConfig": "libs/shared/helper/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
     }
   }
 }

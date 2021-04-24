@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
 
 import { CookieService } from 'ngx-cookie-service';
-import { BehaviorSubject, Observable, VirtualTimeScheduler } from 'rxjs';
+import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
+
 import { StateInterface } from './state-interface';
-
-import { ObjectHelper } from '@artur-ba/shared/helper';
-
 export class UserSettings {
   cookies_allowed = 'false';
   dark_mode = 'false';
@@ -16,14 +14,8 @@ export class UserSettings {
   providedIn: 'root',
 })
 export class UserSettingsService extends StateInterface<UserSettings> {
-  protected readonly cookies_allowed_str = ObjectHelper.propName(
-    new UserSettings(),
-    new UserSettings().cookies_allowed
-  );
-  protected readonly dark_mode_str = ObjectHelper.propName(
-    new UserSettings(),
-    new UserSettings().dark_mode
-  );
+  protected readonly cookies_allowed_str = 'cookies_allowed';
+  protected readonly dark_mode_str = 'dark_mode';
   protected readonly true_str = 'true';
 
   constructor(protected cookieService: CookieService) {
