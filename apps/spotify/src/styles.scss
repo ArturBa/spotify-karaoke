@@ -3,6 +3,7 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 @import 'styles/variables';
+@import 'styles/mixins';
 @import 'styles/dark-theme';
 @import 'styles/theme';
 
@@ -19,5 +20,39 @@ body {
 body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
-  color: var(--text);
+  overflow: overlay;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #8a8a8a45;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8a8a8a80;
+}
+
+a {
+  color: var(--on-bg-dark);
+  text-decoration: none;
+  @include transition(text-decoration);
+
+  &:hover {
+    text-decoration: underline;
+
+    mat-icon {
+      color: $primary-dark;
+      @include transition(color);
+    }
+  }
 }

@@ -1,9 +1,9 @@
 @import 'variables';
 
 :host {
-  width: 300px;
+  width: $sidebar-width;
   padding: $padding-m;
-  background-color: var(--background);
+  background-color: var(--bg-darker);
 }
 
 img {

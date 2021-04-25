@@ -4,8 +4,8 @@
 
 @include mat-core();
 
-$primary-dark-map: mat-palette(createPalette(black));
-$accent-dark-map: mat-palette(createPalette(gray));
+$primary-dark-map: mat-palette(createPalette($primary-dark));
+$accent-dark-map: mat-palette(createPalette($light));
 $warn-dark-map: mat-palette(createPalette(purple));
 
 // Create the theme object. A theme consists of configurations for individual

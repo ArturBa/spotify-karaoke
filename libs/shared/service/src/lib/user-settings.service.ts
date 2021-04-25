@@ -17,7 +17,7 @@ export class UserSettings {
 export class UserSettingsService extends StateInterface<UserSettings> {
   protected readonly cookies_allowed = 'cookies_allowed';
   protected readonly dark_mode = 'dark_mode';
-  protected readonly return_path = 'dark_mode';
+  protected readonly return_path = 'return_path';
   protected readonly true_str = 'true';
 
   constructor(protected cookieService: CookieService) {
