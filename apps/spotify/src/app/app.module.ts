@@ -27,7 +27,6 @@ const ROUTES: Routes = [
   { path: 'queue', component: QueueComponent },
 ];
 
-import { AppComponent } from './app.component';
 @NgModule({
   declarations: [AppComponent],
   imports: [
