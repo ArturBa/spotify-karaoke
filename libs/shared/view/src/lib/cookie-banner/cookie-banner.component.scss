@@ -13,7 +13,7 @@
   flex-direction: column;
 
   padding: $padding-s $padding-m;
-  background-color: var(--bg-dark);
+  @include theme(background-color, primary);
   outline: 2px var(--bg-darker);
 
   @include rounded;

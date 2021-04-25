@@ -3,8 +3,6 @@
 @import 'styles/mixins';
 
 @import 'styles/theme';
-@import 'styles/dark-theme';
-
 @import 'styles/scrollbar';
 
 *,
@@ -23,7 +21,6 @@ body {
   overflow: overlay;
 }
 
-/* Set up scrollbar */
 a {
   color: var(--on-bg-dark);
   text-decoration: none;
@@ -33,7 +30,6 @@ a {
     text-decoration: underline;
 
     mat-icon {
-      color: $primary-dark;
       @include transition(color);
     }
   }
