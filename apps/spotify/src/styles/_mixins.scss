@@ -1,5 +1,13 @@
+@import 'variables';
+
+@mixin darkMode {
+  :host-context(.darkMode) & {
+    @content;
+  }
+}
+
 @mixin rounded {
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
 }
 
 @mixin flex-1 {
@@ -9,4 +17,18 @@
 @mixin square_img($size) {
   width: $size;
   height: $size;
+}
+
+@mixin logoSize {
+  width: 200px;
+  height: 100px;
+}
+
+@mixin transition($property, $time: 0.5s) {
+  $trans: $transition-animation $property $time;
+  -webkit-transition: $trans;
+  -moz-transition: $trans;
+  -ms-transition: $trans;
+  -o-transition: $trans;
+  transition: $trans;
 }

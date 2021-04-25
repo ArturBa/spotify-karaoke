@@ -6,17 +6,20 @@
   flex-direction: column;
   height: 100vh;
 }
-.not-player {
+
+.main-container {
   display: flex;
   min-height: 0;
-  @include flex-1;
 }
 
-.dashboard {
-  overflow-y: scroll;
+.content {
+  overflow-y: auto;
   height: 100%;
   width: 100%;
   @include flex-1;
-  background-color: $primary;
-  padding: $padding-m $padding-s;
+  &::ng-deep {
+    background-color: var(--bg);
+    color: var(--text);
+    padding: $padding-m $padding-s;
+  }
 }
