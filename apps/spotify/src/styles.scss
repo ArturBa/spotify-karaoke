@@ -22,7 +22,7 @@ body {
 }
 
 a {
-  color: var(--on-bg-dark);
+  color: var(--text-a60);
   text-decoration: none;
   @include transition(text-decoration);
 
@@ -30,6 +30,7 @@ a {
     text-decoration: underline;
 
     mat-icon {
+      color: var(--primary);
       @include transition(color);
     }
   }

@@ -20,7 +20,7 @@
   @include flex-1;
   &::ng-deep {
     background-color: var(--bg);
-    color: var(--on-bg);
+    color: var(--text);
     padding: $padding-m $padding-s;
   }
 }

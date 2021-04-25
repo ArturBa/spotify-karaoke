@@ -1,9 +1,7 @@
 @import 'variables';
-@import 'theme';
-@import '~@angular/material/theming';
 
 @mixin darkMode {
-  &.darkMode {
+  :host-context(.darkMode) & {
     @content;
   }
 }
@@ -28,13 +26,4 @@
   -ms-transition: $trans;
   -o-transition: $trans;
   transition: $trans;
-}
-
-@mixin theme($property: null, $key: null) {
-  & {
-    #{$property}: mat-color(map_get($theme, $key), 200);
-  }
-  .darkMode & {
-    #{$property}: mat-color(map_get($darkTheme, $key), 200);
-  }
 }
