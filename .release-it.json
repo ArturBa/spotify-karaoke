@@ -1,7 +1,7 @@
 {
   "git": {
     "commitMessage": "chore: :bookmark: release v${version}",
-    "requireUpstream": false
+    "requiredBranch": "development"
   },
   "npm": {
     "publish": false
