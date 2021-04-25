@@ -1,6 +1,10 @@
 {
   "git": {
-    "commitMessage": "chore: :bookmark: release v${version}"
+    "commitMessage": "chore: :bookmark: release v${version}",
+    "requireUpstream": false
+  },
+  "npm": {
+    "publish": false
   },
   "plugins": {
     "@release-it/conventional-changelog": {
