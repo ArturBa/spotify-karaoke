@@ -3,9 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Lyrics, LyricsParser } from '@artur-ba/web/lyrics/model';
+import { LyricsItem } from '@artur-ba/web/lyrics/mini-lyrics/interface';
 import { MiniLyricsService } from '@artur-ba/web/lyrics/mini-lyrics/service';
 import { PlayerStore } from '@artur-ba/shared/service';
-import { LyricsItem } from '@artur-ba/web/lyrics/mini-lyrics/interface';
 
 @Component({
   selector: 'artur-ba-lyrics',
