@@ -18,7 +18,7 @@
 
 @mixin logoSize {
   width: 200px;
-  height: 70px;
+  height: 100px;
 }
 
 @mixin transition($property, $time: 0.5s) {
@@ -35,6 +35,6 @@
     #{$property}: mat-color(map_get($theme, $key), 200);
   }
   .darkMode & {
-    #{$property}: mat-color(map_get($altTheme, $key), 200);
+    #{$property}: mat-color(map_get($darkTheme, $key), 200);
   }
 }

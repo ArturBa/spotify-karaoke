@@ -8,11 +8,11 @@
 }
 
 .logo {
-  background-image: url('/assets/favphoto.png');
+  background-image: url('/assets/logo_1x2.png');
   background-size: contain;
   background-repeat: no-repeat;
   @include logoSize;
   @include darkMode {
-    background-image: url('/assets/favicon.png');
+    background-image: url('/assets/logo_1x2_dark.png');
   }
 }
