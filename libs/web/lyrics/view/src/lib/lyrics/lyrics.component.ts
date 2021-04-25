@@ -16,7 +16,6 @@ export class LyricsComponent implements OnInit {
   lyrics: Lyrics;
   track: Spotify.Track;
   searching = true;
-  found = true;
   progress$: Observable<number>;
 
   constructor(
@@ -49,7 +48,7 @@ export class LyricsComponent implements OnInit {
     );
     if (lyricsList.children.length < 1) {
       this.searching = false;
-      this.found = false;
+      this.lyrics = undefined;
       return;
     }
     const sortedByDownload = lyricsList.children.sort(
@@ -61,9 +60,10 @@ export class LyricsComponent implements OnInit {
     );
     if (foundLyricAlbum) {
       this.setLyricsByLrc(await this.lyricsAPI.getLyrics(foundLyricAlbum));
-      return;
+    } else {
+      this.setLyricsByLrc(await this.lyricsAPI.getLyrics(sortedByDownload[0]));
     }
-    this.setLyricsByLrc(await this.lyricsAPI.getLyrics(sortedByDownload[0]));
+    this.searching = false;
   }
 
   protected setLyricsByLrc(url: string) {
