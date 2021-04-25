@@ -6,16 +6,17 @@
   <span>
     <a
       *ngFor="let artist of track.artists; let l = last"
-      (click)="handleClick(artist)"
+      [routerLink]="'/artist/' + artist.uri"
     >
-      {{ artist.name }}
-      <ng-container *ngIf="!l">,&nbsp;</ng-container>
+      {{ artist.name | addComa: !l }}
     </a>
   </span>
 </div>
 <div class="album">
-  {{ track?.album.name }}
+  <a [routerLink]="'/album/' + track?.album.uri | clearUriData">
+    {{ track?.album.name }}
+  </a>
 </div>
 <div class="time">
-  {{ trackHelper.time(1239) }}
+  {{ trackHelper.time(239) }}
 </div>

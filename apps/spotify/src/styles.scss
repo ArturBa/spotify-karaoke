@@ -26,6 +26,7 @@ a {
   color: var(--text-a60);
   text-decoration: none;
   @include transition(text-decoration);
+  cursor: pointer;
 
   &:hover {
     text-decoration: underline;

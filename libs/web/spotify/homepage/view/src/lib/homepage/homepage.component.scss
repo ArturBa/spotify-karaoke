@@ -10,6 +10,7 @@
 .main-container {
   display: flex;
   min-height: 0;
+  @include flex-1;
 }
 
 .content {
