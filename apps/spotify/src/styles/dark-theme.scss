@@ -5,14 +5,13 @@
 @include mat-core();
 
 $primary-dark-map: mat-palette(createPalette($primary-dark));
-$accent-dark-map: mat-palette(createPalette($light));
-$warn-dark-map: mat-palette(createPalette(purple));
+$accent-dark-map: mat-palette(createPalette($accent-dark));
+
 $app-dark-theme: mat-dark-theme(
   (
     color: (
       primary: $primary-dark-map,
       accent: $accent-dark-map,
-      warn: $warn-dark-map,
     ),
   )
 );

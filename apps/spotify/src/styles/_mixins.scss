@@ -1,11 +1,22 @@
 @import 'variables';
 
+@mixin darkMode {
+  &.darkMode {
+    @content;
+  }
+}
+
 @mixin rounded {
   border-radius: 0.5rem;
 }
 
 @mixin flex-1 {
   flex: 1 1 0%;
+}
+
+@mixin logoSize {
+  width: 200px;
+  height: 70px;
 }
 
 @mixin transition($property, $time: 0.5s) {

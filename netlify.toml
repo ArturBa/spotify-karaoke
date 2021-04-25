@@ -9,3 +9,5 @@
   to = "http://search.crintsoft.com/:splat"
   status = 200
   force = true
+
+/*    /index.html    200
