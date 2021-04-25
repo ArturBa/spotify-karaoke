@@ -1,10 +1,26 @@
+@import 'variables';
+@import 'mixins';
+
 :host {
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
-div {
+
+.main-container {
   display: flex;
-  flex: 1 1 0%;
   min-height: 0;
+  @include flex-1;
+}
+
+.content {
+  overflow-y: auto;
+  height: 100%;
+  width: 100%;
+  @include flex-1;
+  &::ng-deep {
+    background-color: var(--bg);
+    color: var(--text);
+    padding: $padding-m $padding-s;
+  }
 }

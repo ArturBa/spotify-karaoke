@@ -1,15 +1,17 @@
+@import 'variables';
+@import 'mixins';
+
 :host {
-  flex: 1 1 0%;
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: flex-start;
 }
 img {
-  margin-left: 2rem;
-  width: 64px;
+  margin-left: $margin-m;
+  @include square_img($image64);
 }
 .song-data {
-  margin-left: 2rem;
+  margin-left: $margin-m;
   display: flex;
   flex-direction: column;
   justify-content: center;

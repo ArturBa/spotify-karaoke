@@ -1,4 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'styles/variables';
+@import 'styles/mixins';
+
+@import 'styles/theme';
+@import 'styles/scrollbar';
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
 
 html,
 body {
@@ -6,5 +17,23 @@ body {
 }
 body {
   margin: 0;
+  text-overflow: ellipsis;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
+  overflow: overlay;
+}
+
+a {
+  color: var(--text-a60);
+  text-decoration: none;
+  @include transition(text-decoration);
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+
+    mat-icon {
+      color: var(--primary);
+      @include transition(color);
+    }
+  }
 }

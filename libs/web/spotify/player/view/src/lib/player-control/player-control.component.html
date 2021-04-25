@@ -4,7 +4,7 @@
   </button>
   <button
     mat-mini-fab
-    color="accent"
+    color="primary"
     aria-label="Play"
     *ngIf="paused"
     (click)="play()"
@@ -13,7 +13,7 @@
   </button>
   <button
     mat-mini-fab
-    color="accent"
+    color="primary"
     aria-label="Pause"
     *ngIf="!paused"
     (click)="pause()"
@@ -25,7 +25,13 @@
   </button>
 </div>
 <div class="progress-bar">
-  {{ (progress$ | async) / 1000 }}
-  <mat-slider [value]="progress$ | async" [max]="max"> </mat-slider>
-  {{ max / 1000 }}
+  {{ (progress$ | async) / 1000 | trackTime }}
+  <mat-slider
+    [value]="progress$ | async"
+    [max]="max"
+    (valueChange)="handleSeek($event)"
+    color="primary"
+  >
+  </mat-slider>
+  {{ max / 1000 | trackTime }}
 </div>
