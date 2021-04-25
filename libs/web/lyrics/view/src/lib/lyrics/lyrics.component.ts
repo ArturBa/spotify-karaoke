@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Lyrics, LyricsParser } from '@artur-ba/web/lyrics/model';
 import { MiniLyricsService } from '@artur-ba/web/lyrics/mini-lyrics/service';
 import { PlayerStore } from '@artur-ba/shared/service';
+import { LyricsItem } from '@artur-ba/web/lyrics/mini-lyrics/interface';
 
 @Component({
   selector: 'artur-ba-lyrics',
@@ -13,8 +14,9 @@ import { PlayerStore } from '@artur-ba/shared/service';
 })
 export class LyricsComponent implements OnInit {
   lyrics: Lyrics;
-  author: string;
-  title: string;
+  track: Spotify.Track;
+  searching = true;
+  found = true;
   progress$: Observable<number>;
 
   constructor(
@@ -32,17 +34,39 @@ export class LyricsComponent implements OnInit {
   }
 
   protected async handleSongUpdate(track: Spotify.Track): Promise<void> {
-    if (this.author === track.artists[0].name && this.title === track.name) {
+    if (this.track === track) {
       return;
     }
-    this.author = track.artists[0].name;
-    this.title = track.name;
+    this.searching = true;
+    this.track = track;
     this.updateLyrics();
   }
 
   protected async updateLyrics(): Promise<void> {
-    this.lyrics = LyricsParser.lrcParser(
-      await this.lyricsAPI.getLyrics(this.title, this.author)
+    const lyricsList = await this.lyricsAPI.getLyricsList(
+      this.track.name,
+      this.track.artists[0].name
     );
+    if (lyricsList.children.length < 1) {
+      this.searching = false;
+      this.found = false;
+      return;
+    }
+    const sortedByDownload = lyricsList.children.sort(
+      (a: LyricsItem, b: LyricsItem) => b.downloads - a.downloads
+    );
+    const foundLyricAlbum = sortedByDownload.find(
+      (lyricsItem: LyricsItem) =>
+        lyricsItem.album?.toLowerCase() === this.track.album.name.toLowerCase()
+    );
+    if (foundLyricAlbum) {
+      this.setLyricsByLrc(await this.lyricsAPI.getLyrics(foundLyricAlbum));
+      return;
+    }
+    this.setLyricsByLrc(await this.lyricsAPI.getLyrics(sortedByDownload[0]));
+  }
+
+  protected setLyricsByLrc(url: string) {
+    this.lyrics = LyricsParser.lrcParser(url);
   }
 }
