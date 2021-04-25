@@ -1,11 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/theming';
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
-
 @import 'styles/variables';
 @import 'styles/mixins';
-@import 'styles/dark-theme';
+
 @import 'styles/theme';
+@import 'styles/dark-theme';
+
+@import 'styles/scrollbar';
 
 *,
 *:before,
@@ -23,25 +23,7 @@ body {
   overflow: overlay;
 }
 
-::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #8a8a8a45;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #8a8a8a80;
-}
-
+/* Set up scrollbar */
 a {
   color: var(--on-bg-dark);
   text-decoration: none;

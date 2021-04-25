@@ -2,25 +2,6 @@
 
 :host {
   flex-grow: 1;
-
-  // mat-slider::ng-deep .mat-slider-track-background {
-  //   background-color: var(--bg);
-  // }
-
-  ::ng-deep .mat-slider-track-background {
-    background-color: greenyellow;
-    &:hover {
-      background-color: chocolate;
-    }
-  }
-  ::ng-deep .mat-slider-thumb {
-    background-color: #ff3967;
-  }
-  ::ng-deep
-    .mat-slider-min-value:not(.mat-slider-thumb-label-showing)
-    .mat-slider-thumb {
-    background-color: #ff3967;
-  }
 }
 
 .progress-bar {
