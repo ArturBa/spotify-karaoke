@@ -14,4 +14,11 @@ describe('ClearUriDataPipe', () => {
     const spotifyUri = 'spotify:artist:' + uri;
     expect(pipe.transform(spotifyUri)).toEqual(uri);
   });
+
+  it('should protect the original url spotify type uri', () => {
+    const url = 'host/some/url/there/';
+    const uri = 'someURI';
+    const spotifyUri = 'spotify:artist:' + uri;
+    expect(pipe.transform(url + spotifyUri)).toEqual(url + uri);
+  });
 });
