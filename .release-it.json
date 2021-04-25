@@ -1,9 +1,7 @@
 {
   "git": {
-    "commitMessage": "chore: :bookmark: release v${version}"
-  },
-  "github": {
-    "release": true
+    "commitMessage": "chore: :bookmark: release v${version}",
+    "requireBranch": "development"
   },
   "plugins": {
     "@release-it/conventional-changelog": {
