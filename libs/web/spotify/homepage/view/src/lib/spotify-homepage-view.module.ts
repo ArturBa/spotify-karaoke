@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 
-import { WebSpotifyViewModule } from '@artur-ba/web/spotify/view';
 import { WebSpotifyPlayerViewModule } from '@artur-ba/web/spotify/player/view';
 import { WebSpotifySidebarViewModule } from '@artur-ba/web/spotify/sidebar/view';
+import { WebSpotifyViewModule } from '@artur-ba/web/spotify/view';
 
 import { HomepageComponent } from './homepage/homepage.component';
 

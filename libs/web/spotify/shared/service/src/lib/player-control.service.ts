@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 
-import { Injectable, OnDestroy, OnInit } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 
 import { Observable, Subscription } from 'rxjs';
 
