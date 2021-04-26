@@ -9,7 +9,7 @@ module.exports = {
     '<rootDir>/libs/spotify/player/view',
     '<rootDir>/libs/spotify/homepage/view',
     '<rootDir>/libs/spotify/sidebar/view',
-    '<rootDir>/libs/spotify/dashboard/view',
+    '<rootDir>/libs/spotify/view',
     '<rootDir>/libs/shared/pipes',
     '<rootDir>/libs/shared/interceptors',
     '<rootDir>/libs/web/spotify/shared/view',

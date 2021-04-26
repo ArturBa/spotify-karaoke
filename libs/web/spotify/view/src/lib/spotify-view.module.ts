@@ -11,6 +11,7 @@ import { WebSpotifySharedViewModule } from '@artur-ba/web/spotify/shared/view';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { QueueComponent } from './queue/queue.component';
+import { AlbumComponent } from './album/album.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,7 @@ import { QueueComponent } from './queue/queue.component';
     MatSlideToggleModule,
     ReactiveFormsModule,
   ],
-  declarations: [DashboardComponent, QueueComponent],
-  exports: [DashboardComponent, QueueComponent],
+  declarations: [DashboardComponent, QueueComponent, AlbumComponent],
+  exports: [DashboardComponent, QueueComponent, AlbumComponent],
 })
-export class WebSpotifyDashboardViewModule {}
+export class WebSpotifyViewModule {}

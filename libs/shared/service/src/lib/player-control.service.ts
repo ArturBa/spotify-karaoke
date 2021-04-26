@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy, OnInit } from '@angular/core';
 
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 import { PlayerStore } from './player.store';
 
@@ -14,18 +14,26 @@ export interface SpotifyPlayRequestApi {
 @Injectable({
   providedIn: 'root',
 })
-export class PlayerControlService {
+export class PlayerControlService implements OnInit, OnDestroy {
   protected player$: Spotify.SpotifyPlayer;
   protected readonly baseURL = 'https://api.spotify.com/v1';
   protected readonly playerURL = this.baseURL + '/me/player';
 
+  protected playerSub: Subscription;
+
   constructor(
     protected httpClient: HttpClient,
     protected playerStore: PlayerStore
-  ) {
-    this.playerStore.state$.subscribe((state) => {
+  ) {}
+
+  ngOnInit(): void {
+    this.playerSub = this.playerStore.state$.subscribe((state) => {
       this.player$ = state.player;
     });
+  }
+
+  ngOnDestroy(): void {
+    this.playerSub.unsubscribe();
   }
 
   transferUserPlayback(
@@ -38,31 +46,33 @@ export class PlayerControlService {
     });
   }
 
-  play(): void {
-    this.httpClient.put(`${this.playerURL}/play`, {}).subscribe();
+  play(): Promise<void> {
+    return this.httpClient.put<void>(`${this.playerURL}/play`, {}).toPromise();
   }
 
-  pause(): void {
-    this.httpClient.put(`${this.playerURL}/pause`, {}).subscribe();
+  pause(): Promise<void> {
+    return this.httpClient.put<void>(`${this.playerURL}/pause`, {}).toPromise();
   }
 
-  nextTrack(): void {
-    this.httpClient.post(`${this.playerURL}/next`, {}).subscribe();
+  nextTrack(): Promise<void> {
+    return this.httpClient.post<void>(`${this.playerURL}/next`, {}).toPromise();
   }
 
-  prevTrack(): void {
-    this.httpClient.post(`${this.playerURL}/previous`, {}).subscribe();
+  prevTrack(): Promise<void> {
+    return this.httpClient
+      .post<void>(`${this.playerURL}/previous`, {})
+      .toPromise();
   }
 
-  setVolume(volume: number) {
+  setVolume(volume: number): Promise<void> {
     this.playerStore.setState({ volume: volume / 100 });
-    this.httpClient
-      .put(`${this.playerURL}/volume`, null, {
+    return this.httpClient
+      .put<void>(`${this.playerURL}/volume`, null, {
         params: {
           volume_percent: `${volume}`,
         },
       })
-      .subscribe();
+      .toPromise();
   }
 
   seek(new_position: number) {
