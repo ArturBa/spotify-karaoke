@@ -2,7 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { Observable, Subscription } from 'rxjs';
 
-import { PlayerControlService, PlayerStore } from '@artur-ba/shared/service';
+import { PlayerControlService } from '@artur-ba/web/spotify/shared/service';
+import { PlayerStore } from '@artur-ba/shared/service';
 
 @Component({
   selector: 'artur-ba-player-control',

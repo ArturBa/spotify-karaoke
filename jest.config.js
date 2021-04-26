@@ -18,5 +18,6 @@ module.exports = {
     '<rootDir>/libs/shared/view',
     '<rootDir>/libs/helper',
     '<rootDir>/libs/shared/helper',
+    '<rootDir>/libs/web/spotify/shared/service',
   ],
 };

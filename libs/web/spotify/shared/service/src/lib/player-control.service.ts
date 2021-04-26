@@ -3,7 +3,7 @@ import { Injectable, OnDestroy, OnInit } from '@angular/core';
 
 import { Observable, Subscription } from 'rxjs';
 
-import { PlayerStore } from './player.store';
+import { PlayerStore } from '@artur-ba/shared/service';
 
 export interface SpotifyPlayRequestApi {
   context_uri?: string;
@@ -16,8 +16,8 @@ export interface SpotifyPlayRequestApi {
 })
 export class PlayerControlService implements OnInit, OnDestroy {
   protected player$: Spotify.SpotifyPlayer;
-  protected readonly baseURL = 'https://api.spotify.com/v1';
-  protected readonly playerURL = this.baseURL + '/me/player';
+  protected readonly baseURL = 'https://api.spotify.com/v1/';
+  protected readonly playerURL = this.baseURL + 'me/player';
 
   protected playerSub: Subscription;
 

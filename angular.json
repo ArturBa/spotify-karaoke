@@ -500,6 +500,31 @@
           }
         }
       }
+    },
+    "web-spotify-shared-service": {
+      "projectType": "library",
+      "root": "libs/web/spotify/shared/service",
+      "sourceRoot": "libs/web/spotify/shared/service/src",
+      "prefix": "artur-ba",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/web/spotify/shared/service/src/**/*.ts",
+              "libs/web/spotify/shared/service/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/spotify/shared/service"],
+          "options": {
+            "jestConfig": "libs/web/spotify/shared/service/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }
