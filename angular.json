@@ -37,10 +37,18 @@
       "root": "apps/spotify",
       "sourceRoot": "apps/spotify/src",
       "prefix": "artur-ba",
+      "i18n": {
+        "locales": {
+          "en": "apps/spotify/src/locale/messages.xlf",
+          "pl": "apps/spotify/src/locale/messages.pl.xlf"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "i18nMissingTranslation": "warning",
+            "localize": ["en", "pl"],
             "outputPath": "dist/apps/spotify",
             "index": "apps/spotify/src/index.html",
             "main": "apps/spotify/src/main.ts",
@@ -84,18 +92,27 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "en": {
+              "localize": ["en"]
+            },
+            "pl": {
+              "localize": ["pl"]
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "spotify:build",
+            "browserTarget": "spotify:build:en",
             "proxyConfig": "apps/spotify/proxy.conf.json"
           },
           "configurations": {
             "production": {
-              "browserTarget": "spotify:build:production",
+              "browserTarget": "spotify:build:production"
+            },
+            "pl": {
+              "browserTarget": "spotify:build:pl",
               "proxyConfig": "apps/spotify/proxy.conf.json"
             }
           }

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="4c4ca9ad0ba2c0a5c09a44affd029efb5ee5ff13" datatype="html">
+        <source>Spotify Karaoke Logo</source>
+        <target>Spotify Karaoke Logo</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/spotify/sidebar/view/src/lib/sidebar/sidebar.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4836ce9489eba07d9382e2a72dd9f0bb6aeac5e8" datatype="html">
+        <source> Home </source>
+        <target> Strona startowa </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/spotify/sidebar/view/src/lib/sidebar/sidebar.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description">sidebar.home</note>
+      </trans-unit>
+      <trans-unit id="ce83377e12d5d65a10fbea359125d78be0432210" datatype="html">
+        <source> Lyrics </source>
+        <target> Karaoke </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/spotify/sidebar/view/src/lib/sidebar/sidebar.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <note priority="1" from="description">sidebar.lyrics</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
