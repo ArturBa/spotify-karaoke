@@ -23,7 +23,7 @@ export enum TrackListColumns {
 })
 export class SongListComponent implements OnChanges {
   @Input() title: string;
-  @Input() header: boolean = true;
+  @Input() header = true;
   @Input() columns: TrackListColumns[] = [
     TrackListColumns.image,
     TrackListColumns.title_artist,

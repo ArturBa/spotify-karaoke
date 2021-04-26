@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+
 import { Injectable, OnDestroy, OnInit } from '@angular/core';
 
 import { Observable, Subscription } from 'rxjs';
@@ -14,7 +15,7 @@ export interface SpotifyPlayRequestApi {
 @Injectable({
   providedIn: 'root',
 })
-export class PlayerControlService implements OnInit, OnDestroy {
+export class PlayerControlService implements OnDestroy {
   protected player$: Spotify.SpotifyPlayer;
   protected readonly baseURL = 'https://api.spotify.com/v1/';
   protected readonly playerURL = this.baseURL + 'me/player';
@@ -24,9 +25,7 @@ export class PlayerControlService implements OnInit, OnDestroy {
   constructor(
     protected httpClient: HttpClient,
     protected playerStore: PlayerStore
-  ) {}
-
-  ngOnInit(): void {
+  ) {
     this.playerSub = this.playerStore.state$.subscribe((state) => {
       this.player$ = state.player;
     });
