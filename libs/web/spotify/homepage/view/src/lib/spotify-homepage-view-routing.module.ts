@@ -2,10 +2,8 @@ import { NgModule } from '@angular/core';
 
 import { RouterModule, Routes } from '@angular/router';
 
-import {
-  DashboardComponent,
-  QueueComponent,
-} from '@artur-ba/web/spotify/dashboard/view';
+import { DashboardComponent, QueueComponent } from '@artur-ba/web/spotify/view';
+
 import { HomepageComponent } from './homepage/homepage.component';
 
 export const HOMEPAGE_ROUTES: Routes = [
@@ -13,6 +11,9 @@ export const HOMEPAGE_ROUTES: Routes = [
     path: '',
     component: HomepageComponent,
     children: [
+      { path: '', redirectTo: 'dashboard' },
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'queue', component: QueueComponent },
       {
         path: 'lyrics',
         loadChildren: () =>
@@ -20,8 +21,6 @@ export const HOMEPAGE_ROUTES: Routes = [
             (m) => m.WebLyricsViewModule
           ),
       },
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'queue', component: QueueComponent },
       { path: '**', redirectTo: 'dashboard' },
     ],
   },
