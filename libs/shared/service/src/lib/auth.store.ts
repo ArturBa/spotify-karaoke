@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Injectable } from '@angular/core';
 
@@ -29,6 +29,7 @@ export interface SpotifyTokenResponse {
 export class AuthStore {
   constructor(
     protected route: ActivatedRoute,
+    protected router: Router,
     protected http: HttpClient,
     protected env: EnvSettingsService
   ) {}
@@ -49,6 +50,16 @@ export class AuthStore {
 
   get refresh_token(): string {
     return localStorage.getItem('refresh_token');
+  }
+
+  protected set returnUrl(returnUrl: string) {
+    localStorage.setItem('returnUrl', returnUrl);
+  }
+
+  protected get returnUrl(): string {
+    const return_url = localStorage.getItem('returnUrl');
+    localStorage.removeItem('returnUrl');
+    return return_url;
   }
 
   protected get headers(): HttpHeaders {
@@ -74,15 +85,18 @@ export class AuthStore {
       })
       .toPromise();
     this.saveTokenData(token);
+    this.router.navigate([this.returnUrl]);
   }
 
-  authorize() {
+  async authorize() {
     const spotifyAuthorize = new SpotifyAuthorize();
     const url = spotifyAuthorize.createAuthorizeURL(this.env.spotify_client_id);
+
     this.route.queryParams.subscribe((params) => {
-      console.log(params['returnUrl']);
+      console.log(params);
+      this.returnUrl = params['returnUrl'] || '';
+      window.location.href = url;
     });
-    window.location.href = url;
   }
 
   async refreshToken(): Promise<void> {
@@ -103,6 +117,7 @@ export class AuthStore {
         headers: this.headers,
       })
       .toPromise();
+    this.saveTokenData(token);
   }
 
   logout(): void {
