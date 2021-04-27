@@ -21,10 +21,12 @@ export class PlayerService implements OnDestroy {
   protected subscriptions: Subscription[] = [];
 
   init(): void {
+    console.log('player init');
     this.subscriptions.push(
       this.authStore.access_token_sub$
         .pipe(
           tap((token) => {
+            console.log('player token' + token);
             this.initSpotify(token);
           })
         )

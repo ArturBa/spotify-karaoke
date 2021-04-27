@@ -14,7 +14,6 @@ export class HomepageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.authStore.init();
-    // this.playerService.init();
+    this.playerService.init();
   }
 }

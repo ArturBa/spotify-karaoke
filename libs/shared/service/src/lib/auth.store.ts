@@ -33,7 +33,7 @@ export class AuthStore {
     protected env: EnvSettingsService
   ) {}
 
-  access_token_sub$ = new BehaviorSubject('');
+  access_token_sub$ = new BehaviorSubject(this.access_token);
   protected readonly tokenUrl = 'https://accounts.spotify.com/api/token';
 
   protected saveTokenData(token: SpotifyTokenResponse): void {
