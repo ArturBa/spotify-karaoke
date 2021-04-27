@@ -1,12 +1,12 @@
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+
 import { Injectable } from '@angular/core';
 
-import { filter, map, tap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 import { SpotifyAuthorize } from './models/spotify-authorize';
-import { StateInterface } from './state-interface';
-import { UserSettingsService } from './user-settings.service';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { EnvSettingsService } from './env-settings.service';
 
 export interface AuthState {
   accessToken: string | null;
@@ -15,57 +15,102 @@ export interface AuthState {
   state: string | null;
 }
 
+export interface SpotifyTokenResponse {
+  access_token: string;
+  token_type: string;
+  scope: string;
+  expires_in: number;
+  refresh_token: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
-export class AuthStore extends StateInterface<AuthState> {
+export class AuthStore {
   constructor(
-    protected router: Router,
     protected route: ActivatedRoute,
-    protected userSettings: UserSettingsService
-  ) {
-    super();
-    this.setState({} as AuthState);
+    protected http: HttpClient,
+    protected env: EnvSettingsService
+  ) {}
+
+  access_token_sub$ = new BehaviorSubject('');
+  protected readonly tokenUrl = 'https://accounts.spotify.com/api/token';
+
+  protected saveTokenData(token: SpotifyTokenResponse): void {
+    Object.keys(token).forEach((key) => {
+      localStorage.setItem(key, token[key]);
+    });
+    this.access_token_sub$.next(token.access_token);
   }
 
-  readonly token$ = this.state$.pipe(
-    filter((p) => !!p.accessToken),
-    map((p) => p.accessToken)
-  ) as Observable<string>;
-
-  init(): void {
-    this.initAuth();
+  get access_token(): string {
+    return localStorage.getItem('access_token');
   }
 
-  protected redirectToAuthorize() {
+  get refresh_token(): string {
+    return localStorage.getItem('refresh_token');
+  }
+
+  protected get headers(): HttpHeaders {
+    return new HttpHeaders()
+      .set('Content-Type', 'application/x-www-form-urlencoded;')
+      .set(
+        'Authorization',
+        `Basic ${btoa(
+          this.env.spotify_client_id + ':' + this.env.spotify_client_secret
+        )}`
+      );
+  }
+
+  async generateJWT(code: string): Promise<void> {
+    const params = new HttpParams().appendAll({
+      grant_type: 'authorization_code',
+      code: encodeURIComponent(code),
+      redirect_uri: `${window.location.origin}/spotify/`,
+    });
+    const token = await this.http
+      .post<SpotifyTokenResponse>(this.tokenUrl, params.toString(), {
+        headers: this.headers,
+      })
+      .toPromise();
+    this.saveTokenData(token);
+  }
+
+  authorize() {
     const spotifyAuthorize = new SpotifyAuthorize();
-    const url = spotifyAuthorize.createAuthorizeURL();
-    this.userSettings.saveReturnPath(window.location.pathname);
+    const url = spotifyAuthorize.createAuthorizeURL(this.env.spotify_client_id);
+    this.route.queryParams.subscribe((params) => {
+      console.log(params['returnUrl']);
+    });
     window.location.href = url;
   }
 
-  protected initAuth() {
-    if (!window.location.hash) {
-      this.redirectToAuthorize();
-    }
+  async refreshToken(): Promise<void> {
+    const params = new HttpParams().appendAll({
+      grant_type: 'refresh_token',
+    });
+    const headers = new HttpHeaders()
+      .set('Content-Type', 'application/x-www-form-urlencoded;')
+      .set(
+        'Authorization',
+        `Basic ${btoa(
+          this.env.spotify_client_id + ':' + this.env.spotify_client_secret
+        )}`
+      );
+    this.access_token_sub$.next(null);
+    const token = await this.http
+      .post<SpotifyTokenResponse>(this.tokenUrl, params.toString(), {
+        headers: this.headers,
+      })
+      .toPromise();
+  }
 
-    return this.route.fragment
-      .pipe(
-        filter((fragment) => !!fragment),
-        map((fragment) => new URLSearchParams(fragment)),
-        map((params) => ({
-          accessToken: params.get('access_token'),
-          tokenType: params.get('token_type'),
-          expiresIn: Number(params.get('expires_in')),
-          state: params.get('state'),
-        })),
-        tap((params) => {
-          this.setState(params);
-        }),
-        tap(() => {
-          this.router.navigate([this.userSettings.getReturnPath()]);
-        })
-      )
-      .subscribe();
+  logout(): void {
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
+  }
+
+  isLogged(): boolean {
+    return !!localStorage.getItem('access_token');
   }
 }

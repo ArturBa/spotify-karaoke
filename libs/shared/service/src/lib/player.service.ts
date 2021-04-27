@@ -18,14 +18,9 @@ export class PlayerService {
   ) {}
 
   init(): void {
-    this.authStore.token$
-      .pipe(
-        tap((token) => {
-          this.initSpotify(token);
-        })
-      )
-      .subscribe();
+    this.initSpotify(this.authStore.access_token);
   }
+
   protected async initSpotify(token): Promise<void> {
     const { Player } = await this.waitForSpotifyWebPlaybackSDKToLoad();
     const player = new Player({
