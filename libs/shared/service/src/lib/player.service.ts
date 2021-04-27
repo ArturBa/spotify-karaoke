@@ -1,5 +1,6 @@
 /// <reference types="spotify-web-playback-sdk" />
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 import { tap } from 'rxjs/operators';
 
@@ -10,15 +11,29 @@ import { PlayerStore } from './player.store';
 @Injectable({
   providedIn: 'root',
 })
-export class PlayerService {
+export class PlayerService implements OnDestroy {
   constructor(
     protected playerState: PlayerStore,
     protected authStore: AuthStore,
     protected playerControl: PlayerControlService
   ) {}
 
+  protected subscriptions: Subscription[] = [];
+
   init(): void {
-    this.initSpotify(this.authStore.access_token);
+    this.subscriptions.push(
+      this.authStore.access_token_sub$
+        .pipe(
+          tap((token) => {
+            this.initSpotify(token);
+          })
+        )
+        .subscribe()
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((sub) => sub.unsubscribe());
   }
 
   protected async initSpotify(token): Promise<void> {
