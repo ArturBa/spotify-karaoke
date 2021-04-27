@@ -1,11 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
+import { catchError, map, retry, tap } from 'rxjs/operators';
+import { of, Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { of, Subscription, throwError } from 'rxjs';
 
 import { AuthStore } from '@artur-ba/shared/service';
-import { catchError, map, retry, tap } from 'rxjs/operators';
-import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'artur-ba-login',
@@ -46,7 +45,6 @@ export class LoginComponent implements OnInit, OnDestroy {
           }),
           retry(3),
           catchError((error) => {
-            console.log(error);
             this.error = error;
             return of(null);
           })

@@ -1,11 +1,10 @@
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
 
-import { BehaviorSubject } from 'rxjs';
-
 import { SpotifyAuthorize } from './models/spotify-authorize';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { EnvSettingsService } from './env-settings.service';
 
 export interface AuthState {

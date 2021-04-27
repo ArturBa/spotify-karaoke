@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { StateInterface } from './state-interface';
-
 export interface EnvInterface {
   production: boolean;
   ga: string;
