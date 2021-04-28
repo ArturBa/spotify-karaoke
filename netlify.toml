@@ -11,6 +11,11 @@
   force = true
 
 [[redirects]]
+  from = "/assets/*"
+  to = "/en/:splat
+  status = 200
+
+[[redirects]]
   from = "/pl/*/"
   to = "/pl/index.html"
   status = 200

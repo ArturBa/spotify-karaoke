@@ -1,4 +1,3 @@
-@import '../environments/env';
 @import 'variables';
 
 @mixin darkMode {
@@ -42,5 +41,5 @@
 }
 
 @function getImageUrl($url) {
-  @return url($baseURL + 'assets/' + $url);
+  @return url('/assets/' + $url);
 }

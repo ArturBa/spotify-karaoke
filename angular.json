@@ -72,10 +72,6 @@
                 {
                   "replace": "apps/spotify/src/environments/environment.ts",
                   "with": "apps/spotify/src/environments/environment.prod.ts"
-                },
-                {
-                  "replace": "apps/spotify/src/environments/_env.scss",
-                  "with": "apps/spotify/src/environments/_env.prod.scss"
                 }
               ],
               "optimization": true,
