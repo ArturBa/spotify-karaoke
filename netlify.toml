@@ -12,7 +12,7 @@
 
 [[redirects]]
   from = "/assets/*"
-  to = "/en/:splat
+  to = "/en/assets/:splat"
   status = 200
 
 [[redirects]]
