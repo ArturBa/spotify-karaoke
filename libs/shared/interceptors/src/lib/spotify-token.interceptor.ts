@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 @Injectable()
 export class SpotifyTokenInterceptor implements HttpInterceptor {
   protected readonly spotifyAPIRegex = new RegExp('^https://api.spotify.com/');
+  protected refreshingInProgress = false;
 
   constructor(protected authStore: AuthStore, protected router: Router) {}
 
@@ -61,7 +62,6 @@ export class SpotifyTokenInterceptor implements HttpInterceptor {
     this.router.navigateByUrl('/login');
     return throwError(err);
   }
-  protected refreshingInProgress = false;
 
   protected refreshToken(
     request: HttpRequest<any>,
@@ -80,7 +80,7 @@ export class SpotifyTokenInterceptor implements HttpInterceptor {
       // wait while getting new token
       return this.authStore.access_token_sub$.pipe(
         filter((token) => token !== null),
-        switchMap((token) => {
+        switchMap(() => {
           return next.handle(this.addAuthorizationHeader(request));
         })
       );

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AuthStore } from '@artur-ba/shared/service';
 import {
   PlayerService,
   SpotifyDataService,
 } from '@artur-ba/web/spotify/shared/service';
+import { AuthStore } from '@artur-ba/shared/service';
 
 @Component({
   selector: 'artur-ba-homepage',

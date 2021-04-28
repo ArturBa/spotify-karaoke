@@ -4,8 +4,8 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
 
-import { SpotifyAuthorize } from './models/spotify-authorize';
 import { EnvSettingsService } from './env-settings.service';
+import { SpotifyAuthorize } from './models/spotify-authorize';
 
 export interface AuthState {
   accessToken: string | null;
@@ -102,14 +102,6 @@ export class AuthStore {
       grant_type: 'refresh_token',
       refresh_token: this.refresh_token,
     });
-    const headers = new HttpHeaders()
-      .set('Content-Type', 'application/x-www-form-urlencoded;')
-      .set(
-        'Authorization',
-        `Basic ${btoa(
-          this.env.spotify_client_id + ':' + this.env.spotify_client_secret
-        )}`
-      );
     this.access_token_sub$.next(null);
     const token = await this.http
       .post<SpotifyTokenResponse>(this.tokenUrl, params.toString(), {
