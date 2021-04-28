@@ -1,40 +1,28 @@
 import { NgModule } from '@angular/core';
 
-import { RouterModule, Routes } from '@angular/router';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MatButtonModule } from '@angular/material/button';
 import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
 
-import {
-  DashboardComponent,
-  QueueComponent,
-} from '@artur-ba/web/spotify/dashboard/view';
 import { SharedViewModule } from '@artur-ba/shared/view';
 import { SpotifyTokenInterceptor } from '@artur-ba/shared/interceptors';
-import { WebSpotifyHomepageViewModule } from '@artur-ba/web/spotify/homepage/view';
 
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
-
-const ROUTES: Routes = [
-  {
-    path: 'lyrics',
-    loadChildren: () =>
-      import('@artur-ba/web/lyrics/view').then((m) => m.WebLyricsViewModule),
-  },
-  { path: '', component: DashboardComponent },
-  { path: 'queue', component: QueueComponent },
-];
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LoginComponent],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(ROUTES),
+    HttpClientModule,
+    MatButtonModule,
     NgxGoogleAnalyticsModule.forRoot(environment.ga),
-    WebSpotifyHomepageViewModule,
     SharedViewModule,
   ],
   providers: [
