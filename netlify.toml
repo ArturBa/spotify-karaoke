@@ -12,5 +12,11 @@
 
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "/pl/index.html"
+  status = 200
+  Language=pl
+
+[[redirects]]
+  from = "/*"
+  to = "/en/index.html"
   status = 200
