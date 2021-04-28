@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import {
-  PlayerService,
-  SpotifyDataService,
-} from '@artur-ba/web/spotify/shared/service';
+import { PlayerService } from '@artur-ba/web/spotify/shared/service';
 import { AuthStore } from '@artur-ba/shared/service';
 
 @Component({
@@ -14,14 +11,10 @@ import { AuthStore } from '@artur-ba/shared/service';
 export class HomepageComponent implements OnInit {
   constructor(
     protected authStore: AuthStore,
-    protected playerService: PlayerService,
-    protected spotifyData: SpotifyDataService
+    protected playerService: PlayerService
   ) {}
 
-  user;
-
   async ngOnInit(): Promise<void> {
-    this.user = await this.spotifyData.getUserData();
     this.playerService.init();
   }
 }
