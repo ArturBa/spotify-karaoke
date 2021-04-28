@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Injectable, OnDestroy } from '@angular/core';
 
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 import { PlayerStore } from '@artur-ba/shared/service';
 
