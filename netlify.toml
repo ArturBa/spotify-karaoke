@@ -11,7 +11,12 @@
   force = true
 
 [[redirects]]
-  from = ["/*", "/pl/*/"]
+  from = "/pl/*/"
+  to = "/pl/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/*"
   to = "/pl/index.html"
   status = 200
   conditions = {Language = ["pl"]}
