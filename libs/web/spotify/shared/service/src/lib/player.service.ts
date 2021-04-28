@@ -1,31 +1,41 @@
 /// <reference types="spotify-web-playback-sdk" />
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 import { tap } from 'rxjs/operators';
 
-import { AuthStore } from './auth.store';
+import { AuthStore, PlayerStore } from '@artur-ba/shared/service';
+
 import { PlayerControlService } from './player-control.service';
-import { PlayerStore } from './player.store';
 
 @Injectable({
   providedIn: 'root',
 })
-export class PlayerService {
+export class PlayerService implements OnDestroy {
   constructor(
     protected playerState: PlayerStore,
     protected authStore: AuthStore,
     protected playerControl: PlayerControlService
   ) {}
 
+  protected subscriptions: Subscription[] = [];
+
   init(): void {
-    this.authStore.token$
-      .pipe(
-        tap((token) => {
-          this.initSpotify(token);
-        })
-      )
-      .subscribe();
+    this.subscriptions.push(
+      this.authStore.access_token_sub$
+        .pipe(
+          tap((token) => {
+            this.initSpotify(token);
+          })
+        )
+        .subscribe()
+    );
   }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((sub) => sub.unsubscribe());
+  }
+
   protected async initSpotify(token): Promise<void> {
     const { Player } = await this.waitForSpotifyWebPlaybackSDKToLoad();
     const player = new Player({
@@ -62,7 +72,7 @@ export class PlayerService {
     // Ready
     player.addListener('ready', ({ device_id }) => {
       this.playerState.setState({ deviceId: device_id });
-      this.playerControl.transferUserPlayback(device_id, false).subscribe();
+      this.playerControl.transferUserPlayback(device_id, false);
     });
 
     player.addListener('not_ready', ({ device_id }) => {
