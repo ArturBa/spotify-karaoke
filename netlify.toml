@@ -16,7 +16,6 @@
   status = 200
   Language=pl
 
-
 [[redirects]]
   from = "/*"
   to = "/en/index.html"
