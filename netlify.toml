@@ -14,7 +14,7 @@
   from = "/*"
   to = "/pl/index.html"
   status = 200
-  Language=pl
+  conditions = {Language = ["pl"]}
 
 [[redirects]]
   from = "/*"
