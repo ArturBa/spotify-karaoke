@@ -40,7 +40,6 @@
       "i18n": {
         "sourceLocale": "en",
         "locales": {
-          "en": "apps/spotify/src/locale/messages.xlf",
           "pl": "apps/spotify/src/locale/messages.pl.xlf"
         }
       },
