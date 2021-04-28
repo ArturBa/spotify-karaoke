@@ -92,7 +92,6 @@ export class AuthStore {
     const url = spotifyAuthorize.createAuthorizeURL(this.env.spotify_client_id);
 
     this.route.queryParams.subscribe((params) => {
-      console.log(params);
       this.returnUrl = params['returnUrl'] || '';
       window.location.href = url;
     });
@@ -101,6 +100,7 @@ export class AuthStore {
   async refreshToken(): Promise<void> {
     const params = new HttpParams().appendAll({
       grant_type: 'refresh_token',
+      refresh_token: this.refresh_token,
     });
     const headers = new HttpHeaders()
       .set('Content-Type', 'application/x-www-form-urlencoded;')
