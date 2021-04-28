@@ -11,7 +11,7 @@
   force = true
 
 [[redirects]]
-  from = "/*"
+  from = ["/*", "/pl/*/"]
   to = "/pl/index.html"
   status = 200
   conditions = {Language = ["pl"]}

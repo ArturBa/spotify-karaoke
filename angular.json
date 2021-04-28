@@ -38,6 +38,7 @@
       "sourceRoot": "apps/spotify/src",
       "prefix": "artur-ba",
       "i18n": {
+        "sourceLocale": "en",
         "locales": {
           "en": "apps/spotify/src/locale/messages.xlf",
           "pl": "apps/spotify/src/locale/messages.pl.xlf"
@@ -48,7 +49,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "i18nMissingTranslation": "warning",
-            "localize": ["en", "pl"],
+            "localize": ["pl", "en"],
             "outputPath": "dist/apps/spotify",
             "index": "apps/spotify/src/index.html",
             "main": "apps/spotify/src/main.ts",
