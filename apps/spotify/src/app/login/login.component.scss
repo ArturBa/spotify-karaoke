@@ -13,36 +13,41 @@
 
 .content {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 
   max-width: 1200px;
+  width: 70vw;
   padding: $padding-m;
   margin: auto;
-  & > * {
-    min-height: 60vh;
-    @include rounded;
-    background-color: var(--bg);
-    margin: auto $margin-s;
-    padding: $padding-m;
-  }
-  @include xs {
-    flex-direction: column;
-  }
+  @include rounded;
+  background-color: var(--bg);
 }
 
 .readme {
-  @include flex-1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  h1 {
+    font-size: 5rem;
+  }
+  h2 {
+    margin-top: 0;
+    font-size: 3rem;
+  }
 }
 
 .authorize {
-  @include flex-1;
-
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   @include xs {
     display: none;
   }
 
   button {
-    width: 100%;
+    margin: 0 auto;
+    width: 70%;
+    max-width: 400px;
     .button-content {
       padding: $padding-xs;
       display: flex;
@@ -56,6 +61,15 @@
         @include square_img($image64);
       }
     }
+  }
+}
+
+.authorize-mobile {
+  align-items: center;
+  flex-direction: column;
+  display: none;
+  @include xs {
+    display: flex;
   }
 }
 

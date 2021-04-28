@@ -1,12 +1,10 @@
 <div class="content">
   <div class="readme">
-    <div class="logo" title="" title="Spotify Karaoke Logo"></div>
-
-    <p i18n="login.readme">This is side project</p>
+    <h1>Spotify Karaoke</h1>
+    <h2 i18n="login.subtitle">Sign along with us!</h2>
   </div>
-
   <div class="authorize">
-    <h2 i18n="login.authorize_info">Authorize with Spotify</h2>
+    <h3 i18n="login.authorize_info">Authorize with Spotify</h3>
     {{ error?.message }}
     <button
       mat-raised-button
@@ -19,5 +17,10 @@
         Authorize
       </div>
     </button>
+  </div>
+  <div class="authorize-mobile">
+    <h3 i18n="login.mobile-not-available">
+      This page is not available on mobile devices
+    </h3>
   </div>
 </div>
