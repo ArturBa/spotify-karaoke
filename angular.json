@@ -72,6 +72,10 @@
                 {
                   "replace": "apps/spotify/src/environments/environment.ts",
                   "with": "apps/spotify/src/environments/environment.prod.ts"
+                },
+                {
+                  "replace": "apps/spotify/src/environments/_env.scss",
+                  "with": "apps/spotify/src/environments/_env.prod.scss"
                 }
               ],
               "optimization": true,
@@ -113,8 +117,7 @@
               "browserTarget": "spotify:build:production"
             },
             "pl": {
-              "browserTarget": "spotify:build:pl",
-              "proxyConfig": "apps/spotify/proxy.conf.json"
+              "browserTarget": "spotify:build:pl"
             }
           }
         },

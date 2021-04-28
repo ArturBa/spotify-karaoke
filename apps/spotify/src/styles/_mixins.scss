@@ -1,3 +1,4 @@
+@import '../environments/env';
 @import 'variables';
 
 @mixin darkMode {
@@ -38,4 +39,8 @@
   position: sticky;
   background-color: var(--bg);
   top: $top;
+}
+
+@function getImageUrl($url) {
+  @return url($baseURL + 'assets/' + $url);
 }
