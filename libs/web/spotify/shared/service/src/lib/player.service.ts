@@ -72,7 +72,7 @@ export class PlayerService implements OnDestroy {
     // Ready
     player.addListener('ready', ({ device_id }) => {
       this.playerState.setState({ deviceId: device_id });
-      this.playerControl.transferUserPlayback(device_id, false).subscribe();
+      this.playerControl.transferUserPlayback(device_id, false);
     });
 
     player.addListener('not_ready', ({ device_id }) => {
