@@ -48,7 +48,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "i18nMissingTranslation": "warning",
-            "localize": ["pl", "en"],
+            "localize": true,
             "outputPath": "dist/apps/spotify",
             "index": "apps/spotify/src/index.html",
             "main": "apps/spotify/src/main.ts",
