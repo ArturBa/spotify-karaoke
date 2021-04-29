@@ -9,6 +9,8 @@
 
 .count {
   @include shared-style;
+  width: 2ch;
+  justify-content: flex-end;
 }
 
 $image-size: 50px;
