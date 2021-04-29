@@ -6,7 +6,9 @@
   flex-direction: row;
   justify-content: space-between;
   background-color: var(--bg);
-  padding: $padding-s $padding-m;
+  padding-top: $padding-s;
+  padding-right: $padding-m;
+  padding-left: $padding-m;
 }
 
 .navigation {
@@ -14,8 +16,12 @@
   align-items: center;
 }
 
-.user {
-  img {
-    height: 40px;
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  mat-icon {
+    margin-right: 0;
   }
 }
