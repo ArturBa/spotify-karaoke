@@ -35,6 +35,14 @@
     </button>
     <button
       mat-menu-item
+      i18n="user-menu.app-info"
+      (click)="openInfo()"
+      class="menu-item"
+    >
+      App Info
+    </button>
+    <button
+      mat-menu-item
       i18n="user-menu.logout"
       (click)="logout()"
       class="menu-item"

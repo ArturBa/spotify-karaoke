@@ -6,6 +6,7 @@ import { secrets } from './secrets';
 export const environment = {
   production: false,
   ga: '',
+  app_version: require('../../../../package.json').version,
   spotify_client_id: '88bbdd189e5d49849d7a6358c7d8a8ff',
   ...secrets,
 };

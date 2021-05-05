@@ -1,6 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
+import { MatDialog } from '@angular/material/dialog';
+
 import { AuthStore, UserSettingsService } from '@artur-ba/shared/service';
+import { AppInfoDialog } from '@artur-ba/shared/view';
 import { SpotifyDataService } from '@artur-ba/web/spotify/shared/service';
 import { Subscription } from 'rxjs';
 
@@ -18,6 +21,7 @@ export class UserMenuComponent implements OnInit, OnDestroy {
   constructor(
     protected spotifyData: SpotifyDataService,
     protected authStore: AuthStore,
+    protected dialog: MatDialog,
     protected userSettings: UserSettingsService
   ) {}
 
@@ -40,5 +44,9 @@ export class UserMenuComponent implements OnInit, OnDestroy {
   toggleDarkMode(newMode?: boolean): void {
     const mode = newMode ? newMode : !this.darkMode;
     this.userSettings.darkMode(mode);
+  }
+
+  openInfo(): void {
+    this.dialog.open(AppInfoDialog);
   }
 }

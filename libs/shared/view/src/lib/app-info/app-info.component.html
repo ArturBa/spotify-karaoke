@@ -1,0 +1,27 @@
+<h1 mat-dialog-title i18n="app-info.title">App info</h1>
+<mat-dialog-content>
+  <mat-form-field>
+    <mat-label>App Version</mat-label>
+    <input matInput [value]="appVersion" readonly />
+  </mat-form-field>
+
+  <div>
+    <span> In case of any bugs open an </span>
+    <a
+      href="https://github.com/ArturBa/spotify-karaoke/issues/new/choose"
+      target="_blank"
+    >
+      issue on github
+    </a>
+    <span> or send a mail</span>
+    <a
+      href="mailto:bauerart1+karaoke@gmail.com?subject=Spotify Karaoke"
+      target="_blank"
+    >
+      bauerart1+karaoke@gmail.com</a
+    >
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close i18n="app-info.close">Close</button>
+</mat-dialog-actions>

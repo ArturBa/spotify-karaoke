@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
@@ -16,6 +17,7 @@ import { UserMenuComponent } from './user-menu/user-menu.component';
   imports: [
     CommonModule,
     MatMenuModule,
+    MatDialogModule,
     MatIconModule,
     MatButtonModule,
     WebSpotifySharedPipeModule,
