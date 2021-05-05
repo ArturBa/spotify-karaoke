@@ -1,6 +1,5 @@
-<p
-  *ngFor="let script of lyrics?.script; let i = index"
-  [class.active]="isActive(i)"
->
-  {{ script.text }}
-</p>
+<span>{{ script[0] }}</span>
+<span>{{ script[1] }}</span>
+<span class="active">{{ script[2] }}</span>
+<span>{{ script[3] }}</span>
+<span>{{ script[4] }}</span>
