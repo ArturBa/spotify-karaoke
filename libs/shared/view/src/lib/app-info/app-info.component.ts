@@ -7,7 +7,7 @@ import { EnvSettingsService } from '@artur-ba/shared/service';
   templateUrl: './app-info.component.html',
   styleUrls: ['./app-info.component.scss'],
 })
-export class AppInfoDialog {
+export class AppInfoDialogComponent {
   constructor(protected env: EnvSettingsService) {}
 
   get appVersion(): string {

@@ -3,7 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { AuthStore, UserSettingsService } from '@artur-ba/shared/service';
-import { AppInfoDialog } from '@artur-ba/shared/view';
+import { AppInfoDialogComponent } from '@artur-ba/shared/view';
 import { SpotifyDataService } from '@artur-ba/web/spotify/shared/service';
 import { Subscription } from 'rxjs';
 
@@ -47,6 +47,6 @@ export class UserMenuComponent implements OnInit, OnDestroy {
   }
 
   openInfo(): void {
-    this.dialog.open(AppInfoDialog);
+    this.dialog.open(AppInfoDialogComponent);
   }
 }
