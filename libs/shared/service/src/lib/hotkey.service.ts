@@ -3,6 +3,7 @@ import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { EventManager } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
+
 import { UserSettingsService } from './user-settings.service';
 
 export interface Options {

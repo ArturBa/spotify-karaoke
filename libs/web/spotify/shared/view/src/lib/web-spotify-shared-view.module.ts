@@ -7,8 +7,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
 
-import { WebSpotifySharedPipeModule } from '@artur-ba/web/spotify/shared/pipe';
 import { SharedViewModule } from '@artur-ba/shared/view';
+import { WebSpotifySharedPipeModule } from '@artur-ba/web/spotify/shared/pipe';
 
 import { SongListComponent } from './song-list/song-list.component';
 import { SongRowComponent } from './song-row/song-row.component';
