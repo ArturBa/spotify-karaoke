@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Lyrics } from '@artur-ba/web/lyrics/model';
+import { Lyrics, LyricsScript } from '@artur-ba/web/lyrics/model';
 
 @Component({
   selector: 'artur-ba-lyrics-text',
@@ -9,36 +9,43 @@ import { Lyrics } from '@artur-ba/web/lyrics/model';
 export class LyricsTextComponent {
   @Input() lyrics: Lyrics;
   @Input() currentTime: number;
-  readonly linesAround = 3;
+  readonly globalOffsetMs = 700;
+  readonly linesAround = 4;
 
-  get script(): string[] {
-    const currentTime = (this.currentTime - this.lyrics.offset) / 1000;
+  visible(script: LyricsScript): boolean {
+    return this.currentScript.includes(script);
+  }
+
+  prepared(script: LyricsScript): boolean {
+    return this.preparedScript.includes(script);
+  }
+
+  get currentScript(): LyricsScript[] {
+    return this.preparedScript.slice(1, -1);
+  }
+
+  get preparedScript(): LyricsScript[] {
+    const index = this.nextScriptIndex;
+    const startSlice = index < this.linesAround ? 0 : index - this.linesAround;
+    const endSlice =
+      index > this.lyrics.script.length - this.linesAround
+        ? this.lyrics.script.length
+        : index + this.linesAround;
+    return this.lyrics.script.slice(startSlice, endSlice);
+  }
+
+  get nextScriptIndex(): number {
+    const currentTime = this.timeWithOffset;
     let index = this.lyrics.script.findIndex(
       (script) => script.start > currentTime
     );
     if (index === -1) {
       index = this.lyrics.script.length;
     }
-    const startSlice = index < this.linesAround ? 0 : index - this.linesAround;
-    const endSlice =
-      index > this.lyrics.script.length - this.linesAround
-        ? this.lyrics.script.length
-        : index + this.linesAround;
-    const returnLines = this.getTrackInfo(this.linesAround - index);
-
-    this.lyrics.script.slice(startSlice, endSlice).forEach((line) => {
-      returnLines.push(line.text);
-    });
-    return returnLines;
+    return index;
   }
 
-  protected getTrackInfo(lines: number): string[] {
-    if (lines <= 0) {
-      return [];
-    } else if (lines == 1) {
-      return [this.lyrics.title];
-    } else {
-      return [this.lyrics.artist, this.lyrics.title];
-    }
+  get timeWithOffset(): number {
+    return (this.currentTime - this.lyrics.offset + this.globalOffsetMs) / 1000;
   }
 }
