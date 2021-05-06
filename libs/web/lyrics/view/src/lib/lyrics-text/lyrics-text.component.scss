@@ -12,7 +12,6 @@
 
   span {
     display: none;
-    @include transition(font-size, 0.3s, easy-out);
 
     &.prepared {
       display: block;
@@ -27,7 +26,6 @@
       font: bold;
       color: var(--accent);
       font-size: 4rem;
-      @include transition(font-size, 0.1s, easy-out);
     }
   }
 }

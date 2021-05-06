@@ -10,7 +10,8 @@ export class LyricsTextComponent {
   @Input() lyrics: Lyrics;
   @Input() currentTime: number;
   readonly globalOffsetMs = 700;
-  readonly linesAround = 4;
+  readonly linesPrepared = 4;
+  readonly linesVisible = this.linesPrepared - 1;
 
   visible(script: LyricsScript): boolean {
     return this.currentScript.includes(script);
@@ -21,16 +22,24 @@ export class LyricsTextComponent {
   }
 
   get currentScript(): LyricsScript[] {
+    const index = this.nextScriptIndex;
+    if (
+      index <= this.linesVisible ||
+      index >= this.lyrics.script.length - this.linesVisible
+    ) {
+      return this.preparedScript;
+    }
     return this.preparedScript.slice(1, -1);
   }
 
   get preparedScript(): LyricsScript[] {
     const index = this.nextScriptIndex;
-    const startSlice = index < this.linesAround ? 0 : index - this.linesAround;
+    const startSlice =
+      index < this.linesPrepared ? 0 : index - this.linesPrepared;
     const endSlice =
-      index > this.lyrics.script.length - this.linesAround
+      index > this.lyrics.script.length - this.linesPrepared
         ? this.lyrics.script.length
-        : index + this.linesAround;
+        : index + this.linesPrepared;
     return this.lyrics.script.slice(startSlice, endSlice);
   }
 
@@ -41,6 +50,8 @@ export class LyricsTextComponent {
     );
     if (index === -1) {
       index = this.lyrics.script.length;
+    } else if (index === 0) {
+      index = 1;
     }
     return index;
   }
