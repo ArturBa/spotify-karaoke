@@ -10,7 +10,8 @@ import { TrackListColumns } from '@artur-ba/web/spotify/shared/view';
   styleUrls: ['./album.component.scss'],
 })
 export class AlbumComponent implements OnInit {
-  album: SpotifyApi.AlbumTracksResponse;
+  albumTracks: SpotifyApi.AlbumTracksResponse;
+  album: SpotifyApi.AlbumObjectFull;
   readonly columns: TrackListColumns[] = [
     TrackListColumns.count,
     TrackListColumns.title_artist,
@@ -26,10 +27,11 @@ export class AlbumComponent implements OnInit {
     const routeParams = this.route.snapshot.paramMap;
     const albumUri = routeParams.get('uri');
 
-    this.album = await this.spotifyData.getAlbumTracks(albumUri);
+    this.albumTracks = await this.spotifyData.getAlbumTracks(albumUri);
+    this.album = await this.spotifyData.getAlbum(albumUri);
   }
 
   get tracks(): string[] {
-    return this.album?.items.map((track) => track.uri);
+    return this.albumTracks?.items.map((track) => track.uri);
   }
 }

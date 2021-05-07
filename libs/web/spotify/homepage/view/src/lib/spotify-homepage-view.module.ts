@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { WebSpotifyPlayerViewModule } from '@artur-ba/web/spotify/player/view';
+import { WebSpotifySharedPipeModule } from '@artur-ba/web/spotify/shared/pipe';
 import { WebSpotifySharedViewModule } from '@artur-ba/web/spotify/shared/view';
 import { WebSpotifySidebarViewModule } from '@artur-ba/web/spotify/sidebar/view';
 
@@ -19,6 +20,7 @@ import { WebSpotifyHomepageViewRoutingModule } from './spotify-homepage-view-rou
     WebSpotifyHomepageViewRoutingModule,
     WebSpotifyPlayerViewModule,
     WebSpotifySidebarViewModule,
+    WebSpotifySharedPipeModule,
   ],
   declarations: [
     HomepageComponent,
