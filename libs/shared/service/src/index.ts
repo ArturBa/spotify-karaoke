@@ -5,3 +5,4 @@ export * from './lib/auth.guard';
 export * from './lib/user-settings.service';
 export * from './lib/env-settings.service';
 export * from './lib/icon.service';
+export * from './lib/hotkey.service';

@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 
 import { AppInfoDialogComponent } from './app-info/app-info.component';
 import { CookieBannerComponent } from './cookie-banner/cookie-banner.component';
+import { HotkeyDialogComponent } from './hotkey-dialog/hotkey-dialog.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,15 @@ import { CookieBannerComponent } from './cookie-banner/cookie-banner.component';
     MatIconModule,
     MatInputModule,
   ],
-  declarations: [CookieBannerComponent, AppInfoDialogComponent],
-  exports: [CookieBannerComponent, AppInfoDialogComponent],
+  declarations: [
+    CookieBannerComponent,
+    AppInfoDialogComponent,
+    HotkeyDialogComponent,
+  ],
+  exports: [
+    CookieBannerComponent,
+    AppInfoDialogComponent,
+    HotkeyDialogComponent,
+  ],
 })
 export class SharedViewModule {}

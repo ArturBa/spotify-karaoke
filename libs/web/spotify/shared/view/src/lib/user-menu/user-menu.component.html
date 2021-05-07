@@ -36,10 +36,20 @@
     <button
       mat-menu-item
       i18n="user-menu.app-info"
-      (click)="openInfo()"
+      (click)="openInfoDialog()"
       class="menu-item"
     >
-      App Info
+      App info
+    </button>
+    <button
+      mat-menu-item
+      App
+      Info
+      i18n="user-menu.hotkeys"
+      (click)="openHotKeyDialog()"
+      class="menu-item"
+    >
+      Open hotkeys
     </button>
     <button
       mat-menu-item
