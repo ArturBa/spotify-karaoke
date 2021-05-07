@@ -5,21 +5,20 @@
     <input matInput [value]="appVersion" readonly />
   </mat-form-field>
 
-  <div>
-    <span> In case of any bugs open an </span>
-    <a
-      href="https://github.com/ArturBa/spotify-karaoke/issues/new/choose"
-      target="_blank"
-    >
-      issue on github
-    </a>
-    <span> or send a mail</span>
+  <div class="contact">
+    <span i18n="app-info.contact">Contact</span>
     <a
       href="mailto:bauerart1+karaoke@gmail.com?subject=Spotify Karaoke"
       target="_blank"
     >
-      bauerart1+karaoke@gmail.com</a
-    >
+      <mat-icon>email</mat-icon>
+    </a>
+  </div>
+  <div class="github">
+    <span i18n="app-info.github">Github</span>
+    <a href="https://github.com/ArturBa/spotify-karaoke" target="_blank">
+      <mat-icon svgIcon="github"></mat-icon>
+    </a>
   </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
