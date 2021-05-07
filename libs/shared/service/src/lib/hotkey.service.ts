@@ -29,6 +29,10 @@ export class HotkeyService {
   ) {}
 
   addShortcut(options: Partial<Options>) {
+    if (this.isAlreadyAdded(options.keys)) {
+      throw new Error(`key combination ${options.keys} already added`);
+      return;
+    }
     const merged = { ...this.defaults, ...options };
     this.hotkeys.push(merged);
     const event = `keydown.${merged.keys}`;
@@ -49,5 +53,9 @@ export class HotkeyService {
         dispose();
       };
     });
+  }
+
+  protected isAlreadyAdded(keys: string): boolean {
+    return this.hotkeys.some((hotkey) => hotkey.keys === keys);
   }
 }

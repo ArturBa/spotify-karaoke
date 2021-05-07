@@ -21,6 +21,8 @@ export class UserMenuComponent implements OnInit, OnDestroy {
   user: SpotifyApi.CurrentUsersProfileResponse;
   darkMode = false;
 
+  protected isHotkeyDialogOpen = false;
+
   protected subscriptions: Subscription[] = [];
 
   constructor(
@@ -31,30 +33,28 @@ export class UserMenuComponent implements OnInit, OnDestroy {
     protected userSettings: UserSettingsService
   ) {}
 
-  logout(): void {
-    this.authStore.logout();
-  }
-
   async ngOnInit(): Promise<void> {
+    this.initHotkeys();
     this.user = await this.spotifyData.getUserData();
     const darkModeSub = this.userSettings.darkModeOn$.subscribe((darkMode) => {
       this.darkMode = darkMode;
     });
-    const darkModeAction = $localize`:hotkeys.dark-mode:Toggle dark mode`;
-    const showHotKeyAction = $localize`:hotkeys.show-hotkeys:Show hotkeys dialog`;
-    this.hotkey
-      .addShortcut({ keys: 'control.o', action: darkModeAction })
-      .subscribe(() => this.toggleDarkMode());
-    this.hotkey
-      .addShortcut({ keys: 'shift.o', action: darkModeAction })
-      .subscribe(() => this.toggleDarkMode());
-    this.hotkey
-      .addShortcut({ keys: 'control.?', action: showHotKeyAction })
-      .subscribe(() => this.openHotKeyDialog());
-    this.hotkey
-      .addShortcut({ keys: 'shift.?', action: showHotKeyAction })
-      .subscribe(() => this.openHotKeyDialog());
     this.subscriptions.push(darkModeSub);
+  }
+
+  protected initHotkeys(): void {
+    const darkModeAction = $localize`:hotkeys.dark-mode:Toggle dark mode`;
+    this.subscriptions.push(
+      this.hotkey
+        .addShortcut({ keys: 'control.d', action: darkModeAction })
+        .subscribe(() => this.toggleDarkMode())
+    );
+    const showHotKeyAction = $localize`:hotkeys.show-hotkeys:Show hotkeys dialog`;
+    this.subscriptions.push(
+      this.hotkey
+        .addShortcut({ keys: 'control.h', action: showHotKeyAction })
+        .subscribe(() => this.openHotKeyDialog())
+    );
   }
 
   ngOnDestroy(): void {
@@ -67,6 +67,21 @@ export class UserMenuComponent implements OnInit, OnDestroy {
   }
 
   openHotKeyDialog(): void {
-    this.dialog.open(HotkeyDialogComponent, { data: this.hotkey.hotkeys });
+    if (this.isHotkeyDialogOpen) {
+      return;
+    }
+    const hotkeyDialogRef = this.dialog.open(HotkeyDialogComponent, {
+      data: this.hotkey.hotkeys,
+    });
+    hotkeyDialogRef.afterOpened().subscribe(() => {
+      this.isHotkeyDialogOpen = true;
+    });
+    hotkeyDialogRef.afterClosed().subscribe(() => {
+      this.isHotkeyDialogOpen = false;
+    });
+  }
+
+  logout(): void {
+    this.authStore.logout();
   }
 }
