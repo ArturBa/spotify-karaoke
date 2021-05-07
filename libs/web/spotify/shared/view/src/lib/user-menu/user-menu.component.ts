@@ -4,14 +4,14 @@ import '@angular/localize/init';
 import { MatDialog } from '@angular/material/dialog';
 
 import {
+  AppInfoDialogComponent,
+  HotkeyDialogComponent,
+} from '@artur-ba/shared/view';
+import {
   AuthStore,
   HotkeyService,
   UserSettingsService,
 } from '@artur-ba/shared/service';
-import {
-  AppInfoDialogComponent,
-  HotkeyDialogComponent,
-} from '@artur-ba/shared/view';
 import { SpotifyDataService } from '@artur-ba/web/spotify/shared/service';
 import { Subscription } from 'rxjs';
 
