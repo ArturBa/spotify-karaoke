@@ -36,6 +36,10 @@ export class AuthStore {
   access_token_sub$ = new BehaviorSubject(this.access_token);
   protected readonly tokenUrl = 'https://accounts.spotify.com/api/token';
 
+  protected readonly access_token_key = 'access_token';
+  protected readonly refresh_token_key = 'refresh_token';
+  protected readonly return_url_key = 'returnUrl';
+
   protected saveTokenData(token: SpotifyTokenResponse): void {
     Object.keys(token).forEach((key) => {
       localStorage.setItem(key, token[key]);
@@ -44,20 +48,20 @@ export class AuthStore {
   }
 
   get access_token(): string {
-    return localStorage.getItem('access_token');
+    return localStorage.getItem(this.access_token_key);
   }
 
   get refresh_token(): string {
-    return localStorage.getItem('refresh_token');
+    return localStorage.getItem(this.refresh_token_key);
   }
 
   protected set returnUrl(returnUrl: string) {
-    localStorage.setItem('returnUrl', returnUrl);
+    localStorage.setItem(this.return_url_key, returnUrl);
   }
 
   protected get returnUrl(): string {
-    const return_url = localStorage.getItem('returnUrl');
-    localStorage.removeItem('returnUrl');
+    const return_url = localStorage.getItem(this.return_url_key);
+    localStorage.removeItem(this.return_url_key);
     return return_url;
   }
 
@@ -92,7 +96,7 @@ export class AuthStore {
     const url = spotifyAuthorize.createAuthorizeURL(this.env.spotify_client_id);
 
     this.route.queryParams.subscribe((params) => {
-      this.returnUrl = params['returnUrl'] || '';
+      this.returnUrl = params[this.return_url_key] || '';
       window.location.href = url;
     });
   }
@@ -112,12 +116,12 @@ export class AuthStore {
   }
 
   logout(): void {
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('refresh_token');
+    localStorage.removeItem(this.access_token_key);
+    localStorage.removeItem(this.refresh_token_key);
     this.router.navigate(['login']);
   }
 
   isLogged(): boolean {
-    return !!localStorage.getItem('access_token');
+    return !!localStorage.getItem(this.access_token_key);
   }
 }
