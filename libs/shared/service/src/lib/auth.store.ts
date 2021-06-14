@@ -36,9 +36,9 @@ export class AuthStore {
   access_token_sub$ = new BehaviorSubject(this.access_token);
   protected readonly tokenUrl = 'https://accounts.spotify.com/api/token';
 
-  protected readonly access_token_key = 'access_token';
-  protected readonly refresh_token_key = 'refresh_token';
-  protected readonly return_url_key = 'returnUrl';
+  static readonly access_token_key = 'access_token';
+  static readonly refresh_token_key = 'refresh_token';
+  static readonly return_url_key = 'returnUrl';
 
   protected saveTokenData(token: SpotifyTokenResponse): void {
     Object.keys(token).forEach((key) => {
@@ -48,20 +48,20 @@ export class AuthStore {
   }
 
   get access_token(): string {
-    return localStorage.getItem(this.access_token_key);
+    return localStorage.getItem(AuthStore.access_token_key);
   }
 
   get refresh_token(): string {
-    return localStorage.getItem(this.refresh_token_key);
+    return localStorage.getItem(AuthStore.refresh_token_key);
   }
 
   protected set returnUrl(returnUrl: string) {
-    localStorage.setItem(this.return_url_key, returnUrl);
+    localStorage.setItem(AuthStore.return_url_key, returnUrl);
   }
 
   protected get returnUrl(): string {
-    const return_url = localStorage.getItem(this.return_url_key);
-    localStorage.removeItem(this.return_url_key);
+    const return_url = localStorage.getItem(AuthStore.return_url_key);
+    localStorage.removeItem(AuthStore.return_url_key);
     return return_url;
   }
 
@@ -96,7 +96,7 @@ export class AuthStore {
     const url = spotifyAuthorize.createAuthorizeURL(this.env.spotify_client_id);
 
     this.route.queryParams.subscribe((params) => {
-      this.returnUrl = params[this.return_url_key] || '';
+      this.returnUrl = params[AuthStore.return_url_key] || '';
       window.location.href = url;
     });
   }
@@ -116,12 +116,12 @@ export class AuthStore {
   }
 
   logout(): void {
-    localStorage.removeItem(this.access_token_key);
-    localStorage.removeItem(this.refresh_token_key);
+    localStorage.removeItem(AuthStore.access_token_key);
+    localStorage.removeItem(AuthStore.refresh_token_key);
     this.router.navigate(['login']);
   }
 
   isLogged(): boolean {
-    return !!localStorage.getItem(this.access_token_key);
+    return !!localStorage.getItem(AuthStore.access_token_key);
   }
 }
