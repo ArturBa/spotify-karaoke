@@ -1,39 +1,16 @@
-import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import {
-  HttpTestingController,
   HttpClientTestingModule,
+  HttpTestingController,
 } from '@angular/common/http/testing';
-import { Injectable } from '@angular/core';
-import { Route, Router } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
 import { inject, TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
-import { AuthStore, SpotifyTokenResponse } from '@artur-ba/shared/service';
-import { routesBlank } from '@artur-ba/shared/test-helpers';
+import { AuthStoreProxy, routesBlank } from '@artur-ba/shared/test-helpers';
+import { AuthStore } from '@artur-ba/shared/service';
 
 import { SpotifyTokenInterceptor } from './spotify-token.interceptor';
-
-@Injectable({
-  providedIn: 'root',
-})
-class AuthStoreProxy extends AuthStore {
-  tokenData = {
-    access_token: 'token',
-    token_type: 'token',
-    scope: 'token',
-    expires_in: 100,
-    refresh_token: 'token',
-  } as SpotifyTokenResponse;
-
-  saveTokenDataProxy() {
-    this.saveTokenData(this.tokenData);
-  }
-
-  refreshToken(): Promise<void> {
-    console.log('refresh token');
-    return;
-  }
-}
 
 describe('SpotifyTokenInterceptor', () => {
   let httpMock: HttpTestingController;
