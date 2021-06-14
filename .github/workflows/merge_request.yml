@@ -42,4 +42,4 @@ jobs:
         run: npx nx run-many --target=lint --all=true
 
       - name: Unit tests
-        run: npx nx run shared-interceptor
+        run: npx nx test shared-interceptor
