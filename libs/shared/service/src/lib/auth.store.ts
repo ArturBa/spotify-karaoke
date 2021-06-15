@@ -32,13 +32,12 @@ export class AuthStore {
     protected http: HttpClient,
     protected env: EnvSettingsService
   ) {}
-
-  access_token_sub$ = new BehaviorSubject(this.access_token);
-  protected readonly tokenUrl = 'https://accounts.spotify.com/api/token';
-
   static readonly access_token_key = 'access_token';
   static readonly refresh_token_key = 'refresh_token';
   static readonly return_url_key = 'returnUrl';
+
+  access_token_sub$ = new BehaviorSubject(this.access_token);
+  protected readonly tokenUrl = 'https://accounts.spotify.com/api/token';
 
   protected saveTokenData(token: SpotifyTokenResponse): void {
     Object.keys(token).forEach((key) => {
