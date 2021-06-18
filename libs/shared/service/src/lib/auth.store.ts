@@ -7,13 +7,6 @@ import { Injectable } from '@angular/core';
 import { EnvSettingsService } from './env-settings.service';
 import { SpotifyAuthorize } from './models/spotify-authorize';
 
-export interface AuthState {
-  accessToken: string | null;
-  tokenType: string | null;
-  expiresIn: number;
-  state: string | null;
-}
-
 export interface SpotifyTokenResponse {
   access_token: string;
   token_type: string;
