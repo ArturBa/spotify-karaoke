@@ -4,8 +4,8 @@ import {
   TestBed,
   tick,
 } from '@angular/core/testing';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { By } from '@angular/platform-browser';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import {
   createSpyObj,
