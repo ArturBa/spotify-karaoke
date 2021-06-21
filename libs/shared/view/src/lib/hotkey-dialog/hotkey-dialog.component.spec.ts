@@ -1,8 +1,3 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatInputModule } from '@angular/material/input';
-import { IconService } from '@artur-ba/shared/service';
-
 import { HotkeyDialogComponent } from './hotkey-dialog.component';
 
 describe('HotkeyDialogComponent', () => {
