@@ -1,14 +1,33 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {
+  ComponentFixture,
+  fakeAsync,
+  TestBed,
+  tick,
+} from '@angular/core/testing';
+import {
+  createSpyObj,
+  MiniLyricsService,
+} from '@artur-ba/web/lyrics/mini-lyrics/service';
 
 import { LyricsComponent } from './lyrics.component';
+import { By } from '@angular/platform-browser';
+import { LOCALE_ID } from '@angular/core';
 
 describe('LyricsComponent', () => {
   let component: LyricsComponent;
   let fixture: ComponentFixture<LyricsComponent>;
 
+  const miniLyricsServiceMock = createSpyObj('MiniLyricsService', ['']);
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [MatProgressSpinnerModule],
       declarations: [LyricsComponent],
+      providers: [
+        { provide: MiniLyricsService, useValue: miniLyricsServiceMock },
+        { provide: LOCALE_ID, useValue: 'en' },
+      ],
     }).compileComponents();
   });
 
@@ -21,4 +40,29 @@ describe('LyricsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should display searching info while searching', fakeAsync(() => {
+    component.searching = true;
+    fixture.detectChanges();
+    tick();
+
+    const communicate = fixture.debugElement.query(By.css('span'));
+    const spinner = fixture.debugElement.query(By.css('mat-spinner'));
+
+    expect(communicate).toBeTruthy();
+    expect(spinner).toBeTruthy();
+  }));
+
+  it('should display no lyrics found if none lyrics and not searching', fakeAsync(() => {
+    component.searching = false;
+    component.lyrics = undefined;
+    fixture.detectChanges();
+    tick();
+
+    const communicate = fixture.debugElement.query(By.css('span'));
+    const spinner = fixture.debugElement.query(By.css('mat-spinner'));
+
+    expect(communicate).toBeTruthy();
+    expect(spinner).toBeFalsy();
+  }));
 });
