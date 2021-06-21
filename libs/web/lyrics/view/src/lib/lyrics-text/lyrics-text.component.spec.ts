@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+
 import { lyricsElvis, LyricsParser } from '@artur-ba/web/lyrics/model';
 
 import { LyricsTextComponent } from './lyrics-text.component';

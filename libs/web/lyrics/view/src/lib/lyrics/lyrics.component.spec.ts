@@ -1,18 +1,18 @@
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {
   ComponentFixture,
   fakeAsync,
   TestBed,
   tick,
 } from '@angular/core/testing';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { By } from '@angular/platform-browser';
+
 import {
   createSpyObj,
   MiniLyricsService,
 } from '@artur-ba/web/lyrics/mini-lyrics/service';
 
 import { LyricsComponent } from './lyrics.component';
-import { By } from '@angular/platform-browser';
-import { LOCALE_ID } from '@angular/core';
 
 describe('LyricsComponent', () => {
   let component: LyricsComponent;
@@ -26,7 +26,6 @@ describe('LyricsComponent', () => {
       declarations: [LyricsComponent],
       providers: [
         { provide: MiniLyricsService, useValue: miniLyricsServiceMock },
-        { provide: LOCALE_ID, useValue: 'en' },
       ],
     }).compileComponents();
   });
