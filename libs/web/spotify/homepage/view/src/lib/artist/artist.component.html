@@ -7,7 +7,8 @@
   </div>
 </div>
 
-<artur-ba-song-list
-  title="Artis top"
-  [tracks]="artistTracks?.tracks"
-></artur-ba-song-list>
+<artur-ba-song-list [tracks]="artistTracks?.tracks"></artur-ba-song-list>
+
+<ng-container *ngFor="let album of artistAlbums?.items">
+  {{ album.name }}
+</ng-container>

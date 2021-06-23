@@ -102,4 +102,23 @@ export class SpotifyDataService {
       )
       .toPromise();
   }
+
+  /**
+   * https://api.spotify.com/v1/artists/{id}/albums
+   * @param artistUri
+   * @param offset padding offset
+   * @param limit padding limit
+   * @returns Promise
+   */
+  async getArtistAlbums(
+    artistUri: string,
+    offset: number = 0,
+    limit: number = 20
+  ): Promise<SpotifyApi.PagingObject<SpotifyApi.AlbumObjectSimplified>> {
+    return this.httpClient
+      .get<SpotifyApi.PagingObject<SpotifyApi.AlbumObjectSimplified>>(
+        this.baseURL + `artists/${artistUri}/albums`
+      )
+      .toPromise();
+  }
 }

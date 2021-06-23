@@ -13,6 +13,7 @@ import { TrackHelper } from '@artur-ba/web/spotify/shared/helper';
 export class ArtistComponent implements OnInit, OnDestroy {
   artist: SpotifyApi.SingleArtistResponse;
   artistTracks: SpotifyApi.ArtistsTopTracksResponse;
+  artistAlbums: SpotifyApi.PagingObject<SpotifyApi.AlbumObjectSimplified>;
 
   protected subscriptions: Subscription[] = [];
 
@@ -39,5 +40,6 @@ export class ArtistComponent implements OnInit, OnDestroy {
   protected async getArtistData(artistUri: string): Promise<void> {
     this.artist = await this.spotifyData.getArtist(artistUri);
     this.artistTracks = await this.spotifyData.getArtistTopTracks(artistUri);
+    this.artistAlbums = await this.spotifyData.getArtistAlbums(artistUri);
   }
 }
