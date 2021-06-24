@@ -1,17 +1,18 @@
+import { from, Observable } from 'rxjs';
 import {
-  HttpRequest,
-  HttpHandler,
   HttpEvent,
+  HttpHandler,
   HttpInterceptor,
+  HttpRequest,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { from, Observable } from 'rxjs';
 
 import { CountryService } from '@artur-ba/shared/service';
 
 @Injectable()
 export class SpotifyMarketInterceptor implements HttpInterceptor {
   static readonly spotifyApiUrl = 'https://api.spotify.com/';
+  static readonly marketKey = 'market';
   protected readonly spotifyAPIRegex = new RegExp(
     `^${SpotifyMarketInterceptor.spotifyApiUrl}`
   );
@@ -34,7 +35,10 @@ export class SpotifyMarketInterceptor implements HttpInterceptor {
   ): Promise<HttpEvent<unknown>> {
     const userCountry = await this.countryService.getUserCountry();
     request = request.clone({
-      params: request.params.append('market', userCountry),
+      params: request.params.append(
+        SpotifyMarketInterceptor.marketKey,
+        userCountry
+      ),
     });
     return next.handle(request).toPromise();
   }
