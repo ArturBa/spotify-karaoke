@@ -1,0 +1,21 @@
+@import 'mixins';
+
+:host {
+  height: 100%;
+  overflow: auto;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  // height: 100%;
+  .artist-data {
+    display: flex;
+    padding: $padding-m;
+    align-items: center;
+    flex-direction: column;
+
+    img {
+      @include square_img($image300);
+    }
+  }
+}

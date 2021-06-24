@@ -91,14 +91,9 @@ export class SpotifyDataService {
   async getArtistTopTracks(
     artistUri: string
   ): Promise<SpotifyApi.ArtistsTopTracksResponse> {
-    const params = new HttpParams().append(
-      'market',
-      await this.countryService.getUserCountry()
-    );
     return this.httpClient
       .get<SpotifyApi.ArtistsTopTracksResponse>(
-        this.baseURL + `artists/${artistUri}/top-tracks`,
-        { params }
+        this.baseURL + `artists/${artistUri}/top-tracks`
       )
       .toPromise();
   }

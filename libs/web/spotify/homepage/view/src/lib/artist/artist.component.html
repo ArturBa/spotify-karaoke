@@ -1,14 +1,13 @@
 <div class="row">
-  <div class="album-data">
+  <div class="artist-data">
     <img [src]="imageUrl(300)" />
     <h2>
       {{ artist?.name }}
     </h2>
   </div>
+
+  <artur-ba-song-list [tracks]="artistTracks?.tracks"></artur-ba-song-list>
 </div>
-
-<artur-ba-song-list [tracks]="artistTracks?.tracks"></artur-ba-song-list>
-
 <ng-container *ngFor="let album of artistAlbums?.items">
   {{ album.name }}
 </ng-container>
