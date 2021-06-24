@@ -1,0 +1,28 @@
+@import 'variables';
+$card-width: 220px;
+$card-height: 320px;
+
+mat-card {
+  width: $card-width;
+  height: $card-height;
+  overflow: hidden;
+
+  span {
+    width: 100%;
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .card-title {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: $margin-xs;
+    white-space: nowrap;
+  }
+  .card-subtitle {
+    font-size: 0.8rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+}
