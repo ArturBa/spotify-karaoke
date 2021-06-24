@@ -1,8 +1,8 @@
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import {
+  HTTP_INTERCEPTORS,
   HttpClient,
   HttpParams,
-  HTTP_INTERCEPTORS,
 } from '@angular/common/http';
 import {
   HttpClientTestingModule,
