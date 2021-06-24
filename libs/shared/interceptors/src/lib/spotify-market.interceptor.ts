@@ -1,11 +1,11 @@
+import { from, Observable } from 'rxjs';
 import {
-  HttpRequest,
-  HttpHandler,
   HttpEvent,
+  HttpHandler,
   HttpInterceptor,
+  HttpRequest,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { from, Observable } from 'rxjs';
 
 import { CountryService } from '@artur-ba/shared/service';
 
