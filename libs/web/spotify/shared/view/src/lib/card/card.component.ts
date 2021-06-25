@@ -12,13 +12,12 @@ export class CardComponent {
   @Input() subtitle: string;
   @Input() redirectUrl: string;
 
-  //eslint-ignore @angular-eslint/no-output-on-prefix
-  @Output() onClick = new EventEmitter<void>();
+  @Output() click = new EventEmitter<void>();
 
   constructor(protected readonly router: Router) {}
 
   onClickHandle(): void {
-    this.onClick.emit();
+    this.click.emit();
     if (this.redirectUrl) {
       this.router.navigate([this.redirectUrl]);
     }

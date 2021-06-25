@@ -10,7 +10,12 @@ export default {
   decorators: [
     moduleMetadata({
       declarations: [CardComponent],
-      imports: [MatCardModule, RouterTestingModule],
+      imports: [
+        MatCardModule,
+        RouterTestingModule.withRoutes([
+          { path: '**', component: CardComponent },
+        ]),
+      ],
     }),
   ],
   title: 'CardComponent',
@@ -23,7 +28,7 @@ const actionsData = {
 const Template: Story<CardComponent> = (args) => ({
   props: {
     ...args,
-    onClick: actionsData.onClickTask,
+    click: actionsData.onClickTask,
   },
 });
 
