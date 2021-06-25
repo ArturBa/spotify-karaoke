@@ -1,17 +1,12 @@
 import '@angular/localize/init';
+import { themes } from '@storybook/theming';
 
 export const parameters = {
-  backgrounds: {
-    default: 'light',
-    values: [
-      {
-        name: 'light',
-        value: '#f0f0f0',
-      },
-      {
-        name: 'dark',
-        value: '#171717',
-      },
-    ],
+  darkMode: {
+    current: 'dark',
+    dark: { ...themes.dark, appBg: '#171717' },
+    darkClass: 'darkMode',
+    light: { ...themes.normal, appBg: '#f0f0f0' },
+    stylePreview: true,
   },
 };
