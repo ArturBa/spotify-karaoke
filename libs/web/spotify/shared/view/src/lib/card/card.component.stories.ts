@@ -1,5 +1,5 @@
+import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { MatCardModule } from '@angular/material/card';
-import { moduleMetadata, Story, Meta } from '@storybook/angular';
 
 import { CardComponent } from './card.component';
 

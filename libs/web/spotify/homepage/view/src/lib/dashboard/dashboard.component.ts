@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+
 import { UserSettingsService } from '@artur-ba/shared/service';
 import { TrackHelper } from '@artur-ba/web/spotify/shared/helper';
 
