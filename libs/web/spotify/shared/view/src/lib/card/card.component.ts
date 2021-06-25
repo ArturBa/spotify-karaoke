@@ -12,6 +12,7 @@ export class CardComponent {
   @Input() subtitle: string;
   @Input() redirectUrl: string;
 
+  // eslint-disable-next-line @angular-eslint/no-output-native
   @Output() click = new EventEmitter<void>();
 
   constructor(protected readonly router: Router) {}
