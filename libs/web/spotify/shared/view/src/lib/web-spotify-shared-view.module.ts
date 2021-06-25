@@ -15,6 +15,7 @@ import { CardComponent } from './card/card.component';
 import { SongListComponent } from './song-list/song-list.component';
 import { SongRowComponent } from './song-row/song-row.component';
 import { UserMenuComponent } from './user-menu/user-menu.component';
+import { AlbumCardComponent } from './album-card/album-card.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,13 @@ import { UserMenuComponent } from './user-menu/user-menu.component';
     SongListComponent,
     UserMenuComponent,
     CardComponent,
+    AlbumCardComponent,
   ],
-  exports: [SongListComponent, UserMenuComponent, CardComponent],
+  exports: [
+    SongListComponent,
+    UserMenuComponent,
+    CardComponent,
+    AlbumCardComponent,
+  ],
 })
 export class WebSpotifySharedViewModule {}
