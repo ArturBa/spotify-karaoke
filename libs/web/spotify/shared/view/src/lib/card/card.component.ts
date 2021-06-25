@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'artur-ba-card',
@@ -6,7 +7,17 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent {
-  @Input() image: string;
+  @Input() imageUrl: string;
   @Input() title: string;
   @Input() subtitle: string;
+  @Input() redirectUrl: string;
+
+  @Output() onClick = new EventEmitter<void>();
+
+  constructor(protected readonly router: Router) {}
+
+  onClickHandler(): void {
+    this.onClick.emit();
+    console.log('clicked');
+  }
 }

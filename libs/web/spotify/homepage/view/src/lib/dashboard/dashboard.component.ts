@@ -442,6 +442,7 @@ export class DashboardComponent implements OnInit {
   };
 
   title(): string {
+    return `${this.album['name']}`;
     return `<a href='album/3I9Z1nDCL4E0cP62flcbI5'>${this.album['name']}</a>`;
   }
 
