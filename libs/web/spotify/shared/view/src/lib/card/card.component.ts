@@ -18,6 +18,8 @@ export class CardComponent {
 
   onClickHandler(): void {
     this.onClick.emit();
-    console.log('clicked');
+    if (this.redirectUrl) {
+      this.router.navigate([this.redirectUrl]);
+    }
   }
 }
