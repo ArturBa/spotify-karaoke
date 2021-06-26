@@ -31,10 +31,6 @@ export class PlayerSongComponent implements OnInit, OnDestroy {
   }
 
   get image64Url(): string {
-    return TrackHelper.getImage64Url(this.track);
-  }
-
-  get artists(): string {
-    return TrackHelper.getArtists(this.track);
+    return TrackHelper.getImage64Url(this.track?.album);
   }
 }
