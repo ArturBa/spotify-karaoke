@@ -108,11 +108,17 @@ export class SpotifyDataService {
   async getArtistAlbums(
     artistUri: string,
     offset: number = 0,
-    limit: number = 20
+    limit: number = 20,
+    include_groups: string[] = ['album']
   ): Promise<SpotifyApi.PagingObject<SpotifyApi.AlbumObjectSimplified>> {
+    const params = new HttpParams().append(
+      'include_groups',
+      include_groups.join(',')
+    );
     return this.httpClient
       .get<SpotifyApi.PagingObject<SpotifyApi.AlbumObjectSimplified>>(
-        this.baseURL + `artists/${artistUri}/albums`
+        this.baseURL + `artists/${artistUri}/albums`,
+        { params }
       )
       .toPromise();
   }

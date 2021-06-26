@@ -8,6 +8,13 @@
 
   <artur-ba-song-list [tracks]="artistTracks?.tracks"></artur-ba-song-list>
 </div>
-<ng-container *ngFor="let album of artistAlbums?.items">
-  {{ album.name }}
-</ng-container>
+<div class="albums">
+  <h3 i18n="artist.albums">Albums</h3>
+  <div class="album-items">
+    <artur-ba-album-card
+      *ngFor="let album of artistAlbums?.items"
+      [album]="album"
+    >
+    </artur-ba-album-card>
+  </div>
+</div>
