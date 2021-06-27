@@ -10,7 +10,7 @@
 </div>
 <div class="albums">
   <artur-ba-card-wrapper
-    title="Albums"
+    [title]="getAlbumsTitle()"
     [viewMoreRoute]="artistAlbumsUrl()"
     [singleLine]="true"
   >

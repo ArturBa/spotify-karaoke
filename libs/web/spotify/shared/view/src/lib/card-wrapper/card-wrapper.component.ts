@@ -8,5 +8,5 @@ import { Component, Input } from '@angular/core';
 export class CardWrapperComponent {
   @Input() title: string;
   @Input() viewMoreRoute: string;
-  @Input() singleLine: boolean = false;
+  @Input() singleLine = false;
 }

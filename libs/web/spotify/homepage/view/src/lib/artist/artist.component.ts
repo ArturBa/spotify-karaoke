@@ -2,11 +2,11 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
-import { SpotifyDataService } from '@artur-ba/web/spotify/shared/service';
 import {
   TrackHelper,
   UriDataHelper,
 } from '@artur-ba/web/spotify/shared/helper';
+import { SpotifyDataService } from '@artur-ba/web/spotify/shared/service';
 
 @Component({
   selector: 'artur-ba-artist',
@@ -18,6 +18,7 @@ export class ArtistComponent implements OnInit, OnDestroy {
   artistTracks: SpotifyApi.ArtistsTopTracksResponse;
   artistAlbums: SpotifyApi.PagingObject<SpotifyApi.AlbumObjectSimplified>;
 
+  readonly albumsTitle = $localize`:artist.albums:Albums`;
   protected subscriptions: Subscription[] = [];
 
   constructor(
@@ -41,7 +42,11 @@ export class ArtistComponent implements OnInit, OnDestroy {
   };
 
   artistAlbumsUrl(): string {
-    return `/artist/${UriDataHelper.getClearUri(this.artist.uri)}/albums`;
+    return `/artist/${UriDataHelper.getClearUri(this.artist?.uri)}/albums`;
+  }
+
+  getAlbumsTitle(): string {
+    return this.albumsTitle;
   }
 
   protected async getArtistData(artistUri: string): Promise<void> {
