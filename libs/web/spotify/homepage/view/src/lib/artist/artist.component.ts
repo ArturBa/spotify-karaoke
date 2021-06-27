@@ -3,7 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { SpotifyDataService } from '@artur-ba/web/spotify/shared/service';
-import { TrackHelper } from '@artur-ba/web/spotify/shared/helper';
+import {
+  TrackHelper,
+  UriDataHelper,
+} from '@artur-ba/web/spotify/shared/helper';
 
 @Component({
   selector: 'artur-ba-artist',
@@ -36,6 +39,10 @@ export class ArtistComponent implements OnInit, OnDestroy {
   imageUrl = (size: number): string => {
     return TrackHelper.getImageUrl(this.artist, size);
   };
+
+  artistAlbumsUrl(): string {
+    return `/artist/${UriDataHelper.getClearUri(this.artist.uri)}/albums`;
+  }
 
   protected async getArtistData(artistUri: string): Promise<void> {
     this.artist = await this.spotifyData.getArtist(artistUri);
