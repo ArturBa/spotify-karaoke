@@ -7,6 +7,7 @@ import { ArtistComponent } from './artist/artist.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { QueueComponent } from './queue/queue.component';
+import { SearchComponent } from './search/search.component';
 
 export const HOMEPAGE_ROUTES: Routes = [
   {
@@ -16,6 +17,7 @@ export const HOMEPAGE_ROUTES: Routes = [
       { path: '', redirectTo: 'dashboard' },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'queue', component: QueueComponent },
+      { path: 'search', component: SearchComponent },
       { path: 'album/:uri', component: AlbumComponent },
       { path: 'artist/:uri', component: ArtistComponent },
       {

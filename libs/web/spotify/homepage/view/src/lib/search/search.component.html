@@ -1,0 +1,14 @@
+<input
+  matInput
+  type="search"
+  placeholder="Search"
+  (onBlur)="search()"
+  [(ngModel)]="searchInput"
+/>
+<button (click)="search()">Search</button>
+
+<artur-ba-album-card
+  *ngFor="let album of albumSearchResult?.albums.items"
+  [album]="album"
+>
+</artur-ba-album-card>

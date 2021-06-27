@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { CountryService } from '@artur-ba/shared/service';
+import { parseI18nMeta } from '@angular/compiler/src/render3/view/i18n/meta';
 
 @Injectable({
   providedIn: 'root',
@@ -120,6 +121,17 @@ export class SpotifyDataService {
         this.baseURL + `artists/${artistUri}/albums`,
         { params }
       )
+      .toPromise();
+  }
+
+  async getSearchAlbumResult(
+    q: string
+  ): Promise<SpotifyApi.AlbumSearchResponse> {
+    const params = new HttpParams()
+      .append('q', encodeURI(q))
+      .append('type', 'album');
+    return this.httpClient
+      .get<SpotifyApi.AlbumSearchResponse>(this.baseURL + 'search', { params })
       .toPromise();
   }
 }
