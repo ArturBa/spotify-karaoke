@@ -12,6 +12,7 @@ import { WebSpotifySharedViewModule } from '@artur-ba/web/spotify/shared/view';
 import { WebSpotifySidebarViewModule } from '@artur-ba/web/spotify/sidebar/view';
 
 import { AlbumComponent } from './album/album.component';
+import { ArtistAlbumsComponent } from './artist-albums/artist-albums.component';
 import { ArtistComponent } from './artist/artist.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomepageComponent } from './homepage/homepage.component';
@@ -39,6 +40,7 @@ import { SearchComponent } from './search/search.component';
     AlbumComponent,
     ArtistComponent,
     SearchComponent,
+    ArtistAlbumsComponent,
   ],
   exports: [HomepageComponent],
 })

@@ -12,11 +12,17 @@ export class SearchComponent {
   albumSearchResult: any;
   searchInput = '';
 
+  protected readonly albumsWrapperTitle = $localize`:search.albumsWrapper:Albums`;
+
   constructor(protected readonly spotifyData: SpotifyDataService) {}
 
   async search(): Promise<void> {
     this.albumSearchResult = await this.spotifyData.getSearchAlbumResult(
       this.searchInput
     );
+  }
+
+  getAlbumsWrapperTitle(): string {
+    return this.albumsWrapperTitle;
   }
 }
