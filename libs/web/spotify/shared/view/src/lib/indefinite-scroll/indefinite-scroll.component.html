@@ -1,0 +1,5 @@
+<ng-content></ng-content>
+
+<button (click)="loadMore()">Load more</button>
+
+<mat-spinner *ngIf="isLoading$() | async"></mat-spinner>
