@@ -8,13 +8,13 @@ import { BehaviorSubject } from 'rxjs';
   template: '',
 })
 export abstract class AbstractListComponent<T> implements OnInit {
-  data: T[];
+  data: T[] = [];
 
   uri: string;
 
-  isLoading$ = new BehaviorSubject(false);
+  isLoading$ = new BehaviorSubject(true);
 
-  protected pagination: PaginationInterface;
+  protected pagination = {} as PaginationInterface;
 
   constructor(protected readonly route: ActivatedRoute) {}
 
