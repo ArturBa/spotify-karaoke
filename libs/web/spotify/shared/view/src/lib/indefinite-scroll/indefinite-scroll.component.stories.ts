@@ -10,7 +10,7 @@ import { CardWrapperComponent } from '../card-wrapper/card-wrapper.component';
 import { IndefiniteScrollComponent } from './indefinite-scroll.component';
 
 @Component({
-  selector: 'mock-list',
+  selector: 'artur-ba-mock-list',
   template: `
     <artur-ba-card-wrapper title="title">
       <artur-ba-album-card *ngFor="let album of data" [album]="album">
@@ -86,8 +86,8 @@ const Template: Story<IndefiniteScrollComponent> = (args) => ({
   },
   template: `
   <artur-ba-indefinite-scroll>
-    <mock-list [cardsCount]="cardsCount">
-    </mock-list>
+    <artur-ba-mock-list [cardsCount]="cardsCount">
+    </artur-ba-mock-list>
   </artur-ba-indefinite-scroll>
   `,
 });
