@@ -1,10 +1,10 @@
 import { Component, forwardRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
 import {
   PaginationInterface,
   SpotifyDataService,
 } from '@artur-ba/web/spotify/shared/service';
-
 import { AbstractListComponent } from '@artur-ba/web/spotify/shared/view';
 
 @Component({
