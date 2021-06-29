@@ -1,9 +1,8 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
-import { TrackHelper } from '@artur-ba/web/spotify/shared/helper';
-import { UserSettingsService } from '@artur-ba/shared/service';
 import { SpotifyDataService } from '@artur-ba/web/spotify/shared/service';
+import { UserSettingsService } from '@artur-ba/shared/service';
 
 @Component({
   selector: 'artur-ba-dashboard',
