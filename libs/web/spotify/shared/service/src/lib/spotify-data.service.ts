@@ -4,6 +4,14 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { CountryService } from '@artur-ba/shared/service';
 import { parseI18nMeta } from '@angular/compiler/src/render3/view/i18n/meta';
 
+export interface PaginationInterface {
+  limit: number;
+  next?: string | null;
+  offset: number;
+  previous?: string | null;
+  total: number;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -102,20 +110,20 @@ export class SpotifyDataService {
   /**
    * https://api.spotify.com/v1/artists/{id}/albums
    * @param artistUri
-   * @param offset padding offset
-   * @param limit padding limit
+   * @param pagination pagination params
    * @returns Promise
    */
   async getArtistAlbums(
     artistUri: string,
-    offset: number = 0,
-    limit: number = 20,
-    include_groups: string[] = ['album']
+    pagination?: PaginationInterface
   ): Promise<SpotifyApi.PagingObject<SpotifyApi.AlbumObjectSimplified>> {
-    const params = new HttpParams().append(
+    const include_groups: string[] = ['album'];
+    let params = new HttpParams().append(
       'include_groups',
       include_groups.join(',')
     );
+    params = this.appendPaginationParams(params, pagination);
+
     return this.httpClient
       .get<SpotifyApi.PagingObject<SpotifyApi.AlbumObjectSimplified>>(
         this.baseURL + `artists/${artistUri}/albums`,
@@ -125,13 +133,33 @@ export class SpotifyDataService {
   }
 
   async getSearchAlbumResult(
-    q: string
+    q: string,
+    pagination?: PaginationInterface
   ): Promise<SpotifyApi.AlbumSearchResponse> {
-    const params = new HttpParams()
+    let params = new HttpParams()
       .append('q', encodeURI(q))
       .append('type', 'album');
+    params = this.appendPaginationParams(params, pagination);
+
     return this.httpClient
       .get<SpotifyApi.AlbumSearchResponse>(this.baseURL + 'search', { params })
       .toPromise();
+  }
+
+  protected appendPaginationParams(
+    params: HttpParams,
+    pagination?: PaginationInterface
+  ): HttpParams {
+    if (!pagination) {
+      return params;
+    }
+
+    const pagination_params = ['limit', 'offset'];
+    pagination_params.forEach((pagination_param) => {
+      if (pagination[pagination_param]) {
+        params = params.append(pagination_param, pagination[pagination_param]);
+      }
+    });
+    return params;
   }
 }
