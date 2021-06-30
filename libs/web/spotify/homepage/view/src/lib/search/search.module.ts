@@ -9,12 +9,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { WebSpotifySharedViewModule } from '@artur-ba/web/spotify/shared/view';
 
 import { SearchAlbumComponent } from './search-album/search-album.component';
+import { SearchAlbumListComponent } from './search-album/search-album-list/search-album-list.component';
 import { SearchComponent } from './search/search.component';
 import { SearchInputComponent } from './search-input/search-input.component';
 import { SearchRoutingModule } from './search-routing.module';
 
 @NgModule({
-  declarations: [SearchComponent, SearchAlbumComponent, SearchInputComponent],
+  declarations: [
+    SearchComponent,
+    SearchAlbumComponent,
+    SearchInputComponent,
+    SearchAlbumListComponent,
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,

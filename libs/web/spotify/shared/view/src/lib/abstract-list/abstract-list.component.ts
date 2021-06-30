@@ -10,7 +10,7 @@ import { PaginationInterface } from '@artur-ba/web/spotify/shared/service';
 export abstract class AbstractListComponent<T, R> implements OnInit {
   data: T[] = [];
 
-  requestParams: string;
+  requestParams: R;
 
   isLoading$ = new BehaviorSubject(true);
 
@@ -24,7 +24,7 @@ export abstract class AbstractListComponent<T, R> implements OnInit {
   }
 
   abstract getData(
-    requestParam: string,
+    requestParam: R,
     pagination: PaginationInterface
   ): Promise<SpotifyApi.PagingObject<T>>;
 
@@ -41,7 +41,7 @@ export abstract class AbstractListComponent<T, R> implements OnInit {
   }
 
   protected initRequestParams(): void {
-    this.requestParams = this.route.snapshot.params.uri;
+    this.requestParams = this.getRequestParams();
   }
 
   protected async initData(): Promise<void> {
