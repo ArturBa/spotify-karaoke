@@ -1,11 +1,4 @@
-<input
-  matInput
-  type="search"
-  placeholder="Search"
-  (onBlur)="search()"
-  [(ngModel)]="searchInput"
-/>
-<button (click)="search()">Search</button>
+<artur-ba-search-input (search)="search($event)"></artur-ba-search-input>
 
 <artur-ba-card-wrapper [title]="getAlbumsWrapperTitle()" [singleLine]="true">
   <artur-ba-album-card

@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
 
 import { SpotifyDataService } from '@artur-ba/web/spotify/shared/service';
 
@@ -10,15 +9,14 @@ import { SpotifyDataService } from '@artur-ba/web/spotify/shared/service';
 })
 export class SearchComponent {
   albumSearchResult: any;
-  searchInput = '';
 
   protected readonly albumsWrapperTitle = $localize`:search.albumsWrapper:Albums`;
 
   constructor(protected readonly spotifyData: SpotifyDataService) {}
 
-  async search(): Promise<void> {
+  async search(searchQuery: string): Promise<void> {
     this.albumSearchResult = await this.spotifyData.getSearchAlbumResult(
-      this.searchInput
+      searchQuery
     );
   }
 

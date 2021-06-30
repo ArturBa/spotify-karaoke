@@ -18,7 +18,10 @@ import { AbstractListComponent } from '@artur-ba/web/spotify/shared/view';
     },
   ],
 })
-export class ArtistAlbumsListComponent extends AbstractListComponent<SpotifyApi.AlbumObjectSimplified> {
+export class ArtistAlbumsListComponent extends AbstractListComponent<
+  SpotifyApi.AlbumObjectSimplified,
+  string
+> {
   protected readonly albumsWrapperTitle = $localize`:artist.albums:Albums`;
 
   constructor(
@@ -29,10 +32,14 @@ export class ArtistAlbumsListComponent extends AbstractListComponent<SpotifyApi.
   }
 
   async getData(
-    uri: string,
+    requestParams: string,
     pagination: PaginationInterface
   ): Promise<SpotifyApi.PagingObject<SpotifyApi.AlbumObjectSimplified>> {
-    return this.spotifyData.getArtistAlbums(uri, pagination);
+    return this.spotifyData.getArtistAlbums(requestParams, pagination);
+  }
+
+  getRequestParams(): string {
+    return this.route.snapshot.params.uri;
   }
 
   getAlbumsWrapperTitle(): string {
