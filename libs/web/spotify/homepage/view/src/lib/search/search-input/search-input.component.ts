@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   Component,
   EventEmitter,
@@ -5,10 +6,9 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
+import { FormControl } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'artur-ba-search-input',

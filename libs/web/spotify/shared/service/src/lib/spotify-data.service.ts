@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { CountryService } from '@artur-ba/shared/service';
-import { parseI18nMeta } from '@angular/compiler/src/render3/view/i18n/meta';
 
 export interface PaginationInterface {
   limit: number;
