@@ -18,7 +18,7 @@ export default {
       ],
     }),
   ],
-  title: 'CardComponent',
+  title: 'Card/CardComponent',
 } as Meta;
 
 const actionsData = {

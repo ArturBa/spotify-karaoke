@@ -17,7 +17,7 @@ export default {
       ],
     }),
   ],
-  title: 'AlbumCardComponent',
+  title: 'Card/Extended/AlbumCardComponent',
 } as Meta;
 
 const Template: Story<AlbumCardComponent> = (args) => ({
