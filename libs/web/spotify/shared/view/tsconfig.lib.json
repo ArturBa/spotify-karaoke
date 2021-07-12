@@ -18,8 +18,7 @@
     "src/test-setup.ts",
     "**/*.spec.ts",
     "**/*.stories.ts",
-    "**/*.stories.js",
-    "**/*.stories.mdx"
+    "**/*.stories.js"
   ],
   "include": ["**/*.ts"]
 }
