@@ -24,7 +24,7 @@ export default {
       ],
     }),
   ],
-  title: 'Card/Decorator/AlbumCardDecoratorComponent',
+  title: 'Card/Decorator/AlbumCardDecorator',
 } as Meta;
 
 const Template: Story<AlbumCardDecoratorComponent> = (args) => ({
