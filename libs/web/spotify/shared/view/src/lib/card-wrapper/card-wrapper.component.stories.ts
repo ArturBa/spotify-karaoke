@@ -18,7 +18,7 @@ export default {
       ],
     }),
   ],
-  title: 'CardWrapperComponent',
+  title: 'Shared/CardWrapperComponent',
   argTypes: {
     cardsCount: {
       control: { type: 'number', min: 1 },

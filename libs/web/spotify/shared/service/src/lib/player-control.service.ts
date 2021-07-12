@@ -1,3 +1,4 @@
+///  <reference types="@types/spotify-web-playback-sdk"/>
 import { HttpClient } from '@angular/common/http';
 
 import { Injectable, OnDestroy } from '@angular/core';
@@ -16,7 +17,7 @@ export interface SpotifyPlayRequestApi {
   providedIn: 'root',
 })
 export class PlayerControlService implements OnDestroy {
-  protected player$: Spotify.SpotifyPlayer;
+  protected player$: Spotify.Player;
   protected readonly baseURL = 'https://api.spotify.com/v1/';
   protected readonly playerURL = this.baseURL + 'me/player';
 

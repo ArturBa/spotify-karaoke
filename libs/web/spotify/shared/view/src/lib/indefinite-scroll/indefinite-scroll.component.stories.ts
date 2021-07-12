@@ -5,7 +5,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { AbstractListComponent } from '../abstract-list/abstract-list.component';
-import { AlbumCardComponent } from '../album-card/album-card.component';
+import { AlbumCardDecoratorComponent } from '../album-card-decorator/album-card-decorator.component';
 import { CardWrapperComponent } from '../card-wrapper/card-wrapper.component';
 import { IndefiniteScrollComponent } from './indefinite-scroll.component';
 
@@ -13,8 +13,8 @@ import { IndefiniteScrollComponent } from './indefinite-scroll.component';
   selector: 'artur-ba-mock-list',
   template: `
     <artur-ba-card-wrapper title="title">
-      <artur-ba-album-card *ngFor="let album of data" [album]="album">
-      </artur-ba-album-card>
+      <artur-ba-album-card-decorator *ngFor="let album of data" [album]="album">
+      </artur-ba-album-card-decorator>
     </artur-ba-card-wrapper>
   `,
   providers: [
@@ -64,7 +64,7 @@ export default {
       declarations: [
         IndefiniteScrollComponent,
         CardWrapperComponent,
-        AlbumCardComponent,
+        AlbumCardDecoratorComponent,
         MockListComponent,
       ],
       imports: [
@@ -76,7 +76,7 @@ export default {
       ],
     }),
   ],
-  title: 'IndefiniteScrollComponent',
+  title: 'Shared/IndefiniteScrollComponent',
   argTypes: {
     cardsCount: {
       control: { type: 'number', min: 1 },

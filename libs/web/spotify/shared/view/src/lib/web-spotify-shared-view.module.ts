@@ -12,8 +12,9 @@ import { RouterModule } from '@angular/router';
 import { SharedViewModule } from '@artur-ba/shared/view';
 import { WebSpotifySharedPipeModule } from '@artur-ba/web/spotify/shared/pipe';
 
-import { AlbumCardComponent } from './album-card/album-card.component';
+import { AlbumCardDecoratorComponent } from './album-card-decorator/album-card-decorator.component';
 import { CardComponent } from './card/card.component';
+import { CardDecoratorComponent } from './card-decorator/card-decorator.component';
 import { CardWrapperComponent } from './card-wrapper/card-wrapper.component';
 import { IndefiniteScrollComponent } from './indefinite-scroll/indefinite-scroll.component';
 import { SongListComponent } from './song-list/song-list.component';
@@ -38,16 +39,17 @@ import { UserMenuComponent } from './user-menu/user-menu.component';
     SongListComponent,
     UserMenuComponent,
     CardComponent,
-    AlbumCardComponent,
+    AlbumCardDecoratorComponent,
     CardWrapperComponent,
     IndefiniteScrollComponent,
+    CardDecoratorComponent,
   ],
   exports: [
     SongListComponent,
     UserMenuComponent,
     CardComponent,
     CardWrapperComponent,
-    AlbumCardComponent,
+    AlbumCardDecoratorComponent,
     IndefiniteScrollComponent,
   ],
 })
