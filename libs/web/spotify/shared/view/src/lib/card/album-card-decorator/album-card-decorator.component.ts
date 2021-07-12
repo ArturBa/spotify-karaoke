@@ -18,6 +18,13 @@ export class AlbumCardDecoratorComponent
   @Input() album: SpotifyApi.AlbumObjectFull;
 
   ngOnInit(): void {
+    this.initWithAlbumValue();
+  }
+
+  protected initWithAlbumValue(): void {
+    if (!this.album) {
+      return;
+    }
     this.imageUrl = this.getAlbumImage();
     this.title = this.album?.name;
     this.subtitle = this.getAlbumReleaseYear();

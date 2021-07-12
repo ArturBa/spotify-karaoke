@@ -1,12 +1,10 @@
 import { Component, forwardRef, Input } from '@angular/core';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { AbstractListComponent } from '../abstract-list/abstract-list.component';
-import { AlbumCardDecoratorComponent } from '../album-card-decorator/album-card-decorator.component';
-import { CardWrapperComponent } from '../card-wrapper/card-wrapper.component';
+import { CardModule } from '../../card/card.module';
 import { IndefiniteScrollComponent } from './indefinite-scroll.component';
 
 @Component({
@@ -61,14 +59,9 @@ export default {
   component: IndefiniteScrollComponent,
   decorators: [
     moduleMetadata({
-      declarations: [
-        IndefiniteScrollComponent,
-        CardWrapperComponent,
-        AlbumCardDecoratorComponent,
-        MockListComponent,
-      ],
+      declarations: [IndefiniteScrollComponent, MockListComponent],
       imports: [
-        MatCardModule,
+        CardModule,
         MatProgressSpinnerModule,
         RouterTestingModule.withRoutes([
           { path: '**', component: IndefiniteScrollComponent },
