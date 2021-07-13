@@ -58,6 +58,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # 👈 Required to retrieve git history (chromatic)
 
       - name: Load node_modules
         uses: actions/cache@v2
