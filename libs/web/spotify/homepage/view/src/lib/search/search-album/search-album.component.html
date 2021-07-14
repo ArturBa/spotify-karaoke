@@ -2,5 +2,8 @@
 <artur-ba-search-input (search)="search()"></artur-ba-search-input>
 
 <artur-ba-indefinite-scroll>
-  <artur-ba-search-album-list></artur-ba-search-album-list>
+  <artur-ba-card-list
+    [strategy]="getStrategy()"
+    [viewMode]="CardListViewMode.ALBUM"
+  ></artur-ba-card-list>
 </artur-ba-indefinite-scroll>

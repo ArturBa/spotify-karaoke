@@ -1,19 +1,19 @@
 import {
   Component,
   ComponentFactoryResolver,
+  Injector,
   Input,
   OnInit,
   Type,
   ViewChild,
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 import { PaginationInterface } from '@artur-ba/web/spotify/shared/service';
 import { CardListDirective } from './card-list.directive';
 import { CardListStrategy } from './card-list.strategy';
 import { AlbumCardDecoratorComponent } from '../../card/album-card-decorator/album-card-decorator.component';
-import { CardComponent } from '../../card/card/card.component';
 
 export enum CardListViewMode {
   ALBUM,
@@ -40,21 +40,21 @@ export class CardListComponent<T, R> implements OnInit {
 
   protected pagination = {} as PaginationInterface;
 
+  protected subscription = new Subscription();
+
   constructor(
-    protected componentFactoryResolver: ComponentFactoryResolver,
-    protected activatedRoute: ActivatedRoute
+    protected readonly componentFactoryResolver: ComponentFactoryResolver,
+    protected readonly injector: Injector
   ) {}
 
-  async ngOnInit(): Promise<void> {
+  ngOnInit(): void {
     this.initRequestParams();
-    await this.initData();
-    console.log(this.data);
-    this.loadComponent();
+    this.initData();
+    this.initSubscription();
   }
 
-  getActivatedRoute(): void {
-    this.strategy = this.activatedRoute.data['strategy'] || this.strategy;
-    this.viewMode = this.activatedRoute.data['viewMode'] || this.viewMode;
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   getData(
@@ -78,19 +78,28 @@ export class CardListComponent<T, R> implements OnInit {
     this.getMoreData();
   }
 
-  protected loadComponent(): void {
+  protected initSubscription(): void {
+    this.subscription.add(
+      this.isLoading$
+        .pipe(filter((isLoading) => isLoading === false))
+        .subscribe(() => this.loadComponents())
+    );
+  }
+
+  protected loadComponents(): void {
     const componentFactory =
       this.componentFactoryResolver.resolveComponentFactory(
-        viewModeMap.get(CardListViewMode.ALBUM)
+        viewModeMap.get(this.viewMode)
       );
 
     const viewContainerRef = this.cardList.viewContainerRef;
     viewContainerRef.clear();
 
-    const componentRef =
-      viewContainerRef.createComponent<CardComponent>(componentFactory);
-    console.log(this.data);
-    componentRef.instance.data = this.data[0];
+    this.data.forEach((data) => {
+      const component = componentFactory.create(this.injector);
+      component.instance.data = data;
+      viewContainerRef.insert(component.hostView);
+    });
   }
 
   protected initRequestParams(): void {

@@ -14,7 +14,7 @@ import {
 })
 export class ArtistAlbumsComponent implements OnInit {
   artist: SpotifyApi.ArtistObjectFull;
-  readonly ViewMode = CardListViewMode;
+  readonly CardListViewMode = CardListViewMode;
 
   constructor(
     protected readonly route: ActivatedRoute,
@@ -27,6 +27,6 @@ export class ArtistAlbumsComponent implements OnInit {
   }
 
   getStrategy(): ArtistAlbumCardListStrategy {
-    return new ArtistAlbumCardListStrategy(this.spotifyData, this.route);
+    return new ArtistAlbumCardListStrategy(this.route, this.spotifyData);
   }
 }
