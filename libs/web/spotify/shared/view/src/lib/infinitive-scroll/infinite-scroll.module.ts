@@ -7,7 +7,6 @@ import { CardListComponent } from './card-list/card-list.component';
 import { CardListDirective } from './card-list/card-list.directive';
 import { CardModule } from '../card/card.module';
 import { InfiniteScrollComponent } from './infinite-scroll/infinite-scroll.component';
-import { CardWrapperComponent } from '../card/card-wrapper/card-wrapper.component';
 
 const exports = [InfiniteScrollComponent, CardListComponent];
 

@@ -1,3 +1,4 @@
+import { BehaviorSubject, Subscription } from 'rxjs';
 import {
   Component,
   ComponentFactoryResolver,
@@ -7,13 +8,13 @@ import {
   Type,
   ViewChild,
 } from '@angular/core';
-import { BehaviorSubject, Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
 import { PaginationInterface } from '@artur-ba/web/spotify/shared/service';
+
+import { AlbumCardDecoratorComponent } from '../../card/album-card-decorator/album-card-decorator.component';
 import { CardListDirective } from './card-list.directive';
 import { CardListStrategy } from './card-list.strategy';
-import { AlbumCardDecoratorComponent } from '../../card/album-card-decorator/album-card-decorator.component';
 
 export enum CardListViewMode {
   ALBUM,

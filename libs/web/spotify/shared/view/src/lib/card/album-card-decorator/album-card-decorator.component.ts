@@ -1,12 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import {
   TrackHelper,
   UriDataHelper,
 } from '@artur-ba/web/spotify/shared/helper';
 import { CardDecoratorComponent } from '../card-decorator/card-decorator.component';
-
-import { CardComponent } from '../card/card.component';
 
 @Component({
   selector: 'artur-ba-album-card-decorator',

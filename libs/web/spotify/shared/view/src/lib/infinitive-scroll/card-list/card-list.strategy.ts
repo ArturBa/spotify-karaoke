@@ -1,4 +1,5 @@
-import { ActivatedRoute, Route } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+
 import {
   PaginationInterface,
   SpotifyDataService,

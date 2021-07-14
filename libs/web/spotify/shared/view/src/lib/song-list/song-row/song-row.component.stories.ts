@@ -1,11 +1,12 @@
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-
-import { SongRowComponent } from './song-row.component';
-import { album } from '../../../../.storybook/sharedData';
-import { TrackListColumns } from '../song-list/song-list.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+
 import { WebSpotifySharedPipeModule } from '@artur-ba/web/spotify/shared/pipe';
+
+import { album } from '../../../../.storybook/sharedData';
+import { SongRowComponent } from './song-row.component';
+import { TrackListColumns } from '../song-list/song-list.component';
 
 export default {
   title: 'SongList/SongRow',

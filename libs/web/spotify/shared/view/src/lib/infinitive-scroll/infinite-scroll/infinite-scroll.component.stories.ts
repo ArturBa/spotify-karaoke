@@ -1,4 +1,3 @@
-import { Component, forwardRef, Input } from '@angular/core';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RouterTestingModule } from '@angular/router/testing';

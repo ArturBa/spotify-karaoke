@@ -1,12 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { SpotifyDataService } from '@artur-ba/web/spotify/shared/service';
 import {
   CardListComponent,
   CardListViewMode,
   SearchAlbumCardListStrategy,
 } from '@artur-ba/web/spotify/shared/view';
+import { SpotifyDataService } from '@artur-ba/web/spotify/shared/service';
 
 @Component({
   selector: 'artur-ba-search-album',
