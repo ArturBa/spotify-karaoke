@@ -1,36 +1,33 @@
-// import { Meta, moduleMetadata, Story } from '@storybook/angular';
+import { Meta, moduleMetadata, Story } from '@storybook/angular';
 
-// import { SongRowComponent } from './song-row.component';
-// import { album } from '../../../../.storybook/sharedData'
-// import { TrackListColumns } from '../song-list/song-list.component';
+import { SongRowComponent } from './song-row.component';
+import { album } from '../../../../.storybook/sharedData';
+import { TrackListColumns } from '../song-list/song-list.component';
 
-// export default {
-//   title: 'SongList/SongRow',
-//   decorators: [
-//     moduleMetadata({
-//       declarations: [SongRowComponent],
-//     }),
-//   ],
-// } as Meta;
+export default {
+  title: 'SongList/SongRow',
+  decorators: [
+    moduleMetadata({
+      declarations: [SongRowComponent],
+    }),
+  ],
+} as Meta;
 
-// const Template: Story<SongRowComponent> = (args) => ({
-//   props: {
-//     ...args,
-//   },
-// })
+const Template: Story<SongRowComponent> = (args) => ({
+  props: {
+    ...args,
+  },
+});
 
-// export const Default = Template.bind({});
-// Default.args = {
-//   track: {
-//     track_number: 9,
-//     name: "Welcome to the Jungle",
-//     album,
-//   },
-//   columns: [
-//     TrackListColumns.album,
-//     TrackListColumns.count,
-//   ],
-// };
+export const Default = Template.bind({});
+Default.args = {
+  track: {
+    track_number: 9,
+    name: 'Welcome to the Jungle',
+    album,
+  },
+  columns: [TrackListColumns.album, TrackListColumns.count],
+};
 // {
 // 	"0": {
 // 		"artists": [

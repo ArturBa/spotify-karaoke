@@ -18,11 +18,7 @@ const exports = [
 ];
 
 @NgModule({
-  declarations: [
-    ...exports,
-    CardDecoratorComponent,
-    PlaylistCardDecoratorComponent,
-  ],
+  declarations: [...exports],
   imports: [CommonModule, MatCardModule, RouterModule.forChild([])],
   exports,
 })
