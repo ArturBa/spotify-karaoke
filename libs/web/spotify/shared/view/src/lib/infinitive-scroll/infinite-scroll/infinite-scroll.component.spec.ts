@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IndefiniteScrollComponent } from './indefinite-scroll.component';
+import { InfiniteScrollComponent } from './infinite-scroll.component';
 
 describe('IndefiniteScrollComponent', () => {
-  let component: IndefiniteScrollComponent;
-  let fixture: ComponentFixture<IndefiniteScrollComponent>;
+  let component: InfiniteScrollComponent;
+  let fixture: ComponentFixture<InfiniteScrollComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [IndefiniteScrollComponent],
+      declarations: [InfiniteScrollComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(IndefiniteScrollComponent);
+    fixture = TestBed.createComponent(InfiniteScrollComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
