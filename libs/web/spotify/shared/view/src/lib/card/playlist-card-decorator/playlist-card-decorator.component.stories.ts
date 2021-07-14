@@ -3,9 +3,9 @@ import { MatCardModule } from '@angular/material/card';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import * as CardComponentStories from '../card/card.component.stories';
-import { PlaylistCardDecoratorComponent } from './playlist-card-decorator.component';
 import { CardComponent } from '../card/card.component';
 import { CardDecoratorComponent } from '../card-decorator/card-decorator.component';
+import { PlaylistCardDecoratorComponent } from './playlist-card-decorator.component';
 
 export default {
   component: PlaylistCardDecoratorComponent,
