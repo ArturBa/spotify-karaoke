@@ -23,6 +23,7 @@ export class AlbumCardDecoratorComponent
   }
 
   protected initWithAlbumValue(): void {
+    this.album = this.data || this.album;
     if (!this.album) {
       return;
     }

@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { AbstractListComponent } from '../abstract-list/abstract-list.component';
+import { CardListComponent } from '../card-list/card-list.component';
 
 @Component({
   selector: 'artur-ba-indefinite-scroll',
@@ -17,8 +17,8 @@ import { AbstractListComponent } from '../abstract-list/abstract-list.component'
 export class IndefiniteScrollComponent implements AfterViewInit {
   @ViewChild('anchor') anchor: ElementRef<HTMLElement>;
 
-  @ContentChild(AbstractListComponent)
-  abstractList: AbstractListComponent<unknown, unknown>;
+  @ContentChild(CardListComponent)
+  abstractList: CardListComponent<unknown, unknown>;
 
   protected observer: IntersectionObserver;
 

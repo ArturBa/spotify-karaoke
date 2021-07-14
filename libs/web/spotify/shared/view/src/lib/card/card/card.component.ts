@@ -11,6 +11,7 @@ export class CardComponent {
   @Input() title: string;
   @Input() subtitle: string;
   @Input() redirectUrl: string;
+  @Input() data: any;
 
   readonly cardImageAlt = $localize`:card.image-alt:Album image`;
 

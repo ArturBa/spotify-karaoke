@@ -1,0 +1,124 @@
+import {
+  Component,
+  ComponentFactoryResolver,
+  Input,
+  OnInit,
+  Type,
+  ViewChild,
+} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
+
+import { PaginationInterface } from '@artur-ba/web/spotify/shared/service';
+import { CardListDirective } from './card-list.directive';
+import { CardListStrategy } from './card-list.strategy';
+import { AlbumCardDecoratorComponent } from '../../card/album-card-decorator/album-card-decorator.component';
+import { CardComponent } from '../../card/card/card.component';
+
+export enum CardListViewMode {
+  ALBUM,
+}
+const viewModeMap = new Map<CardListViewMode, Type<any>>();
+viewModeMap.set(CardListViewMode.ALBUM, AlbumCardDecoratorComponent);
+
+@Component({
+  selector: 'artur-ba-card-list',
+  templateUrl: './card-list.component.html',
+})
+export class CardListComponent<T, R> implements OnInit {
+  @Input() strategy: CardListStrategy<T, R>;
+
+  @Input() viewMode: CardListViewMode;
+
+  @ViewChild(CardListDirective, { static: true }) cardList!: CardListDirective;
+
+  data: T[] = [];
+
+  requestParams: R;
+
+  isLoading$ = new BehaviorSubject(true);
+
+  protected pagination = {} as PaginationInterface;
+
+  constructor(
+    protected componentFactoryResolver: ComponentFactoryResolver,
+    protected activatedRoute: ActivatedRoute
+  ) {}
+
+  async ngOnInit(): Promise<void> {
+    this.initRequestParams();
+    await this.initData();
+    console.log(this.data);
+    this.loadComponent();
+  }
+
+  getActivatedRoute(): void {
+    this.strategy = this.activatedRoute.data['strategy'] || this.strategy;
+    this.viewMode = this.activatedRoute.data['viewMode'] || this.viewMode;
+  }
+
+  getData(
+    requestParam: R,
+    pagination: PaginationInterface
+  ): Promise<SpotifyApi.PagingObject<T>> {
+    return this.strategy.getData(requestParam, pagination);
+  }
+
+  getRequestParams(): R {
+    return this.strategy.getRequestParams();
+  }
+
+  isMoreToShow(): boolean {
+    const { total, offset, limit } = this.pagination;
+    return total > offset + limit;
+  }
+
+  loadMoreData(): void {
+    this.isLoading$.next(true);
+    this.getMoreData();
+  }
+
+  protected loadComponent(): void {
+    const componentFactory =
+      this.componentFactoryResolver.resolveComponentFactory(
+        viewModeMap.get(CardListViewMode.ALBUM)
+      );
+
+    const viewContainerRef = this.cardList.viewContainerRef;
+    viewContainerRef.clear();
+
+    const componentRef =
+      viewContainerRef.createComponent<CardComponent>(componentFactory);
+    console.log(this.data);
+    componentRef.instance.data = this.data[0];
+  }
+
+  protected initRequestParams(): void {
+    this.requestParams = this.getRequestParams();
+  }
+
+  protected async initData(): Promise<void> {
+    const response = await this.getData(this.requestParams, this.pagination);
+    this.data = this.getItemsFromResponse(response);
+    this.pagination = this.getPaginationFromResponse(response);
+    this.isLoading$.next(false);
+  }
+
+  protected async getMoreData(): Promise<void> {
+    this.pagination.offset += this.pagination.limit;
+    const response = await this.getData(this.requestParams, this.pagination);
+    this.data.push(...this.getItemsFromResponse(response));
+    this.isLoading$.next(false);
+  }
+
+  protected getItemsFromResponse(response: SpotifyApi.PagingObject<T>): T[] {
+    return response.items;
+  }
+
+  protected getPaginationFromResponse(
+    response: SpotifyApi.PagingObject<T>
+  ): PaginationInterface {
+    const { limit, next, offset, previous, total } = response;
+    return { limit, next, offset, previous, total };
+  }
+}

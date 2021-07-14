@@ -11,6 +11,6 @@ export class SearchAlbumComponent {
   searchAlbumList: SearchAlbumListComponent;
 
   search() {
-    this.searchAlbumList?.ngOnInit();
+    // this.searchAlbumList?.ngOnInit();
   }
 }
