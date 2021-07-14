@@ -1,12 +1,12 @@
+import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { moduleMetadata, Story, Meta } from '@storybook/angular';
 
 import { WebSpotifySharedPipeModule } from '@artur-ba/web/spotify/shared/pipe';
 
-import { SongRowComponent } from '../song-row/song-row.component';
-import { SongListComponent, TrackListColumns } from './song-list.component';
 import { album, artists } from '../../../../.storybook/sharedData';
+import { SongListComponent, TrackListColumns } from './song-list.component';
+import { SongRowComponent } from '../song-row/song-row.component';
 
 export default {
   title: 'SongList/SongList',
@@ -29,7 +29,7 @@ export default {
         options: [
           ...Object.keys(TrackListColumns).map((a) => TrackListColumns[a]),
         ],
-        type: 'check', // Type 'select' is automatically inferred when 'options' is defined
+        type: 'check',
       },
     },
   },

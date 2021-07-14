@@ -4,9 +4,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { AbstractListComponent } from '../abstract-list/abstract-list.component';
+import { album } from '../../../../.storybook/sharedData';
 import { CardModule } from '../../card/card.module';
 import { IndefiniteScrollComponent } from './indefinite-scroll.component';
-import { album } from '../../../../.storybook/sharedData';
 
 @Component({
   selector: 'artur-ba-mock-list',
