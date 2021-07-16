@@ -8,7 +8,7 @@ import {
 export abstract class CardListStrategy<T, R> {
   abstract getData(
     requestParam: R,
-    pagination: PaginationInterface
+    pagination: PaginationInterface,
   ): Promise<SpotifyApi.PagingObject<T>>;
 
   abstract getRequestParams(): R;
@@ -19,12 +19,12 @@ export class ArtistAlbumCardListStrategy
 {
   constructor(
     protected readonly route: ActivatedRoute,
-    protected readonly spotifyData: SpotifyDataService
+    protected readonly spotifyData: SpotifyDataService,
   ) {}
 
   async getData(
     requestParams: string,
-    pagination: PaginationInterface
+    pagination: PaginationInterface,
   ): Promise<SpotifyApi.PagingObject<SpotifyApi.AlbumObjectSimplified>> {
     return this.spotifyData.getArtistAlbums(requestParams, pagination);
   }
@@ -39,16 +39,16 @@ export class SearchAlbumCardListStrategy
 {
   constructor(
     protected readonly route: ActivatedRoute,
-    protected readonly spotifyData: SpotifyDataService
+    protected readonly spotifyData: SpotifyDataService,
   ) {}
 
   async getData(
     requestParams: string,
-    pagination: PaginationInterface
+    pagination: PaginationInterface,
   ): Promise<SpotifyApi.PagingObject<SpotifyApi.AlbumObjectSimplified>> {
     const response = await this.spotifyData.getSearchAlbumResult(
       requestParams,
-      pagination
+      pagination,
     );
     return Promise.resolve(response.albums);
   }

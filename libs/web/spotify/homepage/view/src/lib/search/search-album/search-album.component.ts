@@ -22,7 +22,7 @@ export class SearchAlbumComponent {
 
   constructor(
     protected readonly route: ActivatedRoute,
-    protected readonly spotifyData: SpotifyDataService
+    protected readonly spotifyData: SpotifyDataService,
   ) {}
 
   getStrategy(): SearchAlbumCardListStrategy {

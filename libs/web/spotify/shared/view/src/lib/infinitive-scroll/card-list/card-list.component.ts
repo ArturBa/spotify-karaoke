@@ -45,7 +45,7 @@ export class CardListComponent<T, R> implements OnInit {
 
   constructor(
     protected readonly componentFactoryResolver: ComponentFactoryResolver,
-    protected readonly injector: Injector
+    protected readonly injector: Injector,
   ) {}
 
   ngOnInit(): void {
@@ -60,7 +60,7 @@ export class CardListComponent<T, R> implements OnInit {
 
   getData(
     requestParam: R,
-    pagination: PaginationInterface
+    pagination: PaginationInterface,
   ): Promise<SpotifyApi.PagingObject<T>> {
     return this.strategy.getData(requestParam, pagination);
   }
@@ -83,14 +83,14 @@ export class CardListComponent<T, R> implements OnInit {
     this.subscription.add(
       this.isLoading$
         .pipe(filter((isLoading) => isLoading === false))
-        .subscribe(() => this.loadComponents())
+        .subscribe(() => this.loadComponents()),
     );
   }
 
   protected loadComponents(): void {
     const componentFactory =
       this.componentFactoryResolver.resolveComponentFactory(
-        viewModeMap.get(this.viewMode)
+        viewModeMap.get(this.viewMode),
       );
 
     const viewContainerRef = this.cardList.viewContainerRef;
@@ -126,7 +126,7 @@ export class CardListComponent<T, R> implements OnInit {
   }
 
   protected getPaginationFromResponse(
-    response: SpotifyApi.PagingObject<T>
+    response: SpotifyApi.PagingObject<T>,
   ): PaginationInterface {
     const { limit, next, offset, previous, total } = response;
     return { limit, next, offset, previous, total };
