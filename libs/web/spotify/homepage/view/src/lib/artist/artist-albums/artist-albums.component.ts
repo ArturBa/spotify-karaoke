@@ -18,7 +18,7 @@ export class ArtistAlbumsComponent implements OnInit {
 
   constructor(
     protected readonly route: ActivatedRoute,
-    protected readonly spotifyData: SpotifyDataService
+    protected readonly spotifyData: SpotifyDataService,
   ) {}
 
   async ngOnInit(): Promise<void> {
