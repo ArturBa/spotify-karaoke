@@ -61,7 +61,7 @@ jobs:
       #     - name: Unit tests
       #       run: npx nx test shared-interceptors shared-service shared-view web-lyrics-model web-lyrics-view
       - name: Chromatic
-        if: "!contains('dependabot', github.head_ref)"
+        if: contains('dependabot', github.head_ref) == false
         run: echo ${{github.ref}} ${{github.head_ref}} ${{github.base_ref}}
 
       - name: ChromaticReverse
