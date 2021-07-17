@@ -72,6 +72,6 @@ jobs:
   #       run: npx nx test shared-interceptors shared-service shared-view web-lyrics-model web-lyrics-view
 
       - name: Chromatic
-        if: "!contains(['dependabot'], github.ref)"
+        if: "!contains('dependabot', github.ref)"
         run: echo ${github.ref}
         # run: npx chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN }} --exit-zero-on-changes
