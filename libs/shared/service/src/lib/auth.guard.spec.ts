@@ -9,13 +9,13 @@ import { AuthStore } from './auth.store';
 describe('AuthGuard (isolated)', () => {
   let guard: AuthGuard;
 
-  const routerMock = ({
+  const routerMock = {
     navigate: jest.fn(),
-  } as unknown) as Router;
+  } as unknown as Router;
   const authStoreMock = (logged = true) => {
-    return ({
+    return {
       isLogged: jest.fn(() => logged),
-    } as unknown) as AuthStore;
+    } as unknown as AuthStore;
   };
 
   const privateRoutes = ['/lyrics', '/dashboard'];
@@ -39,7 +39,7 @@ describe('AuthGuard (isolated)', () => {
     it('', () => {
       [...publicRoutes, ...privateRoutes].forEach((route) => {
         expect(
-          guard.canActivate(routeMock, routerStateMock(route))
+          guard.canActivate(routeMock, routerStateMock(route)),
         ).toBeTruthy();
       });
     });
@@ -52,14 +52,14 @@ describe('AuthGuard (isolated)', () => {
     it('should allow for public routes', () => {
       [...publicRoutes].forEach((route) => {
         expect(
-          guard.canActivate(routeMock, routerStateMock(route))
+          guard.canActivate(routeMock, routerStateMock(route)),
         ).toBeTruthy();
       });
     });
     it('should not allow for private routes', () => {
       [...privateRoutes].forEach((route) => {
         expect(
-          guard.canActivate(routeMock, routerStateMock(route))
+          guard.canActivate(routeMock, routerStateMock(route)),
         ).toBeFalsy();
       });
     });

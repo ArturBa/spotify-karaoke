@@ -19,7 +19,7 @@ export class ArtistComponent implements OnInit, OnDestroy {
 
   constructor(
     protected readonly route: ActivatedRoute,
-    protected readonly spotifyData: SpotifyDataService
+    protected readonly spotifyData: SpotifyDataService,
   ) {}
 
   ngOnInit(): void {
