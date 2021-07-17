@@ -63,4 +63,8 @@ jobs:
       - name: Chromatic
         if: "!contains('dependabot', github.head_ref)"
         run: echo ${{github.ref}} ${{github.head_ref}} ${{github.base_ref}}
+
+      - name: ChromaticReverse
+        if: "contains('dependabot', github.head_ref)"
+        run: echo ${{github.ref}} ${{github.head_ref}} ${{github.base_ref}} "reversed"
         # run: npx chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN }} --exit-zero-on-changes
