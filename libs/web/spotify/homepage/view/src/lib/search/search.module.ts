@@ -12,9 +12,15 @@ import { SearchAlbumComponent } from './search-album/search-album.component';
 import { SearchComponent } from './search/search.component';
 import { SearchInputComponent } from './search-input/search-input.component';
 import { SearchRoutingModule } from './search.routing';
+import { SearchPlaylistComponent } from './search-playlist/search-playlist.component';
 
 @NgModule({
-  declarations: [SearchComponent, SearchAlbumComponent, SearchInputComponent],
+  declarations: [
+    SearchComponent,
+    SearchAlbumComponent,
+    SearchInputComponent,
+    SearchPlaylistComponent,
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
