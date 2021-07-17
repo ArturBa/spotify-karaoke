@@ -1,0 +1,21 @@
+<artur-ba-search-input (search)="search($event)"></artur-ba-search-input>
+
+<artur-ba-card-wrapper-with-content
+  [title]="albumsWrapperTitle"
+  [singleLine]="true"
+  viewMoreRoute="albums"
+  [viewMoreQueryParams]="queryParams"
+  [viewMode]="CardListViewMode.ALBUM"
+  [data]="albumSearchResult?.albums.items"
+>
+</artur-ba-card-wrapper-with-content>
+
+<artur-ba-card-wrapper-with-content
+  [title]="playlistWrapperTitle"
+  [singleLine]="true"
+  viewMoreRoute="playlists"
+  [viewMoreQueryParams]="queryParams"
+  [viewMode]="CardListViewMode.PLAYLIST"
+  [data]="playlistSearchResult?.playlists.items"
+>
+</artur-ba-card-wrapper-with-content>

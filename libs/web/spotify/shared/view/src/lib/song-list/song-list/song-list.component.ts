@@ -9,11 +9,11 @@ import {
 import { SpotifyDataService } from '@artur-ba/web/spotify/shared/service';
 
 export enum TrackListColumns {
-  count,
-  image,
-  title_artist,
-  album,
-  time,
+  count = 'Count',
+  image = 'Image',
+  title_artist = 'Title_Artist',
+  album = 'Album',
+  time = 'Time',
 }
 
 @Component({
@@ -62,13 +62,15 @@ export class SongListComponent implements OnChanges {
     this.tracks = tracks;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   protected hasValue(v: any[] | undefined): boolean {
     return v !== undefined && v.length > 0;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   protected wasValueChanged(
     prev: any[] | undefined,
-    curr: any[] | undefined
+    curr: any[] | undefined,
   ): boolean {
     if (prev === undefined && curr !== undefined) {
       return true;
@@ -79,6 +81,7 @@ export class SongListComponent implements OnChanges {
     return false;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   protected areArraysEqual(a: any[], b: any[]): boolean {
     return (
       a.length == b.length &&
