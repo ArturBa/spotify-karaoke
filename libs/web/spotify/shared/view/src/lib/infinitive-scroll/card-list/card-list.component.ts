@@ -17,7 +17,7 @@ import { CardListDirective } from './card-list.directive';
 import { CardListStrategy } from './card-list.strategy';
 
 export enum CardListViewMode {
-  ALBUM,
+  ALBUM = 'Album',
 }
 const viewModeMap = new Map<CardListViewMode, Type<any>>();
 viewModeMap.set(CardListViewMode.ALBUM, AlbumCardDecoratorComponent);

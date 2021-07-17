@@ -2,20 +2,25 @@ import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { CardModule } from '../../card/card.module';
-import { InfiniteScrollComponent } from './infinite-scroll.component';
 import {
   CardListComponent,
   CardListViewMode,
 } from '../card-list/card-list.component';
-import { CardListStrategy } from '../card-list/card-list.strategy';
 import { album } from '../../../../.storybook/sharedData';
+import { CardListDirective } from '../card-list/card-list.directive';
+import { CardListStrategy } from '../card-list/card-list.strategy';
+import { CardModule } from '../../card/card.module';
+import { InfiniteScrollComponent } from './infinite-scroll.component';
 
 export default {
   component: InfiniteScrollComponent,
   decorators: [
     moduleMetadata({
-      declarations: [InfiniteScrollComponent, CardListComponent],
+      declarations: [
+        InfiniteScrollComponent,
+        CardListComponent,
+        CardListDirective,
+      ],
       imports: [
         CardModule,
         MatProgressSpinnerModule,
@@ -30,21 +35,37 @@ export default {
     cardsCount: {
       control: { type: 'number', min: 1 },
     },
+    cardListViewMode: {
+      control: {
+        options: [
+          ...Object.keys(CardListViewMode).map((a) => CardListViewMode[a]),
+        ],
+        type: 'radio',
+      },
+    },
   },
 } as Meta;
 
-const cardListViewMode = CardListViewMode.ALBUM;
 class CardListMockStrategy
   implements
     CardListStrategy<Partial<SpotifyApi.AlbumObjectSimplified>, string>
 {
+  protected total = 40;
+  protected limit = 20;
+
+  constructor(total: number) {
+    this.total = total;
+  }
+
   getData(requestParams, pagination) {
-    const data = [album];
+    const offset = pagination.offset || 0;
+    const limit = Math.min(this.total - offset, this.limit);
+    const items = new Array(this.limit).fill(album);
     const paginationResponse = {
-      items: data,
-      limit: 20,
-      offset: 20 + pagination.offset,
-      total: 40,
+      items,
+      limit,
+      offset,
+      total: this.total,
       href: '',
       next: null,
       previous: null,
@@ -57,21 +78,21 @@ class CardListMockStrategy
   }
 }
 
-const newS = new CardListMockStrategy();
-
 const Template: Story<InfiniteScrollComponent> = (args) => ({
   props: {
     ...args,
+    newStrategy: new CardListMockStrategy((args as any).cardsCount),
   },
   template: `
-  <artur-ba-indefinite-scroll>
-    <artur-ba-card-list [viewMode]="cardListViewMore" [strategy]="newS">
+  <artur-ba-infinite-scroll>
+    <artur-ba-card-list [viewMode]="cardListViewMode" [strategy]="newStrategy">
     </artur-ba-card-list>
-  </artur-ba-indefinite-scroll>
+  </artur-ba-infinite-scroll>
   `,
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  cardsCount: 29,
+  cardsCount: 49,
+  cardListViewMode: CardListViewMode.ALBUM,
 };
