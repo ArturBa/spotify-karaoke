@@ -11,11 +11,11 @@ import {
 } from '@angular/core';
 import { filter } from 'rxjs/operators';
 
+import { CardDirective } from '@artur-ba/web/spotify/shared/directives';
 import { PaginationInterface } from '@artur-ba/web/spotify/shared/service';
 
 import { AlbumCardDecoratorComponent } from '../../card/album-card-decorator/album-card-decorator.component';
 import { CardDecoratorComponent } from '../../card/card-decorator/card-decorator.component';
-import { CardListDirective } from './card-list.directive';
 import { CardListStrategy } from './card-list.strategy';
 
 export enum CardListViewMode {
@@ -37,7 +37,7 @@ export class CardListComponent<T, R> implements OnInit, OnDestroy {
 
   @Input() viewMode: CardListViewMode;
 
-  @ViewChild(CardListDirective, { static: true }) cardList!: CardListDirective;
+  @ViewChild(CardDirective, { static: true }) cardList!: CardDirective;
 
   data: T[] = [];
 
