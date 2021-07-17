@@ -6,8 +6,8 @@ import {
   TrackHelper,
   UriDataHelper,
 } from '@artur-ba/web/spotify/shared/helper';
-import { SpotifyDataService } from '@artur-ba/web/spotify/shared/service';
 import { CardListViewMode } from '@artur-ba/web/spotify/shared/view';
+import { SpotifyDataService } from '@artur-ba/web/spotify/shared/service';
 
 @Component({
   selector: 'artur-ba-artist',

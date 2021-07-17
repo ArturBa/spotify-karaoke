@@ -1,5 +1,5 @@
-import { BehaviorSubject, Subscription } from 'rxjs';
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { PaginationInterface } from '@artur-ba/web/spotify/shared/service';
 
@@ -22,8 +22,6 @@ export class CardListComponent<T, R> implements OnInit {
   isLoading$ = new BehaviorSubject(true);
 
   protected pagination = {} as PaginationInterface;
-
-  constructor() {}
 
   ngOnInit(): void {
     this.initRequestParams();
