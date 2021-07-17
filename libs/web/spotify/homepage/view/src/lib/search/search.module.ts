@@ -11,8 +11,8 @@ import { WebSpotifySharedViewModule } from '@artur-ba/web/spotify/shared/view';
 import { SearchAlbumComponent } from './search-album/search-album.component';
 import { SearchComponent } from './search/search.component';
 import { SearchInputComponent } from './search-input/search-input.component';
-import { SearchRoutingModule } from './search.routing';
 import { SearchPlaylistComponent } from './search-playlist/search-playlist.component';
+import { SearchRoutingModule } from './search.routing';
 
 @NgModule({
   declarations: [
