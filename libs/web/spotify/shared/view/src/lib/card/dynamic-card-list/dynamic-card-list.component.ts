@@ -46,6 +46,8 @@ export class DynamicCardListComponent<T> implements OnInit, OnChanges {
 
   protected viewContainerRef: ViewContainerRef;
 
+  protected isInit = false;
+
   constructor(
     protected readonly componentFactoryResolver: ComponentFactoryResolver,
     protected readonly injector: Injector,
@@ -58,19 +60,21 @@ export class DynamicCardListComponent<T> implements OnInit, OnChanges {
       );
 
     this.viewContainerRef = this.cardList.viewContainerRef;
-  }
-
-  ngOnChanges(): void {
+    this.isInit = true;
     this.loadComponents();
   }
 
+  ngOnChanges(): void {
+    this.isInit && this.loadComponents();
+  }
+
   protected loadComponents(): void {
-    this.viewContainerRef?.clear();
+    this.viewContainerRef.clear();
 
     this.data?.forEach((data) => {
       const component = this.componentFactory.create(this.injector);
       component.instance.data = data;
-      this.viewContainerRef?.insert(component.hostView);
+      this.viewContainerRef.insert(component.hostView);
     });
   }
 }
