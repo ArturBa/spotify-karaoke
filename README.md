@@ -22,10 +22,30 @@ I've tried to implement that for them.
     ├── apps
     │   └── angular-spotify
     └── libs
-        └── web (dir)
-            └── lyrics (dir)
-                ├── mini-lyrics
-                │   ├── interface (angular:lib MiniLyrics data interfaces)
-                │   └── service (angular:lib MiniLyricsService)
-                └── view (angular:lib, LyricsComponent)
+        ├── shared
+        │   ├── interceptors
+        │   ├── service
+        │   ├── test-helpers
+        │   └── view
+        └── web
+            ├── lyrics
+            │   ├── mini-lyrics
+            │   ├── model
+            │   └── view
+            └── spotify
+                ├── homepage
+                ├── player
+                ├── shared
+                │   ├── helper
+                │   ├── pipe
+                │   ├── service
+                │   └── view (Storybook)
+                └── sidebar
+
 ```
+
+### Storybook
+
+I've used a storybook for a shared view description and visual tests
+
+The storybook documentation is available [here](https://development--60ed26c8451cdd003bd881db.chromatic.com)
