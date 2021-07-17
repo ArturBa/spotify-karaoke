@@ -1,7 +1,7 @@
 import { Directive, ViewContainerRef } from '@angular/core';
 
 @Directive({
-  selector: '[cardList]',
+  selector: '[arturBaCardList]',
 })
 export class CardListDirective {
   constructor(public viewContainerRef: ViewContainerRef) {}

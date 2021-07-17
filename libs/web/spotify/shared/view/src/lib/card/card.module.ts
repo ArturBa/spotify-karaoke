@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
 
 import { AlbumCardDecoratorComponent } from './album-card-decorator/album-card-decorator.component';
 import { CardComponent } from './card/card.component';
-import { CardDecoratorComponent } from './card-decorator/card-decorator.component';
 import { CardWrapperComponent } from './card-wrapper/card-wrapper.component';
 import { PlaylistCardDecoratorComponent } from './playlist-card-decorator/playlist-card-decorator.component';
 

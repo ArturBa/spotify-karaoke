@@ -4,6 +4,7 @@ import {
   ComponentFactoryResolver,
   Injector,
   Input,
+  OnDestroy,
   OnInit,
   Type,
   ViewChild,
@@ -13,20 +14,25 @@ import { filter } from 'rxjs/operators';
 import { PaginationInterface } from '@artur-ba/web/spotify/shared/service';
 
 import { AlbumCardDecoratorComponent } from '../../card/album-card-decorator/album-card-decorator.component';
+import { CardDecoratorComponent } from '../../card/card-decorator/card-decorator.component';
 import { CardListDirective } from './card-list.directive';
 import { CardListStrategy } from './card-list.strategy';
 
 export enum CardListViewMode {
   ALBUM = 'Album',
 }
-const viewModeMap = new Map<CardListViewMode, Type<any>>();
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const viewModeMap = new Map<
+  CardListViewMode,
+  Type<CardDecoratorComponent<any>>
+>();
 viewModeMap.set(CardListViewMode.ALBUM, AlbumCardDecoratorComponent);
 
 @Component({
   selector: 'artur-ba-card-list',
   templateUrl: './card-list.component.html',
 })
-export class CardListComponent<T, R> implements OnInit {
+export class CardListComponent<T, R> implements OnInit, OnDestroy {
   @Input() strategy: CardListStrategy<T, R>;
 
   @Input() viewMode: CardListViewMode;
