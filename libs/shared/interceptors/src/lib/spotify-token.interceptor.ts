@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 
 import { AuthStore } from '@artur-ba/shared/service';
 
-export const spotifyAPIRegex: RegExp = /^https:\/\/api\.spotify\.com/;
+export const spotifyAPIRegex = /^https:\/\/api\.spotify\.com/;
 
 @Injectable()
 export class SpotifyTokenInterceptor implements HttpInterceptor {
