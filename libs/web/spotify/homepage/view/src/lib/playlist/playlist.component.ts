@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TrackHelper } from '@artur-ba/web/spotify/shared/helper';
+
 import { SpotifyDataService } from '@artur-ba/web/spotify/shared/service';
+import { TrackHelper } from '@artur-ba/web/spotify/shared/helper';
 import { TrackListColumns } from '@artur-ba/web/spotify/shared/view';
 
 @Component({
