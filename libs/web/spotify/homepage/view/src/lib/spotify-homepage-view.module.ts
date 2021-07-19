@@ -14,6 +14,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { QueueComponent } from './queue/queue.component';
 import { WebSpotifyHomepageViewRoutingModule } from './spotify-homepage-view.routing';
+import { PlaylistComponent } from './playlist/playlist.component';
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import { WebSpotifyHomepageViewRoutingModule } from './spotify-homepage-view.rou
     DashboardComponent,
     QueueComponent,
     AlbumComponent,
+    PlaylistComponent,
   ],
   exports: [HomepageComponent],
 })
