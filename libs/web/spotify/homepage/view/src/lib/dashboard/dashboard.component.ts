@@ -1,9 +1,9 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
+import { CardListViewMode } from '@artur-ba/web/spotify/shared/view';
 import { SpotifyDataService } from '@artur-ba/web/spotify/shared/service';
 import { UserSettingsService } from '@artur-ba/shared/service';
-import { CardListViewMode } from '@artur-ba/web/spotify/shared/view';
 
 @Component({
   selector: 'artur-ba-dashboard',

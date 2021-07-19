@@ -12,9 +12,9 @@ import { WebSpotifySidebarViewModule } from '@artur-ba/web/spotify/sidebar/view'
 import { AlbumComponent } from './album/album.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { PlaylistComponent } from './playlist/playlist.component';
 import { QueueComponent } from './queue/queue.component';
 import { WebSpotifyHomepageViewRoutingModule } from './spotify-homepage-view.routing';
-import { PlaylistComponent } from './playlist/playlist.component';
 
 @NgModule({
   imports: [
