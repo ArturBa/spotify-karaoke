@@ -3,7 +3,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { PlayerStore } from '@artur-ba/shared/service';
-import { TrackHelper } from '@artur-ba/web/spotify/shared/helper';
 @Component({
   selector: 'artur-ba-player-song',
   templateUrl: './player-song.component.html',

@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 
-import {
-  TrackHelper,
-  UriDataHelper,
-} from '@artur-ba/web/spotify/shared/helper';
+import { UriDataHelper } from '@artur-ba/web/spotify/shared/helper';
 
 import { CardDecoratorComponent } from '../card-decorator/card-decorator.component';
 

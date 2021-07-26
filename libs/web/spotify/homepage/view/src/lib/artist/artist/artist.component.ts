@@ -2,12 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
-import {
-  TrackHelper,
-  UriDataHelper,
-} from '@artur-ba/web/spotify/shared/helper';
 import { CardListViewMode } from '@artur-ba/web/spotify/shared/view';
 import { SpotifyDataService } from '@artur-ba/web/spotify/shared/service';
+import { UriDataHelper } from '@artur-ba/web/spotify/shared/helper';
 
 @Component({
   selector: 'artur-ba-artist',

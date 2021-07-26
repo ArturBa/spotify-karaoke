@@ -1,7 +1,5 @@
-import { LEADING_TRIVIA_CHARS } from '@angular/compiler/src/render3/view/template';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { TrackHelper } from '@artur-ba/web/spotify/shared/helper';
 
 @Component({
   selector: 'artur-ba-card',
