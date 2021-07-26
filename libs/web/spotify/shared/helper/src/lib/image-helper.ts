@@ -15,7 +15,7 @@ export class ImageHelper {
     }
 
     const images_rated = images.map((image): RatedImages => {
-      return { url: image.url, difference: Math.abs(image.height - size) };
+      return { url: image.url, difference: Math.abs(image.width - size) };
     });
     const images_sorted = images_rated.sort(
       (a, b) => a.difference - b.difference,
@@ -45,7 +45,8 @@ export class ImageHelper {
   }
 
   static getImagesSet(images: SpotifyApi.ImageObject[] = []): string {
-    const transformImages = images || this.getDefaultImageObjects();
+    const transformImages =
+      images && images.length > 0 ? images : this.getDefaultImageObjects();
     return [
       ...transformImages.map((image) => `${image.url} ${image.width || 100}w`),
     ].join(', ');
