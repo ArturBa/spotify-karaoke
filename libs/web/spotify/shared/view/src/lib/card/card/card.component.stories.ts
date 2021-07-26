@@ -3,8 +3,8 @@ import { action } from '@storybook/addon-actions';
 import { MatCardModule } from '@angular/material/card';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { CardComponent } from './card.component';
 import { images, imagesArray } from '../../../../.storybook/sharedData';
+import { CardComponent } from './card.component';
 import { ImageModule } from '../../image/image.module';
 
 export default {
