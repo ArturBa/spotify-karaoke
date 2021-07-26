@@ -3,20 +3,19 @@ import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 
 import {
+  AppInfoDialogComponent,
+  HotkeyDialogComponent,
+} from '@artur-ba/shared/view';
+import {
   AuthStore,
   HotkeyService,
   UserSettingsService,
 } from '@artur-ba/shared/service';
-import {
-  AppInfoDialogComponent,
-  HotkeyDialogComponent,
-} from '@artur-ba/shared/view';
 import { SpotifyDataService } from '@artur-ba/web/spotify/shared/service';
 
 @Component({
   selector: 'artur-ba-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit, OnDestroy {
   user: SpotifyApi.CurrentUsersProfileResponse;
