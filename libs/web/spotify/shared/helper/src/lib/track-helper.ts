@@ -1,6 +1,3 @@
-import { isDevMode } from '@angular/core';
-import { ImageHelper } from './image-helper';
-
 export class TrackHelper {
   static time(seconds: number) {
     const second = Math.floor(seconds % 60);
@@ -15,15 +12,5 @@ export class TrackHelper {
       ret_str += '0';
     }
     return ret_str + `${second}`;
-  }
-
-  static getImagesSet(_) {
-    return ImageHelper.getDefaultImage();
-  }
-  static getImage300Url(_) {
-    return ImageHelper.getDefaultImage();
-  }
-  static getImage64Url(_) {
-    return ImageHelper.getDefaultImage();
   }
 }
