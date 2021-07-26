@@ -1,7 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
-import '@angular/localize/init';
-import { Location } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 
@@ -33,7 +31,6 @@ export class UserMenuComponent implements OnInit, OnDestroy {
     protected readonly authStore: AuthStore,
     protected readonly dialog: MatDialog,
     protected readonly hotkey: HotkeyService,
-    protected readonly location: Location,
     protected readonly spotifyData: SpotifyDataService,
     protected readonly userSettings: UserSettingsService,
   ) {}
@@ -92,13 +89,5 @@ export class UserMenuComponent implements OnInit, OnDestroy {
 
   logout(): void {
     this.authStore.logout();
-  }
-
-  goBack(): void {
-    this.location.back();
-  }
-
-  goForward(): void {
-    this.location.forward();
   }
 }
