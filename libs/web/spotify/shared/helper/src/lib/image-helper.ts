@@ -2,7 +2,7 @@ import { isDevMode } from '@angular/core';
 
 export class ImageHelper {
   static getImageUrl(
-    { images }: { images: SpotifyApi.ImageObject[] } = { images: [] },
+    images: SpotifyApi.ImageObject[] = [],
     size: number = 300,
   ) {
     if (images.length < 1) {
@@ -31,23 +31,23 @@ export class ImageHelper {
     return [
       {
         url: this.getDefaultImage(),
-        width: 200,
+        width: 3000,
       },
     ];
   }
 
   static getImage300Url(images: SpotifyApi.ImageObject[] = []): string {
-    return this.getImageUrl({ images }, 300);
+    return images ? this.getImageUrl(images, 300) : this.getDefaultImage();
   }
 
   static getImage64Url(images: SpotifyApi.ImageObject[] = []): string {
-    return this.getImageUrl({ images }, 64);
+    return images ? this.getImageUrl(images, 64) : this.getDefaultImage();
   }
 
   static getImagesSet(images: SpotifyApi.ImageObject[] = []): string {
-    console.log(images);
+    const transformImages = images || this.getDefaultImageObjects();
     return [
-      ...images?.map((image) => `${image.url} ${image.width || 100}w`),
+      ...transformImages.map((image) => `${image.url} ${image.width || 100}w`),
     ].join(', ');
   }
 }

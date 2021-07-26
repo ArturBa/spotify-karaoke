@@ -12,12 +12,12 @@ import { TrackHelper } from '@artur-ba/web/spotify/shared/helper';
 export class PlayerSongComponent implements OnInit, OnDestroy {
   track: Spotify.Track;
 
-  protected subscriptions: Subscription[] = [];
+  protected subscriptions = new Subscription();
 
   constructor(protected playerStore: PlayerStore) {}
 
   ngOnInit(): void {
-    this.subscriptions.push(
+    this.subscriptions.add(
       this.playerStore.currentTrack$.subscribe((track) => {
         if (this.track !== track) {
           this.track = track;
@@ -27,14 +27,6 @@ export class PlayerSongComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscriptions.forEach((sub) => sub.unsubscribe());
-  }
-
-  getImage(): string {
-    return 'a';
-  }
-
-  getImageSet(): string {
-    return 'a';
+    this.subscriptions.unsubscribe();
   }
 }

@@ -31,12 +31,4 @@ export class AlbumComponent implements OnInit {
     this.albumTracks = await this.spotifyData.getAlbumTracks(albumUri);
     this.album = await this.spotifyData.getAlbum(albumUri);
   }
-
-  getImage(): string {
-    return TrackHelper.getImage300Url(this.album);
-  }
-
-  getImagesSet(): string {
-    return TrackHelper.getImagesSet(this.album);
-  }
 }
