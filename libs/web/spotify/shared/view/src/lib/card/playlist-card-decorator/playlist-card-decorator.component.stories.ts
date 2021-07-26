@@ -7,6 +7,7 @@ import { CardComponent } from '../card/card.component';
 import { CardDecoratorComponent } from '../card-decorator/card-decorator.component';
 import { playlist } from '../../../../.storybook/sharedData';
 import { PlaylistCardDecoratorComponent } from './playlist-card-decorator.component';
+import { ImageModule } from '../../image/image.module';
 
 export default {
   component: PlaylistCardDecoratorComponent,
@@ -18,6 +19,7 @@ export default {
         CardDecoratorComponent,
       ],
       imports: [
+        ImageModule,
         MatCardModule,
         RouterTestingModule.withRoutes([
           { path: '**', component: PlaylistCardDecoratorComponent },

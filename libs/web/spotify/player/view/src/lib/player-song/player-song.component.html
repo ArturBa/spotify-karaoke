@@ -1,4 +1,9 @@
-<img [src]="image64Url" alt="Album cover" i18n-alt="player-song.album-cover" />
+<img
+  [src]="getImage()"
+  [srcset]="getImageSet()"
+  alt="Album cover"
+  i18n-alt="player-song.album-cover"
+/>
 <div class="song-data">
   <strong>{{ track?.name }}</strong>
   <a

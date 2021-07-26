@@ -30,7 +30,11 @@ export class PlayerSongComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach((sub) => sub.unsubscribe());
   }
 
-  get image64Url(): string {
-    return TrackHelper.getImage64Url(this.track?.album);
+  getImage(): string {
+    return 'a';
+  }
+
+  getImageSet(): string {
+    return 'a';
   }
 }

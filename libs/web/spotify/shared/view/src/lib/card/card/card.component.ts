@@ -1,5 +1,7 @@
+import { LEADING_TRIVIA_CHARS } from '@angular/compiler/src/render3/view/template';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { TrackHelper } from '@artur-ba/web/spotify/shared/helper';
 
 @Component({
   selector: 'artur-ba-card',
@@ -7,12 +9,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent {
-  @Input() imageUrl: string;
+  @Input() images: SpotifyApi.ImageObject[];
   @Input() title: string;
   @Input() subtitle: string;
   @Input() redirectUrl: string;
 
-  readonly cardImageAlt = $localize`:card.image-alt:Album image`;
+  protected _cardImageAlt = $localize`:card.image-alt:Card image`;
+
+  set cardImageAlt(cardImageAlt: string) {
+    this._cardImageAlt = cardImageAlt;
+  }
+  get cardImageAlt(): string {
+    return this._cardImageAlt;
+  }
 
   // eslint-disable-next-line @angular-eslint/no-output-native
   @Output() click = new EventEmitter<void>();

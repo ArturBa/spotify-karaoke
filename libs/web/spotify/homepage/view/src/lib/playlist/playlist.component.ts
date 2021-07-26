@@ -38,8 +38,4 @@ export class PlaylistComponent implements OnInit {
       (playlistTrack) => playlistTrack.track,
     );
   }
-
-  get image300Url(): string {
-    return TrackHelper.getImage300Url(this.playlist);
-  }
 }
