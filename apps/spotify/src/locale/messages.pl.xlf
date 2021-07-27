@@ -578,15 +578,6 @@
         </context-group>
         <note priority="1" from="description">spotify-image.alt</note>
       </trans-unit>
-      <trans-unit id="d16921d5730ab167b76a03076899e6e5e34fc94e" datatype="html">
-        <source>View more</source>
-        <target state="translated">Zobacz więcej</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/web/spotify/shared/view/src/lib/card-wrapper/card-wrapper.component.html</context>
-          <context context-type="linenumber">8</context>
-        </context-group>
-        <note priority="1" from="description">card-wrapper.view-more</note>
-      </trans-unit>
       <trans-unit id="e03195f820710af690edc050a8ab83cfab45c0dc" datatype="html">
         <source> # </source>
         <target state="translated">#</target>
@@ -629,14 +620,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/spotify/shared/view/src/lib/user-menu/menu/menu.component.html</context>
           <context context-type="linenumber">3</context>
-        </context-group>
-        <note priority="1" from="description">user-menu.hi</note>
-      </trans-unit>
-      <trans-unit id="a97be3aab6dfde6f0fb28a1e96c9e269a8beb4d9" datatype="html">
-        <source> <x id="INTERPOLATION" equiv-text="{{ user?.display_name }}"/> </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/web/spotify/shared/view/src/lib/user-menu/user-menu.component.html</context>
-          <context context-type="linenumber">23,25</context>
         </context-group>
         <note priority="1" from="description">user-menu.user-name</note>
       </trans-unit>

@@ -511,14 +511,6 @@
         </context-group>
         <note priority="1" from="description">spotify-image.alt</note>
       </trans-unit>
-      <trans-unit id="d16921d5730ab167b76a03076899e6e5e34fc94e" datatype="html">
-        <source>View more</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/web/spotify/shared/view/src/lib/card-wrapper/card-wrapper.component.html</context>
-          <context context-type="linenumber">8</context>
-        </context-group>
-        <note priority="1" from="description">card-wrapper.view-more</note>
-      </trans-unit>
       <trans-unit id="e03195f820710af690edc050a8ab83cfab45c0dc" datatype="html">
         <source> # </source>
         <context-group purpose="location">
