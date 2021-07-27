@@ -1,6 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-
-import '@angular/localize/init';
 import { Location } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
@@ -17,17 +15,16 @@ import {
 import { SpotifyDataService } from '@artur-ba/web/spotify/shared/service';
 
 @Component({
-  selector: 'artur-ba-user-menu',
-  templateUrl: './user-menu.component.html',
-  styleUrls: ['./user-menu.component.scss'],
+  selector: 'artur-ba-menu',
+  templateUrl: './menu.component.html',
 })
-export class UserMenuComponent implements OnInit, OnDestroy {
+export class MenuComponent implements OnInit, OnDestroy {
   user: SpotifyApi.CurrentUsersProfileResponse;
   darkMode = false;
 
   protected isHotkeyDialogOpen = false;
 
-  protected subscriptions: Subscription[] = [];
+  protected subscriptions = new Subscription();
 
   constructor(
     protected readonly authStore: AuthStore,
@@ -40,22 +37,26 @@ export class UserMenuComponent implements OnInit, OnDestroy {
 
   async ngOnInit(): Promise<void> {
     this.initHotkeys();
+    this.initDarkModeSub();
     this.user = await this.spotifyData.getUserData();
+  }
+
+  protected initDarkModeSub(): void {
     const darkModeSub = this.userSettings.darkModeOn$.subscribe((darkMode) => {
       this.darkMode = darkMode;
     });
-    this.subscriptions.push(darkModeSub);
+    this.subscriptions.add(darkModeSub);
   }
 
   protected initHotkeys(): void {
     const darkModeAction = $localize`:hotkeys.dark-mode:Toggle dark mode`;
-    this.subscriptions.push(
+    this.subscriptions.add(
       this.hotkey
         .addShortcut({ keys: 'control.d', action: darkModeAction })
         .subscribe(() => this.toggleDarkMode()),
     );
     const showHotKeyAction = $localize`:hotkeys.show-hotkeys:Show hotkeys dialog`;
-    this.subscriptions.push(
+    this.subscriptions.add(
       this.hotkey
         .addShortcut({ keys: 'control.h', action: showHotKeyAction })
         .subscribe(() => this.openHotKeyDialog()),
@@ -63,7 +64,7 @@ export class UserMenuComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscriptions.forEach((sub) => sub.unsubscribe());
+    this.subscriptions.unsubscribe();
   }
 
   toggleDarkMode(newMode?: boolean): void {
