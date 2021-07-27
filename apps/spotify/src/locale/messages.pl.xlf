@@ -6,8 +6,8 @@
         <source>Spotify Karaoke</source>
         <target state="translated">Spotify Karaoke</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">apps/spotify/src/app/login/login.component.html</context>
-          <context context-type="linenumber">3</context>
+          <context context-type="sourcefile">apps/spotify/src/app/login/login/login.component.html</context>
+          <context context-type="linenumber">2</context>
         </context-group>
         <note priority="1" from="description">login.title</note>
       </trans-unit>
@@ -15,8 +15,8 @@
         <source>Sing along with us!</source>
         <target state="translated">Śpiewaj z nami!</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">apps/spotify/src/app/login/login.component.html</context>
-          <context context-type="linenumber">4</context>
+          <context context-type="sourcefile">apps/spotify/src/app/login/login/login.component.html</context>
+          <context context-type="linenumber">3</context>
         </context-group>
         <note priority="1" from="description">login.subtitle</note>
       </trans-unit>
@@ -24,7 +24,7 @@
         <source>Authorize with Spotify</source>
         <target state="translated">Autoryzuj z Spotify</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">apps/spotify/src/app/login/login.component.html</context>
+          <context context-type="sourcefile">apps/spotify/src/app/login/login/login.component.html</context>
           <context context-type="linenumber">7</context>
         </context-group>
         <note priority="1" from="description">login.authorize_info</note>
@@ -33,19 +33,123 @@
         <source>Authorize</source>
         <target state="translated">Autoryzuj</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">apps/spotify/src/app/login/login.component.html</context>
+          <context context-type="sourcefile">apps/spotify/src/app/login/login/login.component.html</context>
           <context context-type="linenumber">12</context>
         </context-group>
         <note priority="1" from="description">login.authorize</note>
       </trans-unit>
-      <trans-unit id="c18aa478728faa2dc310876ee192fabc70ac7211" datatype="html">
+      <trans-unit id="31c5377e1c1aeac73f408b4efb7bcb3331635de7" datatype="html">
         <source> This page is not available on mobile devices </source>
         <target state="translated"> Ta strona nie jest dostępna na urządzeniach mobilnych</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">apps/spotify/src/app/login/login.component.html</context>
+          <context context-type="sourcefile">apps/spotify/src/app/login/login/login.component.html</context>
           <context context-type="linenumber">18,19</context>
         </context-group>
         <note priority="1" from="description">login.mobile-not-available</note>
+      </trans-unit>
+      <trans-unit id="c0fead7ca48230582a9f36382a1c8b3d26a98779" datatype="html">
+        <source>How to use it?</source>
+        <target state="translated">Jak tego użyć?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/spotify/src/app/login/readme/readme.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="636eea26439047e847beafc560a975f32de6ead8" datatype="html">
+        <source> Grab your friends and sing along your favorite songs which are played on Spotify
+</source>
+        <target state="translated">Zgarnij kilku przyjaciół i śpiewaj swoje ulubione utwory prosto ze Spotify
+</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/spotify/src/app/login/readme/readme.component.html</context>
+          <context context-type="linenumber">3,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a895093768276e25098e41fdfe9f3030a9d480b1" datatype="html">
+        <source>To get started, you need to have a premium Spotify account.</source>
+        <target state="translated">Aby użyć tego potrzebujesz konto Spotfiy premium.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/spotify/src/app/login/readme/readme.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4e7ebabb9d1bb57938d00fe4c809174d85b4adb4" datatype="html">
+        <source>Since this project uses a Spotify you need to authorize it.</source>
+        <target state="translated">Projekt używa Spotify, więc musisz za-autoryzować aplikację.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/spotify/src/app/login/readme/readme.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c0623214861eca3fc510df31a5a761108cd34b6a" datatype="html">
+        <source> After authorization you will be back redirected to this page and logged in.
+</source>
+        <target state="translated">Po autoryzacji powrócisz na tę stronę i zostaniesz zalogowany.
+</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/spotify/src/app/login/readme/readme.component.html</context>
+          <context context-type="linenumber">9,10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="004b222ff9ef9dd4771b777950ca1d0e4cd4348a" datatype="html">
+        <source>About</source>
+        <target state="translated">O programie</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/spotify/src/app/login/readme/readme.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fa0807ec7bd3724c756ec5c6930a85f39b8b8282" datatype="html">
+        <source> It's a project that I found useful one time, when I wanted to sing my favorite spanish songs
+</source>
+        <target state="translated">To jest projekt, który powstał z myślą o śpiewaniu ulubionych piosenek prosto ze Spotify
+</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/spotify/src/app/login/readme/readme.component.html</context>
+          <context context-type="linenumber">14,16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bc1435a7604bffbad58fc12c973e38b4495900d1" datatype="html">
+        <source> I couldn't find any cool way to do this, so I decided to make it myself.
+</source>
+        <target state="translated">Nie mogłem znaleźć żadnego dobrego rozwiązania, więc napisałem własne
+</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/spotify/src/app/login/readme/readme.component.html</context>
+          <context context-type="linenumber">18,19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4f8b2bb476981727ab34ed40fde1218361f92c45" datatype="html">
+        <source>Details</source>
+        <target state="translated">Szczególy</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/spotify/src/app/login/readme/readme.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9d589060b5b2293b4a34f93e289cd3afbb7032e7" datatype="html">
+        <source>This is my side project to develop my best with Angular framework.</source>
+        <target state="translated">To jest projekt poboczny pozwalający na rozwijanie mi moich umiejętności w Angularze.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/spotify/src/app/login/readme/readme.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0bea4097064813eaf3ed0412cab17703870a8d73" datatype="html">
+        <source> More (technical) details on </source>
+        <target state="translated">Więcej (technicznych) szczegółów na</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/spotify/src/app/login/readme/readme.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3235d460ca9af675b0b84c63a723028ce2025f2b" datatype="html">
+        <source> Github </source>
+        <target state="translated">Githubie</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/spotify/src/app/login/readme/readme.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="a7b7895ba78d538df30e02338abc92843dc78385" datatype="html">
         <source>App info</source>
@@ -493,7 +597,8 @@
         <note priority="1" from="description">user-menu.user-name</note>
       </trans-unit>
       <trans-unit id="1676925ed9969a70ccdc5b99a6c389ab9e86f11c" datatype="html">
-        <source> there</source>
+        <source> there</source>
+        <target state="translated"> </target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/spotify/shared/view/src/lib/user-menu/user-menu.component.html</context>
           <context context-type="linenumber">27</context>
