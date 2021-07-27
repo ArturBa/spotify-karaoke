@@ -6,20 +6,28 @@ import { MatInputModule } from '@angular/material/input';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { WebSpotifySharedDirectivesModule } from '@artur-ba/web/spotify/shared/directives';
 import { WebSpotifySharedViewModule } from '@artur-ba/web/spotify/shared/view';
 
 import { SearchAlbumComponent } from './search-album/search-album.component';
 import { SearchComponent } from './search/search.component';
 import { SearchInputComponent } from './search-input/search-input.component';
+import { SearchPlaylistComponent } from './search-playlist/search-playlist.component';
 import { SearchRoutingModule } from './search.routing';
 
 @NgModule({
-  declarations: [SearchComponent, SearchAlbumComponent, SearchInputComponent],
+  declarations: [
+    SearchComponent,
+    SearchAlbumComponent,
+    SearchInputComponent,
+    SearchPlaylistComponent,
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     SearchRoutingModule,
     WebSpotifySharedViewModule,
+    WebSpotifySharedDirectivesModule,
 
     MatInputModule,
     MatButtonModule,
