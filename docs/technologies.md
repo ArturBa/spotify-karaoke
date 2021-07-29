@@ -15,7 +15,7 @@ Those are two major packages used in this project.
 
 For easier development I've decided to
 
-- [![Nrwl](https://img.shields.io/github/package-json/dependency-version/ArturBa/spotify-karaoke/dev/@nrwl/cli?style=flat-square)](https://nrwl.io/) - project structure carrier
+- [![Nrwl](https://img.shields.io/github/package-json/dependency-version/ArturBa/spotify-karaoke/dev/@nrwl/cli?style=flat-square)](https://nrwl.io/) - project workspace
 - [![Storybook](https://img.shields.io/github/package-json/dependency-version/ArturBa/spotify-karaoke/dev/@storybook/angular?style=flat-square)](storybook.js.org/) - visual tests
 - [![Jest](https://img.shields.io/github/package-json/dependency-version/ArturBa/spotify-karaoke/dev/jest?style=flat-square)](https://jestjs.io/) - unit tests
 - [![Prettier](https://img.shields.io/github/package-json/dependency-version/ArturBa/spotify-karaoke/dev/prettier?style=flat-square)](https://prettier.io/) :heavy_plus_sign: [![Eslint](https://img.shields.io/github/package-json/dependency-version/ArturBa/spotify-karaoke/dev/eslint?style=flat-square)](https://eslint.org/) - linting
