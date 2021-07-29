@@ -2,11 +2,11 @@
 
 [![Website](https://img.shields.io/website?down_color=lightgray&down_message=offline&style=flat-square&up_color=green&up_message=online&url=https%3A%2F%2Fspotify-karaoke.netlify.app)](spotify-karaoke.netlify.app/)
 [![Netlify Status](https://img.shields.io/netlify/39fabbc6-dcc1-40e8-8702-a3b798a130e5?style=flat-square)](spotify-karaoke.netlify.app/)
-![Top Lang](https://img.shields.io/github/languages/top/ArturBa/spotify-karaoke?style=flat-square)
-![Licence](https://img.shields.io/github/license/ArturBa/spotify-karaoke?style=flat-square)
-![Release](https://img.shields.io/github/v/release/ArturBa/spotify-karaoke?style=flat-square)
+[![Top Lang](https://img.shields.io/github/languages/top/ArturBa/spotify-karaoke?style=flat-square)]()
+[![Licence](https://img.shields.io/github/license/ArturBa/spotify-karaoke?style=flat-square)](./LICENCE)
+[![Release](https://img.shields.io/github/v/release/ArturBa/spotify-karaoke?style=flat-square)](https://github.com/ArturBa/spotify-karaoke/releases)
 [![Build and Test](https://github.com/ArturBa/spotify-karaoke/actions/workflows/build_test.yml/badge.svg?branch=development)](https://github.com/ArturBa/spotify-karaoke/actions/workflows/build_test.yml)
-![Dependabot](https://flat.badgen.net/github/dependabot/ArturBa/spotify-karaoke)
+[![Dependabot](https://flat.badgen.net/github/dependabot/ArturBa/spotify-karaoke)](https://github.com/apps/dependabot)
 
 ## Why it's created
 
