@@ -1,28 +1,25 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component, ElementRef, HostListener } from '@angular/core';
 
 @Component({
   selector: 'artur-ba-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
-  host: {
-    '(mouseenter)': 'onMouseEnter()',
-    '(mouseleave)': 'onMouseLeave()',
-  },
 })
 export class SidebarComponent {
   protected el: HTMLElement;
   protected noHoverClassName = 'sidebar--no-hover';
 
+  @HostListener('mouseenter') onMouseEnter() {
+    this.setHover();
+  }
+
+  @HostListener('mouseleave') onMouseLeave() {
+    this.unsetHover();
+  }
+
   constructor(protected readonly elementRef: ElementRef) {
     this.el = elementRef.nativeElement;
     this.initNoHover();
-  }
-
-  onMouseEnter() {
-    this.setHover();
-  }
-  onMouseLeave() {
-    this.unsetHover();
   }
 
   protected initNoHover() {
