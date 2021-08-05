@@ -20,6 +20,11 @@ export class PlayerAvailableDevicesComponent implements OnInit {
     this.getDevices();
   }
 
+  async selectDevice({ id }: SpotifyApi.UserDevice): Promise<void> {
+    await this.spotifyPlayerService.setCurrentDevice(id);
+    this.updateDeviceList();
+  }
+
   protected async getDevices(): Promise<void> {
     this.userDevices = await this.spotifyPlayerService.getAvailableDevices();
   }

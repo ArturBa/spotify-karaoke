@@ -10,10 +10,12 @@
     speaker_group
   </mat-icon>
 </button>
-<mat-menu #devicesMenu="matMenu" yPosition="above">
-  <artur-ba-player-device
+<mat-menu #devicesMenu="matMenu" yPosition="above" xPosition="before">
+  <div
+    mat-menu-item
     *ngFor="let device of userDevices?.devices"
-    [device]="device"
-    (update)="updateDeviceList()"
-  ></artur-ba-player-device>
+    (click)="selectDevice(device)"
+  >
+    <artur-ba-player-device [device]="device"></artur-ba-player-device>
+  </div>
 </mat-menu>
