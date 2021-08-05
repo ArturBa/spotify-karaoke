@@ -1,0 +1,16 @@
+@import 'variables';
+
+:host {
+  display: flex;
+  padding: $padding-s $padding-xs;
+  gap: $padding-s;
+  cursor: pointer;
+}
+
+mat-icon {
+  color: var(--text-a60);
+
+  &.active {
+    color: var(--primary);
+  }
+}
