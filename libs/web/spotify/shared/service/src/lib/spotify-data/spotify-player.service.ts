@@ -1,5 +1,6 @@
-import { HttpClient, HttpContext } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 import { SpotifyDataService } from './spotify-data.service';
 
 @Injectable({
