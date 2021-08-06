@@ -23,6 +23,15 @@
   }
 }
 
+artur-ba-user-playlist {
+  @include transition(display);
+  transition-delay: 5000ms;
+
+  @include adaptive-hover {
+    display: none;
+  }
+}
+
 .logo {
   background-image: getImageUrl($logo1x2-light);
   background-size: contain;
