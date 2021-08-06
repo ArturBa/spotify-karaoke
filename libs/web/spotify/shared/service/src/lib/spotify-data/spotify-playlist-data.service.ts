@@ -48,17 +48,18 @@ export class SpotifyPlaylistDataService {
    */
   getCurrentUserPlaylists(
     pagination?: PaginationInterface,
-  ): Promise<SpotifyApi.ListOfCurrentUsersPlaylistsResponse> {
+  ): Promise<
+    SpotifyApi.PagingObject<SpotifyApi.ListOfCurrentUsersPlaylistsResponse>
+  > {
     const params = SpotifyDataService.appendPaginationParams(
       new HttpParams(),
       pagination,
     );
 
     return this.httpClient
-      .get<SpotifyApi.ListOfCurrentUsersPlaylistsResponse>(
-        SpotifyDataService.SpotifyApiBaseURL + 'me/playlist',
-        { params },
-      )
+      .get<
+        SpotifyApi.PagingObject<SpotifyApi.ListOfCurrentUsersPlaylistsResponse>
+      >(SpotifyDataService.SpotifyApiBaseURL + 'me/playlists', { params })
       .toPromise();
   }
 }

@@ -5,8 +5,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { WebSpotifySharedDirectivesModule } from '@artur-ba/web/spotify/shared/directives';
 
 import { album } from '../../../../.storybook/sharedData';
-import { CardListComponent } from '../card-list/card-list.component';
-import { CardListStrategy } from '../card-list/card-list.strategy';
+import { CardListComponent } from '../../card/card-list/card-list.component';
+import { CardListStrategy } from '../../card/card-list/card-list.strategy';
 import { CardListViewMode } from '../../card/dynamic-card-list/dynamic-card-list.component';
 import { CardModule } from '../../card/card.module';
 import { InfiniteScrollComponent } from './infinite-scroll.component';
