@@ -1,8 +1,13 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UserPlaylistComponent } from './user-playlist/user-playlist.component';
-import { PlaylistRowComponent } from './playlist-row/playlist-row.component';
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+
+import { ImageModule } from '@artur-ba/web/spotify/shared/view';
+import { WebSpotifySharedPipeModule } from '@artur-ba/web/spotify/shared/pipe';
+
 import { PlaylistInfinitiveListComponent } from './playlist-infinitive-list/playlist-infinitive-list.component';
+import { PlaylistRowComponent } from './playlist-row/playlist-row.component';
+import { UserPlaylistComponent } from './user-playlist/user-playlist.component';
 
 const exports = [UserPlaylistComponent];
 
@@ -12,7 +17,12 @@ const exports = [UserPlaylistComponent];
     PlaylistRowComponent,
     PlaylistInfinitiveListComponent,
   ],
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    ImageModule,
+    RouterModule.forChild([]),
+    WebSpotifySharedPipeModule,
+  ],
   exports,
 })
 export class UserPlaylistModule {}

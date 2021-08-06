@@ -12,13 +12,12 @@
 :host {
   padding: $padding-s;
   background-color: var(--bg-d10);
+  @include transition(width);
   width: 100%;
   z-index: 1;
 
   @include lt-lg {
-    @include transition(width);
     &:hover {
-      @include transition(width);
       width: $sidebar-width;
     }
   }

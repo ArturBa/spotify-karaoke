@@ -3,13 +3,14 @@ import { ActivatedRoute } from '@angular/router';
 
 import { SpotifyPlaylistDataService } from '@artur-ba/web/spotify/shared/service';
 import { TrackListColumns } from '@artur-ba/web/spotify/shared/view';
+import { AbstractUriViewComponent } from '../abstract-uri-view/abstract-uri-view.component';
 
 @Component({
   selector: 'artur-ba-playlist',
   templateUrl: './playlist.component.html',
   styleUrls: ['./playlist.component.scss'],
 })
-export class PlaylistComponent implements OnInit {
+export class PlaylistComponent extends AbstractUriViewComponent {
   playlistTracks: SpotifyApi.PlaylistTrackResponse;
   playlist: SpotifyApi.PlaylistObjectFull;
   readonly columns: TrackListColumns[] = [
@@ -22,12 +23,11 @@ export class PlaylistComponent implements OnInit {
   constructor(
     protected route: ActivatedRoute,
     protected spotifyPlaylistData: SpotifyPlaylistDataService,
-  ) {}
+  ) {
+    super(route);
+  }
 
-  async ngOnInit() {
-    const routeParams = this.route.snapshot.paramMap;
-    const playlistUri = routeParams.get('uri');
-
+  protected async getUriData(playlistUri: string): Promise<void> {
     this.playlistTracks = await this.spotifyPlaylistData.getPlaylistTracks(
       playlistUri,
     );

@@ -1,1 +1,6 @@
-<artur-ba-playlist-row *ngFor="let playlist of data"></artur-ba-playlist-row>
+<h3 i18n>Yours playlists</h3>
+<artur-ba-playlist-row
+  [routerLink]="'/playlist/' + playlist.uri | clearUriData"
+  *ngFor="let playlist of data"
+  [playlist]="playlist"
+></artur-ba-playlist-row>
