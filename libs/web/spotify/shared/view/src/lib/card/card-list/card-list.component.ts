@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 import { CardListViewMode } from '../../card/dynamic-card-list/dynamic-card-list.component';
-import { AbstractListComponent } from '../abstract-list/abstract-list.component';
+import { AbstractListComponent } from '../../infinitive-scroll/abstract-list/abstract-list.component';
 
 @Component({
   selector: 'artur-ba-card-list',
