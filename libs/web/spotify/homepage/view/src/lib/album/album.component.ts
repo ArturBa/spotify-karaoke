@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 
 import { SpotifyAlbumDataService } from '@artur-ba/web/spotify/shared/service';
 import { TrackListColumns } from '@artur-ba/web/spotify/shared/view';
+
 import { AbstractUriViewComponent } from '../abstract-uri-view/abstract-uri-view.component';
 
 @Component({

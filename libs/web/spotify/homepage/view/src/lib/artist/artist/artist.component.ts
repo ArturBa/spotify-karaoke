@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { AbstractUriViewComponent } from '../../abstract-uri-view/abstract-uri-view.component';
 import { CardListViewMode } from '@artur-ba/web/spotify/shared/view';
 import { SpotifyArtistDataService } from '@artur-ba/web/spotify/shared/service';
 import { UriDataHelper } from '@artur-ba/web/spotify/shared/helper';
+
+import { AbstractUriViewComponent } from '../../abstract-uri-view/abstract-uri-view.component';
 
 @Component({
   selector: 'artur-ba-artist',
