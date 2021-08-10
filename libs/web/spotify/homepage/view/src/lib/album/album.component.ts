@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
 
 import { SpotifyAlbumDataService } from '@artur-ba/web/spotify/shared/service';
 import { TrackListColumns } from '@artur-ba/web/spotify/shared/view';

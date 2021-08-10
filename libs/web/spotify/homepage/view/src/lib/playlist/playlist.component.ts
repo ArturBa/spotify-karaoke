@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+import { AbstractUriViewComponent } from '../abstract-uri-view/abstract-uri-view.component';
 import { SpotifyPlaylistDataService } from '@artur-ba/web/spotify/shared/service';
 import { TrackListColumns } from '@artur-ba/web/spotify/shared/view';
-import { AbstractUriViewComponent } from '../abstract-uri-view/abstract-uri-view.component';
 
 @Component({
   selector: 'artur-ba-playlist',

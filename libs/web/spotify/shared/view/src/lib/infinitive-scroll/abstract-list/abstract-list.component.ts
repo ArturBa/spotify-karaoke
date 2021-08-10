@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { PaginationInterface } from '@artur-ba/web/spotify/shared/service';
 import { BehaviorSubject } from 'rxjs';

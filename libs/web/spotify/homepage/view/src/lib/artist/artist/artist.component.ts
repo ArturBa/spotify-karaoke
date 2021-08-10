@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -26,17 +26,6 @@ export class ArtistComponent extends AbstractUriViewComponent {
     protected readonly spotifyArtistData: SpotifyArtistDataService,
   ) {
     super(route);
-  }
-
-  ngOnInit(): void {
-    const routeParamsSub = this.route.params.subscribe((params) => {
-      this.getArtistData(params['uri']);
-    });
-    this.subscriptions.add(routeParamsSub);
-  }
-
-  ngOnDestroy(): void {
-    this.subscriptions.unsubscribe();
   }
 
   artistAlbumsUrl(): string {
