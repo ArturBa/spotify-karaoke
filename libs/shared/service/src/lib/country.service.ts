@@ -1,7 +1,7 @@
+import { filter, take } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { filter, switchMap, take } from 'rxjs/operators';
 
 // this interface is partial with more important fields only.
 interface CountryResponse {
