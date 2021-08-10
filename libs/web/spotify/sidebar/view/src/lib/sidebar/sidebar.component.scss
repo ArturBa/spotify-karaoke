@@ -16,6 +16,9 @@
   width: 100%;
   z-index: 1;
 
+  display: grid;
+  grid-template-rows: min-content min-content 1fr;
+
   @include lt-lg {
     &:hover {
       width: $sidebar-width;
@@ -26,6 +29,7 @@
 artur-ba-user-playlist {
   @include transition(display);
   transition-delay: 5000ms;
+  overflow-y: hidden;
 
   @include adaptive-hover {
     display: none;
