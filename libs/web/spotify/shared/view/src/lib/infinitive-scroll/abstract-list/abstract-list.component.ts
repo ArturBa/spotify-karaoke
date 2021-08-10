@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+
+import { PaginationInterface } from '@artur-ba/web/spotify/shared/service';
 
 import { AbstractListStrategy } from './abstract-list.strategy';
-import { PaginationInterface } from '@artur-ba/web/spotify/shared/service';
-import { BehaviorSubject } from 'rxjs';
 
 @Component({
   template: '',
