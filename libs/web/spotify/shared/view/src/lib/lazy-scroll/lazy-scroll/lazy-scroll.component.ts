@@ -34,17 +34,4 @@ export class LazyScrollComponent implements AfterViewInit {
 
     this.observer.observe(this.anchor.nativeElement);
   }
-
-  // isLoading$(): Observable<boolean> {
-  //   return this.abstractList.isLoading$;
-  // }
-
-  // loadMore(): void {
-  //   if (
-  //     !this.abstractList.isLoading$.value &&
-  //     this.abstractList.isMoreToShow()
-  //   ) {
-  //     this.abstractList.loadMoreData();
-  //   }
-  // }
 }

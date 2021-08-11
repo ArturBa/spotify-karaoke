@@ -5,7 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { WebSpotifySharedDirectivesModule } from '@artur-ba/web/spotify/shared/directives';
 
 import { album, playlist } from '../../../../.storybook/sharedData';
-import { CardListStrategy } from '../../card/card-list/card-list.strategy';
+import { CardListStrategy } from '../../card/card-lazy-list/card-lazy-list.strategy';
 import { CardListViewMode } from '../../card/dynamic-card-list/dynamic-card-list.component';
 import { CardModule } from '../../card/card.module';
 import { LazyScrollComponent } from './lazy-scroll.component';
@@ -80,8 +80,8 @@ const Template: Story<LazyScrollComponent> = (args) => ({
   },
   template: `
   <artur-ba-lazy-scroll>
-    <artur-ba-card-list [viewMode]="cardListViewMode" [strategy]="newStrategy">
-    </artur-ba-card-list>
+    <artur-ba-card-lazy-list [viewMode]="cardListViewMode" [strategy]="newStrategy">
+    </artur-ba-card-lazy-list>
   </artur-ba-lazy-scroll>
   `,
 });

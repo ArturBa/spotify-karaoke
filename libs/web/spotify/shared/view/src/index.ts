@@ -5,6 +5,6 @@ export { AbstractLazyListComponent } from './lib/lazy-scroll/abstract-lazy-list/
 export { AbstractLazyListStrategy } from './lib/lazy-scroll/abstract-lazy-list/abstract-lazy-list.strategy';
 export { LazyScrollModule } from './lib/lazy-scroll/lazy-scroll.module';
 export { CardListViewMode } from './lib/card/dynamic-card-list/dynamic-card-list.component';
-export { CardListComponent } from './lib/card/card-list/card-list.component';
-export * from './lib/card/card-list/card-list.strategy';
+export { CardLazyListComponent } from './lib/card/card-lazy-list/card-lazy-list.component';
+export * from './lib/card/card-lazy-list/card-lazy-list.strategy';
 export { TrackListColumns } from './lib/song-list/song-list/song-list.component';
