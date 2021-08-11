@@ -5,7 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { WebSpotifySharedDirectivesModule } from '@artur-ba/web/spotify/shared/directives';
 
 import { album, playlist } from '../../../../.storybook/sharedData';
-import { CardListStrategy } from '../../card/card-lazy-list/card-lazy-list.strategy';
+import { AbstractLazyListStrategy } from '../abstract-lazy-list/abstract-lazy-list.strategy';
 import { CardListViewMode } from '../../card/dynamic-card-list/dynamic-card-list.component';
 import { CardModule } from '../../card/card.module';
 import { LazyScrollComponent } from './lazy-scroll.component';
@@ -43,7 +43,7 @@ export default {
 
 class CardListMockStrategy
   implements
-    CardListStrategy<Partial<SpotifyApi.AlbumObjectSimplified>, string>
+    AbstractLazyListStrategy<Partial<SpotifyApi.AlbumObjectSimplified>, string>
 {
   protected total = 40;
   protected limit = 20;
