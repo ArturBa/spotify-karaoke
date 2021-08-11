@@ -14,7 +14,6 @@ export default {
   component: LazyScrollComponent,
   decorators: [
     moduleMetadata({
-      declarations: [LazyScrollComponent],
       imports: [
         CardModule,
         MatProgressSpinnerModule,
