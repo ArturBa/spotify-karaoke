@@ -6,9 +6,9 @@ import { WebSpotifySharedDirectivesModule } from '@artur-ba/web/spotify/shared/d
 
 import { album, playlist } from '../../../../.storybook/sharedData';
 import { AbstractLazyListStrategy } from '../../lazy-scroll/abstract-lazy-list/abstract-lazy-list.strategy';
+import { CardLazyListComponent } from './card-lazy-list.component';
 import { CardListViewMode } from '../../card/dynamic-card-list/dynamic-card-list.component';
 import { CardModule } from '../../card/card.module';
-import { CardLazyListComponent } from './card-lazy-list.component';
 
 export default {
   component: CardLazyListComponent,
