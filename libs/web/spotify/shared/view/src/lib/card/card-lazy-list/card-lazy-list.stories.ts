@@ -5,26 +5,26 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { WebSpotifySharedDirectivesModule } from '@artur-ba/web/spotify/shared/directives';
 
 import { album, playlist } from '../../../../.storybook/sharedData';
-import { AbstractLazyListStrategy } from '../abstract-lazy-list/abstract-lazy-list.strategy';
+import { AbstractLazyListStrategy } from '../../lazy-scroll/abstract-lazy-list/abstract-lazy-list.strategy';
 import { CardListViewMode } from '../../card/dynamic-card-list/dynamic-card-list.component';
 import { CardModule } from '../../card/card.module';
-import { LazyScrollComponent } from './lazy-scroll.component';
+import { CardLazyListComponent } from './card-lazy-list.component';
 
 export default {
-  component: LazyScrollComponent,
+  component: CardLazyListComponent,
   decorators: [
     moduleMetadata({
       imports: [
         CardModule,
         MatProgressSpinnerModule,
         RouterTestingModule.withRoutes([
-          { path: '**', component: LazyScrollComponent },
+          { path: '**', component: CardLazyListComponent },
         ]),
         WebSpotifySharedDirectivesModule,
       ],
     }),
   ],
-  title: 'Shared/LazyScroll',
+  title: 'Card/LazyList',
   argTypes: {
     cardsCount: {
       control: { type: 'number', min: 1 },
@@ -72,16 +72,16 @@ class CardListMockStrategy
   }
 }
 
-const Template: Story<LazyScrollComponent> = (args) => ({
+const Template: Story<
+  CardLazyListComponent<SpotifyApi.AlbumObjectSimplified, string>
+> = (args) => ({
   props: {
     ...args,
     newStrategy: new CardListMockStrategy((args as any).cardsCount),
   },
   template: `
-  <artur-ba-lazy-scroll>
     <artur-ba-card-lazy-list [viewMode]="cardListViewMode" [strategy]="newStrategy">
     </artur-ba-card-lazy-list>
-  </artur-ba-lazy-scroll>
   `,
 });
 
@@ -89,4 +89,10 @@ export const Default = Template.bind({});
 Default.args = {
   cardsCount: 49,
   cardListViewMode: CardListViewMode.ALBUM,
+};
+
+export const Playlist = Template.bind({});
+Playlist.args = {
+  cardsCount: 49,
+  cardListViewMode: CardListViewMode.PLAYLIST,
 };
