@@ -1,5 +1,9 @@
 <artur-ba-search-input (search)="search($event)"></artur-ba-search-input>
 
+<artur-ba-track-list
+  [tracks]="trackSearchResult?.tracks.items"
+></artur-ba-track-list>
+
 <artur-ba-card-wrapper-with-content
   [title]="albumsWrapperTitle"
   [singleLine]="true"
