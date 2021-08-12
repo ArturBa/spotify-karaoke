@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
 
-import { AbstractLazyListComponent } from '../../lazy-scroll/abstract-lazy-list/abstract-lazy-list.component';
 import {
   TrackListColumns,
   TrackListColumnsDefault,
 } from '../track-list/track-list.component';
+import { AbstractLazyListComponent } from '../../lazy-scroll/abstract-lazy-list/abstract-lazy-list.component';
 
 @Component({
   selector: 'artur-ba-track-lazy-list',
