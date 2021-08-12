@@ -9,3 +9,4 @@ export { CardLazyListComponent } from './lib/card/card-lazy-list/card-lazy-list.
 export * from './lib/card/card-lazy-list/card-lazy-list.strategy';
 export { TrackListColumns } from './lib/song-list/song-list/song-list.component';
 export * from './lib/song-list/song-lazy-list/song-lazy-list.strategy';
+export { SongLazyListComponent } from './lib/song-list/song-lazy-list/song-lazy-list.component';

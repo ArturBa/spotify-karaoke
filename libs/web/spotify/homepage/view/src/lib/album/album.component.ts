@@ -1,11 +1,11 @@
 import { ActivatedRoute } from '@angular/router';
 import { Component } from '@angular/core';
 
-import { SpotifyAlbumDataService } from '@artur-ba/web/spotify/shared/service';
 import {
   SongAlbumLazyListStrategy,
   TrackListColumns,
 } from '@artur-ba/web/spotify/shared/view';
+import { SpotifyAlbumDataService } from '@artur-ba/web/spotify/shared/service';
 
 import { AbstractUriViewComponent } from '../abstract-uri-view/abstract-uri-view.component';
 
