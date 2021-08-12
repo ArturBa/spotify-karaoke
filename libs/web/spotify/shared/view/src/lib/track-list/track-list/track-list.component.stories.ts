@@ -5,8 +5,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ImageModule } from '../../image/image.module';
 import { WebSpotifySharedPipeModule } from '@artur-ba/web/spotify/shared/pipe';
 
+import { TrackListColumns, TrackListComponent } from './track-list.component';
 import { track } from '../../../../.storybook/sharedData';
-import { TrackListComponent, TrackListColumns } from './track-list.component';
 import { TrackRowComponent } from '../track-row/track-row.component';
 
 export default {
