@@ -6,8 +6,8 @@ import { ImageModule } from '../../image/image.module';
 import { WebSpotifySharedPipeModule } from '@artur-ba/web/spotify/shared/pipe';
 
 import { track } from '../../../../.storybook/sharedData';
-import { TrackRowComponent } from './track-row.component';
 import { TrackListColumns } from '../track-list/track-list.component';
+import { TrackRowComponent } from './track-row.component';
 
 export default {
   title: 'TrackList/TrackRow',
