@@ -1,20 +1,24 @@
 @import 'mixins';
+@import 'media-queries';
 
 :host {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-areas: 'sidebar content' 'player player';
+  grid-template-columns: $sidebar-width auto;
+  grid-template-rows: calc(100vh - #{$player-height}) $player-height;
+  @include transition(grid-template-columns);
   height: 100vh;
+
+  @include lt-lg {
+    grid-template-columns: $sidebar-narrow-width auto;
+  }
 }
 
-.main-container {
-  display: flex;
-  min-height: 0;
-  @include flex-1;
+artur-ba-player {
+  grid-area: player;
 }
 
 .content {
-  width: calc(100vw - #{$sidebar-width});
-
   artur-ba-user-menu {
     height: $menu-height;
   }

@@ -1,0 +1,7 @@
+@import '../styles/shared-track-list';
+
+:host {
+  &:hover {
+    background-color: var(--bg-d20);
+  }
+}

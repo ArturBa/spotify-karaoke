@@ -1,16 +1,20 @@
-import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
 
-import { SpotifyDataService } from '@artur-ba/web/spotify/shared/service';
-import { TrackListColumns } from '@artur-ba/web/spotify/shared/view';
+import {
+  AlbumTrackLazyListStrategy,
+  TrackListColumns,
+} from '@artur-ba/web/spotify/shared/view';
+import { SpotifyAlbumDataService } from '@artur-ba/web/spotify/shared/service';
+
+import { AbstractUriViewComponent } from '../abstract-uri-view/abstract-uri-view.component';
 
 @Component({
   selector: 'artur-ba-album',
   templateUrl: './album.component.html',
   styleUrls: ['./album.component.scss'],
 })
-export class AlbumComponent implements OnInit {
-  albumTracks: SpotifyApi.AlbumTracksResponse;
+export class AlbumComponent extends AbstractUriViewComponent {
   album: SpotifyApi.AlbumObjectFull;
   readonly columns: TrackListColumns[] = [
     TrackListColumns.count,
@@ -19,15 +23,18 @@ export class AlbumComponent implements OnInit {
   ];
 
   constructor(
-    protected route: ActivatedRoute,
-    protected spotifyData: SpotifyDataService,
-  ) {}
+    protected readonly route: ActivatedRoute,
+    protected readonly spotifyAlbumData: SpotifyAlbumDataService,
+  ) {
+    super(route);
+  }
 
-  async ngOnInit() {
-    const routeParams = this.route.snapshot.paramMap;
-    const albumUri = routeParams.get('uri');
+  protected async getUriData(albumUri: string): Promise<void> {
+    // this.albumTracks = await this.spotifyAlbumData.getAlbumTracks(albumUri);
+    this.album = await this.spotifyAlbumData.getAlbum(albumUri);
+  }
 
-    this.albumTracks = await this.spotifyData.getAlbumTracks(albumUri);
-    this.album = await this.spotifyData.getAlbum(albumUri);
+  getStrategy(): AlbumTrackLazyListStrategy {
+    return new AlbumTrackLazyListStrategy(this.route, this.spotifyAlbumData);
   }
 }

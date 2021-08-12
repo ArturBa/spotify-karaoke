@@ -1,0 +1,19 @@
+@import '../styles/shared-track-list';
+
+:host {
+  width: 100%;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  thead {
+    tr {
+      background-color: var(--bg-d5);
+      border-bottom: 1px solid var(--text);
+    }
+    @include sticky-top();
+  }
+}

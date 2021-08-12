@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { CardListViewMode } from '@artur-ba/web/spotify/shared/view';
-import { SpotifyDataService } from '@artur-ba/web/spotify/shared/service';
+import { SpotifySearchDataService } from '@artur-ba/web/spotify/shared/service';
 
 @Component({
   selector: 'artur-ba-search',
@@ -11,26 +11,27 @@ import { SpotifyDataService } from '@artur-ba/web/spotify/shared/service';
 export class SearchComponent {
   albumSearchResult: SpotifyApi.AlbumSearchResponse;
   playlistSearchResult: SpotifyApi.PlaylistSearchResponse;
+  trackSearchResult: SpotifyApi.TrackSearchResponse;
   queryParams = { q: '' };
 
   readonly CardListViewMode = CardListViewMode;
 
   readonly albumsWrapperTitle = $localize`:search.albumsWrapper:Albums`;
   readonly playlistWrapperTitle = $localize`:search.playlistsWrapper:Playlists`;
+  readonly trackWrapperTitle = $localize`:search.trackWrapper:Tracks`;
 
-  constructor(protected readonly spotifyData: SpotifyDataService) {}
+  constructor(protected readonly spotifySearchData: SpotifySearchDataService) {}
 
   async search(searchQuery: string): Promise<void> {
     this.queryParams.q = encodeURI(searchQuery);
-    this.albumSearchResult = await this.spotifyData.getSearchAlbumResult(
+    this.albumSearchResult = await this.spotifySearchData.getSearchAlbumResult(
       searchQuery,
     );
-    this.playlistSearchResult = await this.spotifyData.getSearchPlaylistResult(
+    this.playlistSearchResult =
+      await this.spotifySearchData.getSearchPlaylistResult(searchQuery);
+    this.trackSearchResult = await this.spotifySearchData.getSearchTrackResult(
       searchQuery,
+      { limit: 5, offset: 0, total: null },
     );
-  }
-
-  getAlbumsWrapperTitle(): string {
-    return this.albumsWrapperTitle;
   }
 }

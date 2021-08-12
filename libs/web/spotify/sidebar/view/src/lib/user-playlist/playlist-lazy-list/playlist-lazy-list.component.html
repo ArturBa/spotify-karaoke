@@ -1,0 +1,10 @@
+<artur-ba-playlist-row
+  [routerLink]="'/playlist/' + playlist.uri | clearUriData"
+  *ngFor="let playlist of data"
+  [playlist]="playlist"
+></artur-ba-playlist-row>
+
+<artur-ba-lazy-scroll
+  [isLoading$]="isLoading$"
+  (loadMore)="loadMoreData()"
+></artur-ba-lazy-scroll>

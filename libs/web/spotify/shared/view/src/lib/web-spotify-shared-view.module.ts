@@ -3,14 +3,14 @@ import { RouterModule } from '@angular/router';
 
 import { CardModule } from './card/card.module';
 import { ImageModule } from './image/image.module';
-import { InfiniteScrollModule } from './infinitive-scroll/infinite-scroll.module';
-import { SongListModule } from './song-list/song-list.module';
+import { LazyScrollModule } from './lazy-scroll/lazy-scroll.module';
+import { TrackListModule } from './track-list/track-list.module';
 import { UserMenuModule } from './user-menu/user-menu.module';
 
 const exportModules = [
   CardModule,
-  InfiniteScrollModule,
-  SongListModule,
+  LazyScrollModule,
+  TrackListModule,
   UserMenuModule,
   ImageModule,
 ];

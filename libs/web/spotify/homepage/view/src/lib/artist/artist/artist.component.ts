@@ -1,17 +1,19 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { CardListViewMode } from '@artur-ba/web/spotify/shared/view';
-import { SpotifyDataService } from '@artur-ba/web/spotify/shared/service';
+import { SpotifyArtistDataService } from '@artur-ba/web/spotify/shared/service';
 import { UriDataHelper } from '@artur-ba/web/spotify/shared/helper';
+
+import { AbstractUriViewComponent } from '../../abstract-uri-view/abstract-uri-view.component';
 
 @Component({
   selector: 'artur-ba-artist',
   templateUrl: './artist.component.html',
   styleUrls: ['./artist.component.scss'],
 })
-export class ArtistComponent implements OnInit, OnDestroy {
+export class ArtistComponent extends AbstractUriViewComponent {
   artist: SpotifyApi.SingleArtistResponse;
   artistTracks: SpotifyApi.ArtistsTopTracksResponse;
   artistAlbums: SpotifyApi.PagingObject<SpotifyApi.AlbumObjectSimplified>;
@@ -22,27 +24,24 @@ export class ArtistComponent implements OnInit, OnDestroy {
 
   constructor(
     protected readonly route: ActivatedRoute,
-    protected readonly spotifyData: SpotifyDataService,
-  ) {}
-
-  ngOnInit(): void {
-    const routeParamsSub = this.route.params.subscribe((params) => {
-      this.getArtistData(params['uri']);
-    });
-    this.subscriptions.add(routeParamsSub);
-  }
-
-  ngOnDestroy(): void {
-    this.subscriptions.unsubscribe();
+    protected readonly spotifyArtistData: SpotifyArtistDataService,
+  ) {
+    super(route);
   }
 
   artistAlbumsUrl(): string {
     return `/artist/${UriDataHelper.getClearUri(this.artist?.uri)}/albums`;
   }
 
+  protected getUriData(uri: string): void {
+    this.getArtistData(uri);
+  }
+
   protected async getArtistData(artistUri: string): Promise<void> {
-    this.artist = await this.spotifyData.getArtist(artistUri);
-    this.artistTracks = await this.spotifyData.getArtistTopTracks(artistUri);
-    this.artistAlbums = await this.spotifyData.getArtistAlbums(artistUri);
+    this.artist = await this.spotifyArtistData.getArtist(artistUri);
+    this.artistTracks = await this.spotifyArtistData.getArtistTopTracks(
+      artistUri,
+    );
+    this.artistAlbums = await this.spotifyArtistData.getArtistAlbums(artistUri);
   }
 }

@@ -4,10 +4,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { ImageModule } from '../image/image.module';
+import { LazyScrollModule } from '../lazy-scroll/lazy-scroll.module';
 import { WebSpotifySharedDirectivesModule } from '@artur-ba/web/spotify/shared/directives';
 
 import { AlbumCardDecoratorComponent } from './album-card-decorator/album-card-decorator.component';
 import { CardComponent } from './card/card.component';
+import { CardLazyListComponent } from './card-lazy-list/card-lazy-list.component';
 import { CardWrapperComponent } from './card-wrapper/card-wrapper.component';
 import { CardWrapperWithContentComponent } from './card-wrapper-with-content/card-wrapper-with-content.component';
 import { DynamicCardListComponent } from './dynamic-card-list/dynamic-card-list.component';
@@ -20,6 +22,7 @@ const exports = [
   PlaylistCardDecoratorComponent,
   DynamicCardListComponent,
   CardWrapperWithContentComponent,
+  CardLazyListComponent,
 ];
 
 @NgModule({
@@ -28,6 +31,8 @@ const exports = [
     CommonModule,
     MatCardModule,
     RouterModule.forChild([]),
+    ImageModule,
+    LazyScrollModule,
     WebSpotifySharedDirectivesModule,
     ImageModule,
   ],

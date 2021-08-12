@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { SpotifyDataService } from '@artur-ba/web/spotify/shared/service';
-import { TrackListColumns } from '@artur-ba/web/spotify/shared/view';
+import {
+  PlaylistTrackLazyListStrategy,
+  TrackLazyListComponent,
+  TrackListColumns,
+} from '@artur-ba/web/spotify/shared/view';
+import { SpotifyPlaylistDataService } from '@artur-ba/web/spotify/shared/service';
+
+import { AbstractUriViewComponent } from '../abstract-uri-view/abstract-uri-view.component';
 
 @Component({
   selector: 'artur-ba-playlist',
   templateUrl: './playlist.component.html',
   styleUrls: ['./playlist.component.scss'],
 })
-export class PlaylistComponent implements OnInit {
+export class PlaylistComponent extends AbstractUriViewComponent {
   playlistTracks: SpotifyApi.PlaylistTrackResponse;
   playlist: SpotifyApi.PlaylistObjectFull;
   readonly columns: TrackListColumns[] = [
@@ -19,22 +25,25 @@ export class PlaylistComponent implements OnInit {
     TrackListColumns.time,
   ];
 
+  @ViewChild(TrackLazyListComponent)
+  protected songLazyList: TrackLazyListComponent;
+
   constructor(
-    protected route: ActivatedRoute,
-    protected spotifyData: SpotifyDataService,
-  ) {}
-
-  async ngOnInit() {
-    const routeParams = this.route.snapshot.paramMap;
-    const playlistUri = routeParams.get('uri');
-
-    this.playlistTracks = await this.spotifyData.getPlaylistTracks(playlistUri);
-    this.playlist = await this.spotifyData.getPlaylist(playlistUri);
+    protected readonly route: ActivatedRoute,
+    protected readonly spotifyPlaylistData: SpotifyPlaylistDataService,
+  ) {
+    super(route);
   }
 
-  getTracks(): SpotifyApi.TrackObjectFull[] {
-    return this.playlistTracks?.items.map(
-      (playlistTrack) => playlistTrack.track,
+  protected async getUriData(playlistUri: string): Promise<void> {
+    this.playlist = await this.spotifyPlaylistData.getPlaylist(playlistUri);
+    this.songLazyList.ngOnInit();
+  }
+
+  getStrategy(): PlaylistTrackLazyListStrategy {
+    return new PlaylistTrackLazyListStrategy(
+      this.route,
+      this.spotifyPlaylistData,
     );
   }
 }

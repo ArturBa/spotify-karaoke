@@ -1,0 +1,6 @@
+<artur-ba-track-list [tracks]="data" [columns]="columns"></artur-ba-track-list>
+
+<artur-ba-lazy-scroll
+  [isLoading$]="isLoading$"
+  (loadMore)="loadMoreData()"
+></artur-ba-lazy-scroll>
