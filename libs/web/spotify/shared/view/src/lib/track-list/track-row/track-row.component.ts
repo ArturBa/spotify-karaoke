@@ -19,15 +19,15 @@ export class TrackRowComponent {
   @Input() columns: TrackListColumns[];
   @Input() context: SpotifyApi.PlayParameterObject;
 
+  readonly PlayButtonStyle = PlayButtonStyle;
+
+  readonly TrackListColumns = TrackListColumns;
+
   @ViewChild(PlayButtonComponent) playButtonComponent: PlayButtonComponent;
 
   @HostListener('click', ['$event']) onClick(event: MouseEvent) {
     this.playButtonComponent.onPlayClick(null);
   }
-
-  readonly PlayButtonStyle = PlayButtonStyle;
-
-  readonly TrackListColumns = TrackListColumns;
 
   getPlayContext(): SpotifyApi.PlayParameterObject {
     return this.context?.context_uri

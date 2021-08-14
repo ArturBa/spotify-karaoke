@@ -7,10 +7,10 @@ import { PlayModule } from '../../play/play.module';
 import { SpotifyPlayerService } from '@artur-ba/web/spotify/shared/service';
 import { WebSpotifySharedPipeModule } from '@artur-ba/web/spotify/shared/pipe';
 
+import { SpotifyPlayerServiceMock } from '../../../../.storybook/sharedMock';
 import { track } from '../../../../.storybook/sharedData';
 import { TrackListColumns } from '../track-list/track-list.component';
 import { TrackRowComponent } from './track-row.component';
-import { SpotifyPlayerServiceMock } from '../../../../.storybook/sharedMock';
 
 export default {
   title: 'TrackList/TrackRow',
