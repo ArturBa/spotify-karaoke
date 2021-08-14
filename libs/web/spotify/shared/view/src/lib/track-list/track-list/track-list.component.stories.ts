@@ -61,9 +61,5 @@ Default.args = {
 export const CustomColumns = Template.bind({});
 CustomColumns.args = {
   ...Default.args,
-  columns: [
-    TrackListColumns.count,
-    TrackListColumns.album,
-    TrackListColumns.image,
-  ],
+  columns: [TrackListColumns.album, TrackListColumns.image],
 };
