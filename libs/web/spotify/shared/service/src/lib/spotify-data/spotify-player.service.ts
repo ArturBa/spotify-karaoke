@@ -44,4 +44,22 @@ export class SpotifyPlayerService {
       .put<void>(SpotifyDataService.SpotifyApiBaseURL + 'me/player', context)
       .toPromise();
   }
+
+  /**
+   * PUT https://api.spotify.com/v1/me/player/play
+   * @param context
+   * @returns Promise
+   */
+  play(context: SpotifyApi.PlayParameterObject): Promise<void> {
+    if (!context.context_uri && !context.uris) {
+      return Promise.reject(new Error('context_uri or uris are required'));
+    }
+
+    return this.httpClient
+      .put<void>(
+        SpotifyDataService.SpotifyApiBaseURL + 'me/player/play',
+        context,
+      )
+      .toPromise();
+  }
 }

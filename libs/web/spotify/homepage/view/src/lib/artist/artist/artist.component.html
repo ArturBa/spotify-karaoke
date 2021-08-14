@@ -1,17 +1,24 @@
 <div class="row">
-  <div class="artist-data">
+  <div class="data">
     <artur-ba-spotify-image
       [images]="artist?.images"
       alt="Artist image"
-      i18n-alt="artist.image"
+      i18n-alt
     >
     </artur-ba-spotify-image>
     <h2>
       {{ artist?.name }}
     </h2>
+
+    <artur-ba-play-button
+      [context]="{ context_uri: artist?.uri }"
+    ></artur-ba-play-button>
   </div>
 
-  <artur-ba-track-list [tracks]="artistTracks?.tracks"></artur-ba-track-list>
+  <artur-ba-track-list
+    [tracks]="artistTracks?.tracks"
+    [context_uri]="artist?.uri"
+  ></artur-ba-track-list>
 </div>
 <div class="albums">
   <artur-ba-card-wrapper-with-content
