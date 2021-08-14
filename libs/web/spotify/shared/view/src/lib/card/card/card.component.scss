@@ -6,9 +6,16 @@ mat-card {
   overflow: hidden;
   cursor: pointer;
   background-color: var(--bg-d5);
+  position: relative;
 
   &:hover {
     background-color: var(--bg-d10);
+  }
+
+  artur-ba-play-button {
+    position: absolute;
+    top: 160px;
+    left: 160px;
   }
 
   artur-ba-spotify-image {

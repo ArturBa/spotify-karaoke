@@ -16,7 +16,7 @@
         {{ artist.name | addComa: !l }}
       </a>
     </div>
-    <artur-ba-play-button [context_uri]="album.uri"></artur-ba-play-button>
+    <artur-ba-play-button [context_uri]="album?.uri"></artur-ba-play-button>
   </div>
 
   <artur-ba-track-lazy-list
