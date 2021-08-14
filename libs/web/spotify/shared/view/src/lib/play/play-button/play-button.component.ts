@@ -1,6 +1,6 @@
 import { Component, HostListener, Input } from '@angular/core';
 
-import { SpotifyPlayerService } from '../../../../../service/src';
+import { SpotifyPlayerService } from '@artur-ba/web/spotify/shared/service';
 
 @Component({
   selector: 'artur-ba-play-button',

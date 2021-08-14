@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { NgModule } from '@angular/core';
 
-import { PlayRoutingModule } from './play-routing.module';
 import { PlayButtonComponent } from './play-button/play-button.component';
+import { PlayRoutingModule } from './play-routing.module';
 
 const exports = [PlayButtonComponent];
 
