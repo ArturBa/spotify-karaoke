@@ -5,9 +5,9 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { SpotifyPlayerService } from '@artur-ba/web/spotify/shared/service';
 
+import { images, imagesArray } from '../../../../.storybook/sharedData';
 import { CardComponent } from './card.component';
 import { ImageModule } from '../../image/image.module';
-import { images, imagesArray } from '../../../../.storybook/sharedData';
 import { PlayModule } from '../../play/play.module';
 import { SpotifyPlayerServiceMock } from '../../../../.storybook/sharedMock';
 
