@@ -24,7 +24,7 @@ mat-card {
     left: $play-button-position;
 
     opacity: 0;
-    @include transition(opacity);
+    @include transition(opacity, 0.1s, ease-out);
   }
 
   artur-ba-spotify-image {
