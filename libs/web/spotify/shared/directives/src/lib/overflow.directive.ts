@@ -12,7 +12,7 @@ import { MatTooltip } from '@angular/material/tooltip';
   providers: [MatTooltip],
 })
 export class OverflowDirective implements AfterViewInit {
-  @Input() arturBaOverflow: number = 2;
+  @Input() arturBaOverflow = 2;
 
   protected readonly className = `artur-ba-overflow-${this.arturBaOverflow}`;
 

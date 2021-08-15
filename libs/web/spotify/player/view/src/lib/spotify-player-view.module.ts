@@ -9,7 +9,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
 
 import { ImageModule } from '@artur-ba/web/spotify/shared/view';
-import { WebSpotifySharedDirectivesModule } from '../../../../shared/directives/src';
+import { WebSpotifySharedDirectivesModule } from '@artur-ba/web/spotify/shared/directives';
 import { WebSpotifySharedPipeModule } from '@artur-ba/web/spotify/shared/pipe';
 
 import { PlayerAvailableDevicesComponent } from './player-settings/player-available-devices/player-available-devices.component';

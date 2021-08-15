@@ -1,8 +1,6 @@
 ///  <reference types="@types/spotify-web-playback-sdk"/>
 import { HttpClient } from '@angular/common/http';
-
-import { Injectable, OnDestroy } from '@angular/core';
-
+import { Injectable } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { PlayerStore } from '@artur-ba/shared/service';
