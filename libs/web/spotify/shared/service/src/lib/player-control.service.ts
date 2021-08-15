@@ -16,8 +16,7 @@ export interface SpotifyPlayRequestApi {
 @Injectable({
   providedIn: 'root',
 })
-export class PlayerControlService implements OnDestroy {
-  protected player$: Spotify.Player;
+export class PlayerControlService {
   protected readonly baseURL = 'https://api.spotify.com/v1/';
   protected readonly playerURL = this.baseURL + 'me/player';
 
@@ -26,15 +25,7 @@ export class PlayerControlService implements OnDestroy {
   constructor(
     protected httpClient: HttpClient,
     protected playerStore: PlayerStore,
-  ) {
-    this.playerSub = this.playerStore.state$.subscribe((state) => {
-      this.player$ = state.player;
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.playerSub.unsubscribe();
-  }
+  ) {}
 
   transferUserPlayback(deviceId: string, play: boolean = true): Promise<void> {
     return this.httpClient
@@ -45,8 +36,10 @@ export class PlayerControlService implements OnDestroy {
       .toPromise();
   }
 
-  play(): Promise<void> {
-    return this.httpClient.put<void>(`${this.playerURL}/play`, {}).toPromise();
+  play(context = {}): Promise<void> {
+    return this.httpClient
+      .put<void>(`${this.playerURL}/play`, context)
+      .toPromise();
   }
 
   pause(): Promise<void> {
