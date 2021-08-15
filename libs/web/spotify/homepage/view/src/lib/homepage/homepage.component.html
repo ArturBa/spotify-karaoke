@@ -6,4 +6,6 @@
   </div>
 </div>
 <artur-ba-player *ngIf="userPremium$() | async"></artur-ba-player>
-<artur-ba-player-free *ngIf="!(userPremium$() | async)"></artur-ba-player-free>
+<artur-ba-player-free
+  *ngIf="(userPremium$() | async) === false"
+></artur-ba-player-free>

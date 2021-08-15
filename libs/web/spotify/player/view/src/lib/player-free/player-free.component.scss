@@ -1,8 +1,7 @@
-@import 'variables';
+@import '../styles/player';
 
 :host {
   display: flex;
+  font-size: x-large;
   justify-content: center;
-  align-items: center;
-  background-color: var(--bg-d5);
 }
