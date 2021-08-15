@@ -1,0 +1,7 @@
+@import 'variables';
+
+.error-snackbar {
+  background-color: var(--warn-l);
+  transform: translateY(-$player-height) scale(1) !important;
+  color: var(--text-a60);
+}

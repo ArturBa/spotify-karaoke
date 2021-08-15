@@ -15,10 +15,10 @@ import { PlayerStore } from '@artur-ba/shared/service';
 export class LyricsComponent implements OnInit, OnDestroy {
   lyrics: Lyrics;
   track: Spotify.Track;
-  searching = true;
+  searching = false;
   progress$: Observable<number>;
 
-  protected subscriptions: Subscription[] = [];
+  protected subscriptions = new Subscription();
 
   constructor(
     protected lyricsAPI: MiniLyricsService,
@@ -26,12 +26,12 @@ export class LyricsComponent implements OnInit, OnDestroy {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    this.subscriptions.push(
+    this.subscriptions.add(
       this.playerState.currentTrack$.subscribe(async (track) => {
         this.handleSongUpdate(track);
       }),
     );
-    this.subscriptions.push(
+    this.subscriptions.add(
       this.playerState.progress$.subscribe((pos) => {
         this.progress$ = pos;
       }),
@@ -39,7 +39,7 @@ export class LyricsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscriptions.forEach((sub) => sub.unsubscribe());
+    this.subscriptions.unsubscribe();
   }
 
   protected async handleSongUpdate(track: Spotify.Track): Promise<void> {

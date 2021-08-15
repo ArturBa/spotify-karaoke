@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
 
 import {
+  ErrorInterceptor,
   ProxyInterceptor,
   SpotifyMarketInterceptor,
   SpotifyTokenInterceptor,
@@ -16,6 +17,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
 import { environment } from '../environments/environment';
 import { LoginModule } from './login/login.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,6 +29,7 @@ import { LoginModule } from './login/login.module';
     NgxGoogleAnalyticsModule.forRoot(environment.ga),
     SharedViewModule,
     LoginModule,
+    MatSnackBarModule,
   ],
   providers: [
     {
@@ -42,6 +45,11 @@ import { LoginModule } from './login/login.module';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ProxyInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
       multi: true,
     },
   ],
