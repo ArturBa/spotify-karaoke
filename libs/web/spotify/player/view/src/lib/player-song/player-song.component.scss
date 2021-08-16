@@ -1,17 +1,23 @@
 @import 'mixins';
+@import 'media-queries';
 
 :host {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  align-items: center;
 }
 artur-ba-spotify-image {
-  margin-left: $margin-m;
   @include square_img($image64);
+  margin-left: $margin-m;
+  @include lt-lg {
+    margin-left: $margin-xs;
+  }
 }
 .song-data {
+  max-height: $player-height;
   margin-left: $margin-m;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  @include lt-lg {
+    margin-left: $margin-xs;
+  }
 }
