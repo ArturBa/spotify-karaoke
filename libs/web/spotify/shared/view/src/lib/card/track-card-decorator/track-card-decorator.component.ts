@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 
-import { UriDataHelper } from '@artur-ba/web/spotify/shared/helper';
-
 import { CardDecoratorComponent } from '../card-decorator/card-decorator.component';
 
 @Component({
@@ -11,7 +9,6 @@ import { CardDecoratorComponent } from '../card-decorator/card-decorator.compone
 })
 export class TrackCardDecoratorComponent extends CardDecoratorComponent<SpotifyApi.TrackObjectFull> {
   protected initWithData(): void {
-    console.dir(this.data);
     this.cardImageAlt = $localize`:track-card-decorator.image-alt:Track album cover`;
     this.images = this.data.album.images;
     this.title = this.data.name;
