@@ -70,21 +70,15 @@ export class SpotifyTokenInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     if (!this.refreshingInProgress) {
       this.refreshingInProgress = true;
-
-      return from(this.authStore.refreshToken()).pipe(
-        switchMap(() => {
-          this.refreshingInProgress = false;
-          return next.handle(this.addAuthorizationHeader(request));
-        }),
-      );
-    } else {
-      // wait while getting new token
-      return this.authStore.access_token_sub$.pipe(
-        filter((token) => token !== null),
-        switchMap(() => {
-          return next.handle(this.addAuthorizationHeader(request));
-        }),
-      );
+      this.authStore.refreshToken().then(() => {
+        this.refreshingInProgress = false;
+      });
     }
+    return this.authStore.access_token_sub$.pipe(
+      filter((token) => token !== null),
+      switchMap(() => {
+        return next.handle(this.addAuthorizationHeader(request));
+      }),
+    );
   }
 }
