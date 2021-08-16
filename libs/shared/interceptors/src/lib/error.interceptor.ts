@@ -32,8 +32,6 @@ export class ErrorInterceptor implements HttpInterceptor {
       catchError((error) => {
         if (spotifyAPIRegex.test(error.url) && error.status !== 401) {
           this.handleSpotifyError(error);
-        } else if (ipAPIRegex.test(error.url)) {
-          this.handleLocationError(error);
         }
         return throwError(error.message);
       }),
@@ -46,9 +44,5 @@ export class ErrorInterceptor implements HttpInterceptor {
       this.dismissMessage,
       this.snackbarConfig,
     );
-  }
-
-  protected handleLocationError(error: any): void {
-    this.snackBar.open(error.message, this.dismissMessage, this.snackbarConfig);
   }
 }
