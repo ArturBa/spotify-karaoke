@@ -1,17 +1,17 @@
-import { Injectable } from '@angular/core';
 import {
-  HttpRequest,
-  HttpHandler,
   HttpEvent,
+  HttpHandler,
   HttpInterceptor,
+  HttpRequest,
 } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
 
 import { spotifyAPIRegex } from './spotify-token.interceptor';
 
-export const ipAPIRegex = /^http:\/\/ip\-api\.com\/json$/;
+export const ipAPIRegex = /^http:\/\/ip-api\.com\/json$/;
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
