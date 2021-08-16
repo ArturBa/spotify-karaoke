@@ -1,9 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-import { QueueRoutingModule } from './queue-routing.module';
+import { TrackListModule } from '@artur-ba/web/spotify/shared/view';
+
 import { QueueComponent } from './queue/queue.component';
-import { TrackListModule } from '../../../../../shared/view/src/lib/track-list/track-list.module';
+import { QueueRoutingModule } from './queue-routing.module';
 
 @NgModule({
   declarations: [QueueComponent],
