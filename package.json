@@ -83,7 +83,7 @@
     "@storybook/addon-storysource": "^6.3.6",
     "@storybook/angular": "6.3.7",
     "@storybook/builder-webpack5": "^6.2.7",
-    "@storybook/manager-webpack5": "^6.3.0",
+    "@storybook/manager-webpack5": "^6.3.7",
     "@types/jest": "26.0.24",
     "@types/node": "16.4.12",
     "@types/spotify-api": "0.0.11",
