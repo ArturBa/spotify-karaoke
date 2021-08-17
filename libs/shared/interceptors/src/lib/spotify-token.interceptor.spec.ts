@@ -7,8 +7,8 @@ import { inject, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { AuthStoreProxy, routesBlank } from '@artur-ba/shared/test-helpers';
 import { AuthStore, EnvSettingsService } from '@artur-ba/shared/service';
+import { AuthStoreProxy, routesBlank } from '@artur-ba/shared/test-helpers';
 
 import { SpotifyTokenInterceptor } from './spotify-token.interceptor';
 
@@ -18,7 +18,7 @@ describe('SpotifyTokenInterceptor', () => {
   let httpMock: HttpTestingController;
   let httpClient: HttpClient;
   let authStore: AuthStoreProxy;
-  let EnvSettingsServiceMock = {
+  const EnvSettingsServiceMock = {
     spotify_client_id: 'clientId',
     spotify_client_secret: 'clientSecret',
   };
@@ -58,7 +58,6 @@ describe('SpotifyTokenInterceptor', () => {
   describe('user logged', () => {
     beforeAll(() => {
       authStore.saveTokenDataProxy();
-      console.log(authStore.isLogged());
     });
     afterAll(() => {
       authStore.logout();
