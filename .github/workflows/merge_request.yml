@@ -26,7 +26,7 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       - name: Install
-        run: yarn ci
+        run: yarn install --frozen-lockfile
   build:
     name: Build package
     runs-on: ubuntu-latest
