@@ -1,12 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
+import { LyricsItem } from '@artur-ba/web/lyrics/mini-lyrics/interface';
+
 import { LyricsSelectionDialogComponent } from './lyrics-selection-dialog.component';
-import { LyricsItem } from '../../../../mini-lyrics/interface/src';
 
 describe('LyricsComponent', () => {
   let component: LyricsSelectionDialogComponent;
