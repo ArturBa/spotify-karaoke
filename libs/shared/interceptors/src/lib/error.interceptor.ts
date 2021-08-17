@@ -7,6 +7,7 @@ import {
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { Injectable } from '@angular/core';
 
 import { spotifyAPIRegex } from './spotify-token.interceptor';
@@ -22,7 +23,10 @@ export class ErrorInterceptor implements HttpInterceptor {
 
   protected readonly dismissMessage = $localize`:error-interceptor.dismiss:Dismiss`;
 
-  constructor(protected readonly snackBar: MatSnackBar) {}
+  constructor(
+    protected readonly snackBar: MatSnackBar,
+    protected readonly $gaService: GoogleAnalyticsService,
+  ) {}
 
   intercept(
     request: HttpRequest<unknown>,
@@ -33,6 +37,8 @@ export class ErrorInterceptor implements HttpInterceptor {
         if (spotifyAPIRegex.test(error.url) && error.status !== 401) {
           this.handleSpotifyError(error);
         }
+        console.dir(error);
+        this.$gaService.exception(error);
         return throwError(error.message);
       }),
     );
