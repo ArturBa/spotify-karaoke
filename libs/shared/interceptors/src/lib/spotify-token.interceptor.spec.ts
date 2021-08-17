@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { AuthStoreProxy, routesBlank } from '@artur-ba/shared/test-helpers';
-import { AuthStore } from '@artur-ba/shared/service';
+import { AuthStore, EnvSettingsService } from '@artur-ba/shared/service';
 
 import { SpotifyTokenInterceptor } from './spotify-token.interceptor';
 
@@ -18,6 +18,10 @@ describe('SpotifyTokenInterceptor', () => {
   let httpMock: HttpTestingController;
   let httpClient: HttpClient;
   let authStore: AuthStoreProxy;
+  let EnvSettingsServiceMock = {
+    spotify_client_id: 'clientId',
+    spotify_client_secret: 'clientSecret',
+  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -32,6 +36,7 @@ describe('SpotifyTokenInterceptor', () => {
           useClass: SpotifyTokenInterceptor,
           multi: true,
         },
+        { provide: EnvSettingsService, useValue: EnvSettingsServiceMock },
       ],
     });
 
@@ -53,13 +58,15 @@ describe('SpotifyTokenInterceptor', () => {
   describe('user logged', () => {
     beforeAll(() => {
       authStore.saveTokenDataProxy();
+      console.log(authStore.isLogged());
     });
     afterAll(() => {
       authStore.logout();
     });
     it('should add header token for logged user', () => {
-      httpClient.get(spotifyApiUrl + 'foo').subscribe();
+      httpClient.get(spotifyApiUrl + 'logged').subscribe();
 
+      httpMock.match('https://accounts.spotify.com/api/token');
       const httpRequest = httpMock.expectOne(() => true);
 
       expect(httpRequest.request.headers.has('Authorization')).toBeTruthy();
@@ -68,13 +75,15 @@ describe('SpotifyTokenInterceptor', () => {
       [AuthStore],
       (authStore: AuthStore) => {
         jest.spyOn(authStore, 'refreshToken');
-        httpClient.get(spotifyApiUrl + 'foo').subscribe();
+        httpClient.get(spotifyApiUrl + 'logged401').subscribe();
 
+        httpMock.match('https://accounts.spotify.com/api/token');
         httpMock
           .expectOne(() => true)
           .flush(null, { status: 401, statusText: 'unauthorized' });
 
         expect(authStore.refreshToken).toHaveBeenCalled();
+        httpMock.match('https://accounts.spotify.com/api/token');
       },
     ));
   });
