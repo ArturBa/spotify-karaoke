@@ -12,8 +12,6 @@ import { Injectable } from '@angular/core';
 
 import { spotifyAPIRegex } from './spotify-token.interceptor';
 
-export const ipAPIRegex = /^http:\/\/ip-api\.com\/json$/;
-
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
   protected readonly snackbarConfig: MatSnackBarConfig = {
@@ -37,7 +35,6 @@ export class ErrorInterceptor implements HttpInterceptor {
         if (spotifyAPIRegex.test(error.url) && error.status !== 401) {
           this.handleSpotifyError(error);
         }
-        console.dir(error);
         this.$gaService.exception(error);
         return throwError(error.message);
       }),

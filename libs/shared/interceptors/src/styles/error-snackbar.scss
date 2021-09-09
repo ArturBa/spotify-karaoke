@@ -2,11 +2,8 @@
 
 .error-snackbar {
   background-color: var(--warn-l);
-  // transform: translateY(-$player-height) scale(1) !important;
   color: var(--text-a60);
-  // position: absolute;
-  // bottom: $player-height;
-  // width: 100%;
+
   margin-right: auto !important;
   margin-left: auto !important;
   margin-bottom: calc(#{$player-height} + #{$margin-s}) !important;
