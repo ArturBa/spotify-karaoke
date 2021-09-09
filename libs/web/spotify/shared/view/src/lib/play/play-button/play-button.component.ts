@@ -1,4 +1,4 @@
-import { Component, HostListener, Input } from '@angular/core';
+import { Component, HostBinding, HostListener, Input } from '@angular/core';
 
 import { SpotifyPlayerService } from '@artur-ba/web/spotify/shared/service';
 

@@ -10,7 +10,8 @@ mat-card {
   background-color: var(--bg-d5);
   position: relative;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: var(--bg-d10);
 
     artur-ba-play-button {
@@ -25,6 +26,10 @@ mat-card {
 
     opacity: 0;
     @include transition(opacity, 0.1s, ease-out);
+
+    &:focus {
+      opacity: 1;
+    }
   }
 
   artur-ba-spotify-image {
