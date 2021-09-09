@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostListener,
+  Input,
+  Output,
+} from '@angular/core';
 import { Router } from '@angular/router';
 
 import { PlayButtonStyle } from '../../play/play-button/play-button.component';
@@ -14,6 +20,15 @@ export class CardComponent {
   @Input() subtitle: string;
   @Input() redirectUrl: string;
   @Input() context: SpotifyApi.PlayParameterObject;
+
+  @HostListener('keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (this.actionButtons.includes(event.key)) {
+      this.onClickHandle();
+    }
+  }
+
+  protected readonly actionButtons = [' ', 'Enter'];
 
   readonly PlayButtonStyle = PlayButtonStyle;
 

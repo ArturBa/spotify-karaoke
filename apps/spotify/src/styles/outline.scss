@@ -1,0 +1,18 @@
+@import 'variables';
+
+$outline-width: 10px;
+$outline-offset: 10px;
+$outline-color: var(--primary-d);
+
+@mixin focus-outline(
+  $color: $outline-color,
+  $width: $outline-width,
+  $offset: $outline-offset
+) {
+  outline: $color $outline-width solid !important;
+  outline-offset: $outline-offset !important;
+}
+
+*:focus {
+  @include focus-outline();
+}
