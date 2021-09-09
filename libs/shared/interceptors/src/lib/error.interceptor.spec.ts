@@ -1,19 +1,19 @@
-import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import {
   HttpClientTestingModule,
   HttpTestingController,
 } from '@angular/common/http/testing';
-import { TestBed } from '@angular/core/testing';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { TestBed } from '@angular/core/testing';
 
 import { ErrorInterceptor } from './error.interceptor';
 
 describe('ErrorInterceptor', () => {
   let httpMock: HttpTestingController;
   let httpClient: HttpClient;
-  let MatSnackBarMock = { open: jest.fn() };
-  let GoogleAnalyticsServiceMock = { exception: jest.fn() };
+  const MatSnackBarMock = { open: jest.fn() };
+  const GoogleAnalyticsServiceMock = { exception: jest.fn() };
   const proxyUrl = `some-url`;
 
   beforeEach(() => {
@@ -38,7 +38,7 @@ describe('ErrorInterceptor', () => {
 
   it('should not catch any request without error', () => {
     httpClient.get(proxyUrl).subscribe();
-    const httpRequest = httpMock.expectOne(() => true);
+    httpMock.expectOne(() => true);
 
     expect(MatSnackBarMock.open).not.toHaveBeenCalled();
     expect(GoogleAnalyticsServiceMock.exception).not.toHaveBeenCalled();
@@ -46,7 +46,7 @@ describe('ErrorInterceptor', () => {
 
   it('should call an google analytics for an not spotify error', () => {
     httpClient.get(proxyUrl).subscribe();
-    const httpRequest = httpMock
+    httpMock
       .expectOne(() => true)
       .flush(null, { status: 403, statusText: 'unauthorized' });
 
