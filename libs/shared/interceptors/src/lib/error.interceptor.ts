@@ -32,6 +32,8 @@ export class ErrorInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
       catchError((error) => {
+        console.log(error.url);
+        console.log(spotifyAPIRegex.test(error.url));
         if (spotifyAPIRegex.test(error.url) && error.status !== 401) {
           this.handleSpotifyError(error);
         }
