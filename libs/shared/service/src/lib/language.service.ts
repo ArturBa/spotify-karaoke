@@ -10,6 +10,10 @@ import { LanguageModel } from './models/language.model';
 })
 export class LanguageService {
   protected languages: LanguageModel[];
+
+  protected readonly defaultLanguages: LanguageModel[] = [
+    { langCode: 'en', name: 'English' },
+  ];
   protected readonly netlify_lang = 'nl_lang';
   protected readonly languages_json = 'languages.json';
   protected readonly true_str = 'true';
@@ -26,7 +30,11 @@ export class LanguageService {
         .get(this.languages_json)
         .toPromise()
         .then((langs: LanguageModel[]) => {
-          this.languages = langs;
+          if (langs[0]) {
+            this.languages = langs;
+          } else {
+            this.languages = this.defaultLanguages;
+          }
         });
     }
     return Promise.resolve();
