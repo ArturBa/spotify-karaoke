@@ -45,8 +45,7 @@
               "libs/shared/interceptors/src/**/*.ts",
               "libs/shared/interceptors/src/**/*.html"
             ]
-          },
-          "outputs": ["{options.outputFile}"]
+          }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -71,8 +70,7 @@
               "libs/shared/service/src/**/*.ts",
               "libs/shared/service/src/**/*.html"
             ]
-          },
-          "outputs": ["{options.outputFile}"]
+          }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -97,8 +95,7 @@
               "libs/shared/test-helpers/src/**/*.ts",
               "libs/shared/test-helpers/src/**/*.html"
             ]
-          },
-          "outputs": ["{options.outputFile}"]
+          }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -123,8 +120,7 @@
               "libs/shared/view/src/**/*.ts",
               "libs/shared/view/src/**/*.html"
             ]
-          },
-          "outputs": ["{options.outputFile}"]
+          }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -242,8 +238,7 @@
               "apps/spotify/src/**/*.ts",
               "apps/spotify/src/**/*.html"
             ]
-          },
-          "outputs": ["{options.outputFile}"]
+          }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -277,8 +272,7 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/spotify-e2e/**/*.{js,ts}"]
-          },
-          "outputs": ["{options.outputFile}"]
+          }
         }
       }
     },
@@ -295,8 +289,7 @@
               "libs/web/lyrics/mini-lyrics/interface/src/**/*.ts",
               "libs/web/lyrics/mini-lyrics/interface/src/**/*.html"
             ]
-          },
-          "outputs": ["{options.outputFile}"]
+          }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -321,8 +314,7 @@
               "libs/web/lyrics/mini-lyrics/service/src/**/*.ts",
               "libs/web/lyrics/mini-lyrics/service/src/**/*.html"
             ]
-          },
-          "outputs": ["{options.outputFile}"]
+          }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -347,8 +339,7 @@
               "libs/web/lyrics/model/src/**/*.ts",
               "libs/web/lyrics/model/src/**/*.html"
             ]
-          },
-          "outputs": ["{options.outputFile}"]
+          }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -373,8 +364,7 @@
               "libs/web/lyrics/view/src/**/*.ts",
               "libs/web/lyrics/view/src/**/*.html"
             ]
-          },
-          "outputs": ["{options.outputFile}"]
+          }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -399,8 +389,7 @@
               "libs/web/spotify/homepage/view/src/**/*.ts",
               "libs/web/spotify/homepage/view/src/**/*.html"
             ]
-          },
-          "outputs": ["{options.outputFile}"]
+          }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -425,8 +414,7 @@
               "libs/web/spotify/player/view/src/**/*.ts",
               "libs/web/spotify/player/view/src/**/*.html"
             ]
-          },
-          "outputs": ["{options.outputFile}"]
+          }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -459,8 +447,7 @@
               "libs/web/spotify/shared/directives/src/**/*.ts",
               "libs/web/spotify/shared/directives/src/**/*.html"
             ]
-          },
-          "outputs": ["{options.outputFile}"]
+          }
         }
       }
     },
@@ -477,8 +464,7 @@
               "libs/web/spotify/shared/helper/src/**/*.ts",
               "libs/web/spotify/shared/helper/src/**/*.html"
             ]
-          },
-          "outputs": ["{options.outputFile}"]
+          }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -503,8 +489,7 @@
               "libs/web/spotify/shared/pipe/src/**/*.ts",
               "libs/web/spotify/shared/pipe/src/**/*.html"
             ]
-          },
-          "outputs": ["{options.outputFile}"]
+          }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -529,8 +514,7 @@
               "libs/web/spotify/shared/service/src/**/*.ts",
               "libs/web/spotify/shared/service/src/**/*.html"
             ]
-          },
-          "outputs": ["{options.outputFile}"]
+          }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -555,8 +539,7 @@
               "libs/web/spotify/shared/view/src/**/*.ts",
               "libs/web/spotify/shared/view/src/**/*.html"
             ]
-          },
-          "outputs": ["{options.outputFile}"]
+          }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -623,8 +606,7 @@
             "lintFilePatterns": [
               "apps/web-spotify-shared-view-e2e/**/*.{js,ts}"
             ]
-          },
-          "outputs": ["{options.outputFile}"]
+          }
         }
       }
     },
@@ -641,8 +623,7 @@
               "libs/web/spotify/sidebar/view/src/**/*.ts",
               "libs/web/spotify/sidebar/view/src/**/*.html"
             ]
-          },
-          "outputs": ["{options.outputFile}"]
+          }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
